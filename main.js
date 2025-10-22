@@ -50,8 +50,44 @@ scene.add(cube);
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
 scene.add(ambientLight);
 
-// Render the scene (stationary - no animation loop needed)
-renderer.render(scene, camera);
+// Animation variables
+let isAnimating = false;
+let animationStartTime = 0;
+const animationDuration = 2000; // 2 seconds
+let startRotation = { x: 0, y: 0, z: 0 };
+let targetRotation = { x: 0, y: 0, z: 0 };
+
+// Animation loop
+function animate(currentTime) {
+    requestAnimationFrame(animate);
+
+    if (isAnimating) {
+        const elapsed = currentTime - animationStartTime;
+        const progress = Math.min(elapsed / animationDuration, 1);
+
+        // Easing function for smooth animation (ease-in-out)
+        const easeProgress = progress < 0.5
+            ? 2 * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+        // Interpolate rotation
+        cube.rotation.x = startRotation.x + (targetRotation.x - startRotation.x) * easeProgress;
+        cube.rotation.y = startRotation.y + (targetRotation.y - startRotation.y) * easeProgress;
+        cube.rotation.z = startRotation.z + (targetRotation.z - startRotation.z) * easeProgress;
+
+        // Stop animation when complete
+        if (progress >= 1) {
+            isAnimating = false;
+            // Update start rotation for next animation
+            startRotation = { ...targetRotation };
+        }
+    }
+
+    renderer.render(scene, camera);
+}
+
+// Start the animation loop
+animate(0);
 
 // Raycaster for click detection
 const raycaster = new THREE.Raycaster();
@@ -59,6 +95,9 @@ const mouse = new THREE.Vector2();
 
 // Click handler
 window.addEventListener('click', (event) => {
+    // Don't start new animation if one is already playing
+    if (isAnimating) return;
+
     // Calculate mouse position in normalized device coordinates (-1 to +1)
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -76,7 +115,21 @@ window.addEventListener('click', (event) => {
         const faceName = faceNames[faceIndex];
 
         console.log(`Clicked on ${faceName} face (index: ${faceIndex})`);
-        alert(`You clicked the ${faceName} face!`);
+
+        // Start spin animation
+        isAnimating = true;
+        animationStartTime = performance.now();
+        startRotation = {
+            x: cube.rotation.x,
+            y: cube.rotation.y,
+            z: cube.rotation.z
+        };
+        // Spin 360 degrees (2 * PI radians) on Y axis
+        targetRotation = {
+            x: startRotation.x,
+            y: startRotation.y + Math.PI * 2,
+            z: startRotation.z
+        };
     }
 });
 

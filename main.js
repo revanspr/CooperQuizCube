@@ -34,17 +34,15 @@ const materials = [
     new THREE.MeshBasicMaterial({ color: 0xffd700 }), // left - gold
     new THREE.MeshBasicMaterial({ color: 0xff69b4 }), // top - hot pink
     new THREE.MeshBasicMaterial({ color: 0x9370db }), // bottom - medium purple
-    new THREE.MeshBasicMaterial({ color: 0xff6347 }), // front - tomato red
+    new THREE.MeshBasicMaterial({ color: 0x32cd32 }), // front - lime green
     new THREE.MeshBasicMaterial({ color: 0x87ceeb })  // back - sky blue
 ];
 
 const cube = new THREE.Mesh(geometry, materials);
 
 // Rotate cube for perfect isometric view showing 3 equal sides
-// First rotate around Y axis by 45 degrees (shows two vertical sides equally)
-cube.rotation.y = Math.PI / 4;
-// Then rotate around X axis by ~35.264 degrees (shows top equally)
-cube.rotation.x = -Math.atan(1 / Math.sqrt(2));
+// No rotation needed - camera position creates the isometric view
+cube.rotation.set(0, 0, 0);
 
 scene.add(cube);
 
@@ -54,6 +52,33 @@ scene.add(ambientLight);
 
 // Render the scene (stationary - no animation loop needed)
 renderer.render(scene, camera);
+
+// Raycaster for click detection
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+// Click handler
+window.addEventListener('click', (event) => {
+    // Calculate mouse position in normalized device coordinates (-1 to +1)
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    // Update the raycaster with camera and mouse position
+    raycaster.setFromCamera(mouse, camera);
+
+    // Check for intersections
+    const intersects = raycaster.intersectObject(cube);
+
+    if (intersects.length > 0) {
+        // Get the face that was clicked
+        const faceIndex = Math.floor(intersects[0].faceIndex / 2);
+        const faceNames = ['right', 'left', 'top', 'bottom', 'front', 'back'];
+        const faceName = faceNames[faceIndex];
+
+        console.log(`Clicked on ${faceName} face (index: ${faceIndex})`);
+        alert(`You clicked the ${faceName} face!`);
+    }
+});
 
 // Handle window resize
 window.addEventListener('resize', () => {

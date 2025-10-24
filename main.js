@@ -81,7 +81,7 @@ scene.add(ambientLight);
 // Animation variables
 let isAnimating = false;
 let animationStartTime = 0;
-const animationDuration = 1000; // 1 second
+const animationDuration = 1333; // ~1.33 seconds (1.5x faster than original 2s)
 let startRotation = { x: 0, y: 0, z: 0 };
 let targetRotation = { x: 0, y: 0, z: 0 };
 

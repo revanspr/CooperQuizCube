@@ -1,5 +1,46 @@
 import * as THREE from 'three';
 
+// Questions and answers data
+const quizData = [
+    {
+        question: "What is the capital of France?",
+        answers: ["Paris", "London", "Berlin"]
+    },
+    {
+        question: "What is 2 + 2?",
+        answers: ["4", "3", "5"]
+    },
+    {
+        question: "What color is the sky?",
+        answers: ["Blue", "Green", "Red"]
+    },
+    {
+        question: "How many continents are there?",
+        answers: ["7", "5", "6"]
+    },
+    {
+        question: "What is the largest planet?",
+        answers: ["Jupiter", "Mars", "Earth"]
+    },
+    {
+        question: "What is H2O?",
+        answers: ["Water", "Oxygen", "Hydrogen"]
+    }
+];
+
+// Shuffle array helper
+function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
+// Shuffle questions at start
+const shuffledQuestions = shuffleArray(quizData);
+
 // Scene setup
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x1a1a2e);
@@ -25,8 +66,8 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-// Function to create a canvas texture with text
-function createTextTexture(text, bgColor) {
+// Function to create a canvas texture with text (supports multi-line)
+function createTextTexture(text, bgColor, fontSize = 40) {
     const canvas = document.createElement('canvas');
     canvas.width = 512;
     canvas.height = 512;
@@ -38,10 +79,36 @@ function createTextTexture(text, bgColor) {
 
     // Text
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 60px Arial';
+    ctx.font = `bold ${fontSize}px Arial`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+    // Word wrap for long text
+    const maxWidth = canvas.width - 40;
+    const words = text.split(' ');
+    const lines = [];
+    let currentLine = words[0];
+
+    for (let i = 1; i < words.length; i++) {
+        const testLine = currentLine + ' ' + words[i];
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width > maxWidth) {
+            lines.push(currentLine);
+            currentLine = words[i];
+        } else {
+            currentLine = testLine;
+        }
+    }
+    lines.push(currentLine);
+
+    // Draw each line
+    const lineHeight = fontSize * 1.2;
+    const totalHeight = lines.length * lineHeight;
+    const startY = (canvas.height - totalHeight) / 2 + lineHeight / 2;
+
+    lines.forEach((line, index) => {
+        ctx.fillText(line, canvas.width / 2, startY + index * lineHeight);
+    });
 
     const texture = new THREE.CanvasTexture(canvas);
     return texture;
@@ -50,21 +117,53 @@ function createTextTexture(text, bgColor) {
 // Create cube with different colored faces
 const geometry = new THREE.BoxGeometry(2, 2, 2);
 
-// Create materials for each face with text
-const faceData = [
-    { text: 'RIGHT', color: '#ff6347' },   // tomato red
-    { text: 'LEFT', color: '#ffd700' },    // gold
-    { text: 'TOP', color: '#ff69b4' },     // hot pink
-    { text: 'BOTTOM', color: '#9370db' },  // medium purple
-    { text: 'FRONT', color: '#32cd32' },   // lime green
-    { text: 'BACK', color: '#87ceeb' }     // sky blue
-];
+// Color palette for faces
+const colors = ['#ff6347', '#ffd700', '#ff69b4', '#9370db', '#32cd32', '#87ceeb'];
 
-const materials = faceData.map(face =>
-    new THREE.MeshBasicMaterial({
-        map: createTextTexture(face.text, face.color)
-    })
-);
+// State management
+let showingAnswers = false;
+let selectedQuestionIndex = -1;
+
+// Function to update cube materials
+function updateCubeMaterials(showAnswers = false, questionIndex = -1) {
+    const newMaterials = [];
+
+    if (showAnswers && questionIndex >= 0) {
+        // Show answers on 3 faces, other 3 faces show "Pick a Question"
+        const answers = shuffledQuestions[questionIndex].answers;
+        for (let i = 0; i < 6; i++) {
+            if (i < 3) {
+                // First 3 faces show answers
+                newMaterials.push(new THREE.MeshBasicMaterial({
+                    map: createTextTexture(answers[i], colors[i], 50)
+                }));
+            } else {
+                // Other 3 faces show instruction
+                newMaterials.push(new THREE.MeshBasicMaterial({
+                    map: createTextTexture('Pick a Question', colors[i], 40)
+                }));
+            }
+        }
+    } else {
+        // Show questions on all 6 faces
+        for (let i = 0; i < 6; i++) {
+            const question = shuffledQuestions[i].question;
+            newMaterials.push(new THREE.MeshBasicMaterial({
+                map: createTextTexture(question, colors[i], 35)
+            }));
+        }
+    }
+
+    cube.material = newMaterials;
+}
+
+// Initialize materials with questions
+const materials = [];
+for (let i = 0; i < 6; i++) {
+    materials.push(new THREE.MeshBasicMaterial({
+        map: createTextTexture(shuffledQuestions[i].question, colors[i], 35)
+    }));
+}
 
 const cube = new THREE.Mesh(geometry, materials);
 
@@ -103,11 +202,23 @@ function animate(currentTime) {
         cube.rotation.y = startRotation.y + (targetRotation.y - startRotation.y) * easeProgress;
         cube.rotation.z = startRotation.z + (targetRotation.z - startRotation.z) * easeProgress;
 
+        // Apply blur effect during animation (stronger in the middle)
+        const blurAmount = Math.sin(progress * Math.PI) * 8; // Max blur at 50% progress
+        renderer.domElement.style.filter = `blur(${blurAmount}px)`;
+
         // Stop animation when complete
         if (progress >= 1) {
             isAnimating = false;
             // Update start rotation for next animation
             startRotation = { ...targetRotation };
+            // Remove blur
+            renderer.domElement.style.filter = 'blur(0px)';
+
+            // Show answers after animation completes
+            if (selectedQuestionIndex >= 0) {
+                showingAnswers = true;
+                updateCubeMaterials(true, selectedQuestionIndex);
+            }
         }
     }
 
@@ -143,6 +254,17 @@ function handleInteraction(clientX, clientY) {
         const faceName = faceNames[faceIndex];
 
         console.log(`Clicked on ${faceName} face (index: ${faceIndex})`);
+
+        if (showingAnswers) {
+            // If showing answers and clicked on a "Pick a Question" face (index >= 3)
+            // or any face, go back to questions
+            showingAnswers = false;
+            selectedQuestionIndex = -1;
+            updateCubeMaterials(false);
+        } else {
+            // Showing questions - store which question was clicked
+            selectedQuestionIndex = faceIndex;
+        }
 
         // Start spin animation
         isAnimating = true;

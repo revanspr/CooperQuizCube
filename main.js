@@ -121,14 +121,14 @@ animate(0);
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
-// Click handler
-window.addEventListener('click', (event) => {
+// Handle click/touch on cube
+function handleInteraction(clientX, clientY) {
     // Don't start new animation if one is already playing
     if (isAnimating) return;
 
-    // Calculate mouse position in normalized device coordinates (-1 to +1)
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    // Calculate position in normalized device coordinates (-1 to +1)
+    mouse.x = (clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(clientY / window.innerHeight) * 2 + 1;
 
     // Update the raycaster with camera and mouse position
     raycaster.setFromCamera(mouse, camera);
@@ -159,7 +159,20 @@ window.addEventListener('click', (event) => {
             z: startRotation.z
         };
     }
+}
+
+// Click handler for desktop
+window.addEventListener('click', (event) => {
+    handleInteraction(event.clientX, event.clientY);
 });
+
+// Touch handler for mobile
+window.addEventListener('touchstart', (event) => {
+    event.preventDefault(); // Prevent mouse events from firing
+    if (event.touches.length > 0) {
+        handleInteraction(event.touches[0].clientX, event.touches[0].clientY);
+    }
+}, { passive: false });
 
 // Handle window resize
 window.addEventListener('resize', () => {

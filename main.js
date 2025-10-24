@@ -25,18 +25,46 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
+// Function to create a canvas texture with text
+function createTextTexture(text, bgColor) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 512;
+    canvas.height = 512;
+    const ctx = canvas.getContext('2d');
+
+    // Background
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Text
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 60px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+    const texture = new THREE.CanvasTexture(canvas);
+    return texture;
+}
+
 // Create cube with different colored faces
 const geometry = new THREE.BoxGeometry(2, 2, 2);
 
-// Create materials for each face with different colors
-const materials = [
-    new THREE.MeshBasicMaterial({ color: 0xff6347 }), // right - tomato red
-    new THREE.MeshBasicMaterial({ color: 0xffd700 }), // left - gold
-    new THREE.MeshBasicMaterial({ color: 0xff69b4 }), // top - hot pink
-    new THREE.MeshBasicMaterial({ color: 0x9370db }), // bottom - medium purple
-    new THREE.MeshBasicMaterial({ color: 0x32cd32 }), // front - lime green
-    new THREE.MeshBasicMaterial({ color: 0x87ceeb })  // back - sky blue
+// Create materials for each face with text
+const faceData = [
+    { text: 'RIGHT', color: '#ff6347' },   // tomato red
+    { text: 'LEFT', color: '#ffd700' },    // gold
+    { text: 'TOP', color: '#ff69b4' },     // hot pink
+    { text: 'BOTTOM', color: '#9370db' },  // medium purple
+    { text: 'FRONT', color: '#32cd32' },   // lime green
+    { text: 'BACK', color: '#87ceeb' }     // sky blue
 ];
+
+const materials = faceData.map(face =>
+    new THREE.MeshBasicMaterial({
+        map: createTextTexture(face.text, face.color)
+    })
+);
 
 const cube = new THREE.Mesh(geometry, materials);
 
@@ -53,7 +81,7 @@ scene.add(ambientLight);
 // Animation variables
 let isAnimating = false;
 let animationStartTime = 0;
-const animationDuration = 2000; // 2 seconds
+const animationDuration = 1000; // 1 second
 let startRotation = { x: 0, y: 0, z: 0 };
 let targetRotation = { x: 0, y: 0, z: 0 };
 

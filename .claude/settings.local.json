@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(node --version:*)",
-      "Bash(npx http-server -p 8080)"
+      "Bash(npx http-server -p 8080)",
+      "Bash(git config:*)",
+      "Bash(gh:*)",
+      "Bash(brew install:*)"
     ],
     "deny": [],
     "ask": []

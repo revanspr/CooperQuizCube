@@ -3,28 +3,28 @@ import * as THREE from 'three';
 // Questions and answers data
 const quizData = [
     {
-        question: "What is the capital of France?",
-        answers: ["Paris", "London", "Berlin"]
+        question: "",
+        answers: ["", "", ""]
     },
     {
-        question: "What is 2 + 2?",
-        answers: ["4", "3", "5"]
+        question: "",
+        answers: ["", "", ""]
     },
     {
-        question: "What color is the sky?",
-        answers: ["Blue", "Green", "Red"]
+        question: "",
+        answers: ["", "", ""]
     },
     {
-        question: "How many continents are there?",
-        answers: ["7", "5", "6"]
+        question: "",
+        answers: ["", "", ""]
     },
     {
-        question: "What is the largest planet?",
-        answers: ["Jupiter", "Mars", "Earth"]
+        question: "",
+        answers: ["", "", ""]
     },
     {
-        question: "What is H2O?",
-        answers: ["Water", "Oxygen", "Hydrogen"]
+        question: "",
+        answers: ["", "", ""]
     }
 ];
 

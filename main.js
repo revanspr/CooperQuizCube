@@ -796,8 +796,8 @@ window.addEventListener('click', (event) => {
     handleInteraction(event.clientX, event.clientY);
 });
 
-// Touch handler for mobile
-window.addEventListener('touchstart', (event) => {
+// Touch handler for mobile - only on canvas to allow dropdown interaction
+renderer.domElement.addEventListener('touchstart', (event) => {
     event.preventDefault(); // Prevent mouse events from firing
     if (event.touches.length > 0) {
         handleInteraction(event.touches[0].clientX, event.touches[0].clientY);

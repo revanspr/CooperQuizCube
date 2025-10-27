@@ -1,32 +1,34 @@
 import * as THREE from 'three';
 
-// Questions and answers data
-const quizData = [
-    {
-        question: "",
-        answers: ["", "", ""]
-    },
-    {
-        question: "",
-        answers: ["", "", ""]
-    },
-    {
-        question: "",
-        answers: ["", "", ""]
-    },
-    {
-        question: "",
-        answers: ["", "", ""]
-    },
-    {
-        question: "",
-        answers: ["", "", ""]
-    },
-    {
-        question: "",
-        answers: ["", "", ""]
+// Questions and answers data - will be loaded from Q&A.json
+let quizData = [];
+let shuffledQuestions = [];
+
+// Load quiz data from JSON file
+async function loadQuizData() {
+    try {
+        const response = await fetch('./Q&A.json');
+        const data = await response.json();
+
+        // Transform the data to match our cube format
+        quizData = data.map(item => ({
+            question: item.question,
+            answers: item.answers.map(a => a.text)
+        }));
+
+        // Shuffle questions after loading
+        shuffledQuestions = shuffleArray(quizData);
+
+        // Initialize the cube with questions
+        initializeCube();
+    } catch (error) {
+        console.error('Error loading quiz data:', error);
+        // Fallback to empty data if file can't be loaded
+        quizData = Array(6).fill({ question: "Question not loaded", answers: ["A", "B", "C"] });
+        shuffledQuestions = quizData;
+        initializeCube();
     }
-];
+}
 
 // Shuffle array helper
 function shuffleArray(array) {
@@ -37,9 +39,6 @@ function shuffleArray(array) {
     }
     return shuffled;
 }
-
-// Shuffle questions at start
-const shuffledQuestions = shuffleArray(quizData);
 
 // Scene setup
 const scene = new THREE.Scene();
@@ -174,21 +173,28 @@ function updateCubeMaterials(showAnswers = false, questionIndex = -1, highlightF
     cube.material = newMaterials;
 }
 
-// Initialize materials with questions
-const materials = [];
-for (let i = 0; i < 6; i++) {
-    materials.push(new THREE.MeshBasicMaterial({
-        map: createTextTexture(shuffledQuestions[i].question, colors[i], 35)
-    }));
+// Cube variable - will be initialized after data loads
+let cube;
+
+// Function to initialize the cube with loaded questions
+function initializeCube() {
+    // Initialize materials with questions
+    const materials = [];
+    for (let i = 0; i < 6; i++) {
+        const questionData = shuffledQuestions[i] || { question: "", answers: ["", "", ""] };
+        materials.push(new THREE.MeshBasicMaterial({
+            map: createTextTexture(questionData.question, colors[i], 35)
+        }));
+    }
+
+    cube = new THREE.Mesh(geometry, materials);
+
+    // Rotate cube for perfect isometric view showing 3 equal sides
+    // No rotation needed - camera position creates the isometric view
+    cube.rotation.set(0, 0, 0);
+
+    scene.add(cube);
 }
-
-const cube = new THREE.Mesh(geometry, materials);
-
-// Rotate cube for perfect isometric view showing 3 equal sides
-// No rotation needed - camera position creates the isometric view
-cube.rotation.set(0, 0, 0);
-
-scene.add(cube);
 
 // Add ambient lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
@@ -204,6 +210,12 @@ let targetRotation = { x: 0, y: 0, z: 0 };
 // Animation loop
 function animate(currentTime) {
     requestAnimationFrame(animate);
+
+    // Only animate if cube is initialized
+    if (!cube) {
+        renderer.render(scene, camera);
+        return;
+    }
 
     // Handle click effect
     if (clickedFaceIndex >= 0) {
@@ -261,8 +273,8 @@ const mouse = new THREE.Vector2();
 
 // Handle click/touch on cube
 function handleInteraction(clientX, clientY) {
-    // Don't start new animation if one is already playing
-    if (isAnimating) return;
+    // Don't start new animation if one is already playing or cube not initialized
+    if (isAnimating || !cube) return;
 
     // Calculate position in normalized device coordinates (-1 to +1)
     mouse.x = (clientX / window.innerWidth) * 2 - 1;
@@ -339,3 +351,6 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.render(scene, camera);
 });
+
+// Load quiz data and initialize the cube
+loadQuizData();

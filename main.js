@@ -373,13 +373,28 @@ function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
         const selectedQuestion = currentQuestions[selectedQuestionIndex];
         const answers = selectedQuestion.answers;
 
+        console.log('Showing answers for question:', selectedQuestion.question);
+        console.log('Answer mapping:', answerMapping);
+        console.log('Answers:', answers);
+
         for (let i = 0; i < 6; i++) {
             const activeIndex = activeFaces.indexOf(i);
             if (activeIndex !== -1) {
                 // This is an active face - show answer (or blank if disabled)
                 const isDisabled = disabledFaces.has(activeIndex);
                 const answerIndex = answerMapping[activeIndex];
+
+                // Safety check
+                if (answerIndex === undefined || !answers[answerIndex]) {
+                    console.error(`Invalid answerIndex ${answerIndex} for activeIndex ${activeIndex}`);
+                    newMaterials.push(new THREE.MeshBasicMaterial({
+                        map: createTextTexture('', colors[i], 50, i === highlightFace)
+                    }));
+                    continue;
+                }
+
                 const text = isDisabled ? '' : answers[answerIndex].text;
+                console.log(`Face ${i} (activeIndex ${activeIndex}): answer ${answerIndex} = ${text}`);
                 newMaterials.push(new THREE.MeshBasicMaterial({
                     map: createTextTexture(text, colors[i], 50, i === highlightFace)
                 }));

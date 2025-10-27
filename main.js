@@ -396,11 +396,14 @@ function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
             const activeIndex = activeFaces.indexOf(i);
             if (activeIndex !== -1 && currentQuestions[activeIndex]) {
                 // This is an active face - show question
+                const questionText = currentQuestions[activeIndex].question;
+                console.log(`Face ${i} (activeIndex ${activeIndex}): ${questionText.substring(0, 50)}...`);
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(currentQuestions[activeIndex].question, colors[i], 35, i === highlightFace)
+                    map: createTextTexture(questionText, colors[i], 35, i === highlightFace)
                 }));
             } else {
                 // Inactive face - show blank colored face
+                console.log(`Face ${i}: blank (activeIndex: ${activeIndex})`);
                 newMaterials.push(new THREE.MeshBasicMaterial({
                     map: createTextTexture('', colors[i], 35, i === highlightFace)
                 }));

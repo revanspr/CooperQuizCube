@@ -88,7 +88,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
 // Function to create a canvas texture with text (supports multi-line)
-function createTextTexture(text, bgColor, fontSize = 40, isHighlighted = false) {
+function createTextTexture(text, bgColor, fontSize = 40, isHighlighted = false, label = '') {
     const canvas = document.createElement('canvas');
     canvas.width = 512;
     canvas.height = 512;
@@ -110,6 +110,15 @@ function createTextTexture(text, bgColor, fontSize = 40, isHighlighted = false) 
         ctx.shadowBlur = 30;
         ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
         ctx.shadowBlur = 0;
+    }
+
+    // Draw label at the top if provided
+    if (label) {
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 24px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillText(label, canvas.width / 2, 20);
     }
 
     // Text
@@ -139,7 +148,10 @@ function createTextTexture(text, bgColor, fontSize = 40, isHighlighted = false) 
     // Draw each line
     const lineHeight = fontSize * 1.2;
     const totalHeight = lines.length * lineHeight;
-    const startY = (canvas.height - totalHeight) / 2 + lineHeight / 2;
+    // Adjust startY to account for label if present
+    const startY = label
+        ? (canvas.height - totalHeight) / 2 + lineHeight / 2 + 30
+        : (canvas.height - totalHeight) / 2 + lineHeight / 2;
 
     lines.forEach((line, index) => {
         ctx.fillText(line, canvas.width / 2, startY + index * lineHeight);
@@ -159,6 +171,7 @@ const colors = ['#ff6347', '#ffd700', '#ff69b4', '#9370db', '#32cd32', '#87ceeb'
 // We only use: left (1), top (2), front (4)
 const activeFaces = [1, 2, 4]; // left, top, front
 const faceNames = ['right', 'left', 'top', 'bottom', 'front', 'back'];
+const activeFaceLabels = ['Left', 'Top', 'Front']; // Display names for active faces
 
 // State management
 let showingAnswers = false;
@@ -182,13 +195,14 @@ function updateCubeMaterials(showAnswers = false, questionIndex = -1, highlightF
                 // This is an active face - show answer (or blank if disabled)
                 const isDisabled = disabled.has(activeIndex);
                 const text = isDisabled ? '' : answers[activeIndex].text;
+                const label = activeFaceLabels[activeIndex];
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(text, colors[i], 50, i === highlightFace)
+                    map: createTextTexture(text, colors[i], 50, i === highlightFace, label)
                 }));
             } else {
                 // Inactive face - show blank colored face
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture('', colors[i], 50, i === highlightFace)
+                    map: createTextTexture('', colors[i], 50, i === highlightFace, '')
                 }));
             }
         }
@@ -199,13 +213,14 @@ function updateCubeMaterials(showAnswers = false, questionIndex = -1, highlightF
             if (activeIndex !== -1 && shuffledQuestions[activeIndex]) {
                 // This is an active face - show question
                 const question = shuffledQuestions[activeIndex].question;
+                const label = activeFaceLabels[activeIndex];
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(question, colors[i], 35, i === highlightFace)
+                    map: createTextTexture(question, colors[i], 35, i === highlightFace, label)
                 }));
             } else {
                 // Inactive face - show blank colored face
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture('', colors[i], 35, i === highlightFace)
+                    map: createTextTexture('', colors[i], 35, i === highlightFace, '')
                 }));
             }
         }
@@ -224,14 +239,15 @@ function initializeCube() {
     for (let i = 0; i < 6; i++) {
         const activeIndex = activeFaces.indexOf(i);
         if (activeIndex !== -1 && shuffledQuestions[activeIndex]) {
-            // Active face - show question
+            // Active face - show question with label
+            const label = activeFaceLabels[activeIndex];
             materials.push(new THREE.MeshBasicMaterial({
-                map: createTextTexture(shuffledQuestions[activeIndex].question, colors[i], 35)
+                map: createTextTexture(shuffledQuestions[activeIndex].question, colors[i], 35, false, label)
             }));
         } else {
             // Inactive face - show blank colored face
             materials.push(new THREE.MeshBasicMaterial({
-                map: createTextTexture('', colors[i], 35)
+                map: createTextTexture('', colors[i], 35, false, '')
             }));
         }
     }

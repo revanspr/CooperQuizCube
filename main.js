@@ -2,54 +2,109 @@ import * as THREE from 'three';
 
 // Questions and answers data - will be loaded from Q&A.json
 let quizData = [];
-let shuffledQuestions = [];
-// Track which faces are disabled (wrong answers) for each question
-// disabledFaces[questionIndex] = Set of face indices (0-2) that are disabled
-let disabledFaces = {};
+let popQuizData = []; // PoP! Quiz data with difficulty levels
+let currentQuizType = 'pop'; // Default to PoP! Quiz
+let currentQuestion = null; // Current question being displayed
+let usedQuestionIds = new Set(); // Track used questions to prevent repeats
+let currentDifficulty = 'd4'; // Start with d4
+let difficultyLevels = ['d1', 'd2', 'd3', 'd4', 'd5', 'd6'];
 
 // Load quiz data from JSON file
 async function loadQuizData() {
     try {
-        const response = await fetch('./Q&A.json');
-        const data = await response.json();
+        // Load PoP! Quiz data
+        const popResponse = await fetch('./Pop Q&A.json');
+        popQuizData = await popResponse.json();
 
-        // Transform the data to match our cube format, preserving correct flag
-        quizData = data.map(item => ({
-            question: item.question,
-            answers: item.answers.map(a => ({
-                text: a.text,
-                correct: a.correct
-            }))
-        }));
+        console.log('PoP! Quiz data loaded:', popQuizData.length, 'questions');
 
-        // Shuffle questions after loading
-        shuffledQuestions = shuffleArray(quizData);
-
-        // Initialize disabled faces tracking for all questions
-        shuffledQuestions.forEach((_, index) => {
-            disabledFaces[index] = new Set();
-        });
-
-        // Initialize the cube with questions
+        // Initialize the cube with first question
         initializeCube();
     } catch (error) {
         console.error('Error loading quiz data:', error);
         // Fallback to empty data if file can't be loaded
-        quizData = Array(6).fill({
+        popQuizData = [{
+            id: 1,
+            difficulty: 'd4',
             question: "Question not loaded",
             answers: [
                 { text: "A", correct: false },
                 { text: "B", correct: false },
                 { text: "C", correct: false }
             ]
-        });
-        shuffledQuestions = quizData;
-        // Initialize disabled faces tracking
-        shuffledQuestions.forEach((_, index) => {
-            disabledFaces[index] = new Set();
-        });
+        }];
         initializeCube();
     }
+}
+
+// Get next question based on difficulty
+function getNextQuestion(difficulty) {
+    // Filter questions by difficulty that haven't been used
+    const availableQuestions = popQuizData.filter(q =>
+        q.difficulty === difficulty && !usedQuestionIds.has(q.id)
+    );
+
+    if (availableQuestions.length === 0) {
+        return null;
+    }
+
+    // Pick a random question from available ones
+    const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+    return availableQuestions[randomIndex];
+}
+
+// Get difficulty index
+function getDifficultyIndex(difficulty) {
+    return difficultyLevels.indexOf(difficulty);
+}
+
+// Move to next difficulty level
+function getNextDifficulty(currentDiff, attempts) {
+    const currentIndex = getDifficultyIndex(currentDiff);
+    let nextIndex = currentIndex;
+
+    if (attempts === 0) {
+        // First try - go harder
+        nextIndex = currentIndex + 1;
+    } else if (attempts === 1) {
+        // Second try - check if this is the last question in difficulty
+        const remainingInCurrentDiff = popQuizData.filter(q =>
+            q.difficulty === currentDiff && !usedQuestionIds.has(q.id)
+        ).length;
+
+        if (remainingInCurrentDiff === 0) {
+            // Last question in group answered on second try - go easier
+            nextIndex = currentIndex - 1;
+        } else {
+            // Stay at same difficulty
+            nextIndex = currentIndex;
+        }
+    } else if (attempts === 2) {
+        // Third try - go easier
+        nextIndex = currentIndex - 1;
+    }
+
+    // Find next available difficulty level
+    while (nextIndex >= 0 && nextIndex < difficultyLevels.length) {
+        const testDifficulty = difficultyLevels[nextIndex];
+        const availableQuestions = popQuizData.filter(q =>
+            q.difficulty === testDifficulty && !usedQuestionIds.has(q.id)
+        );
+
+        if (availableQuestions.length > 0) {
+            return testDifficulty;
+        }
+
+        // No questions at this level, try to move in the same direction
+        if (attempts === 0) {
+            nextIndex++; // Keep going harder
+        } else {
+            nextIndex--; // Keep going easier
+        }
+    }
+
+    // If we're here, we've run out of questions
+    return null;
 }
 
 // Shuffle array helper
@@ -182,7 +237,7 @@ const clickEffectDuration = 300; // 300ms flash effect
 
 // Score tracking
 let totalScore = 0;
-let attemptsPerQuestion = {}; // Track attempts for each question
+let currentAttempts = 0; // Track attempts for current question
 
 // Timer tracking
 let timerStarted = false;
@@ -200,22 +255,21 @@ function updateScoreDisplay() {
 }
 
 // Function to calculate and award points based on attempts
-function awardPoints(questionIndex) {
-    const attempts = attemptsPerQuestion[questionIndex] || 0;
+function awardPoints() {
     let points = 0;
 
-    if (attempts === 0) {
+    if (currentAttempts === 0) {
         points = 3; // First try
-    } else if (attempts === 1) {
+    } else if (currentAttempts === 1) {
         points = 2; // Second try
-    } else if (attempts === 2) {
+    } else if (currentAttempts === 2) {
         points = 1; // Third try
     }
     // No points for more than 3 attempts
 
     totalScore += points;
     updateScoreDisplay();
-    console.log(`Awarded ${points} points. Total score: ${totalScore}`);
+    console.log(`Awarded ${points} points. Total score: ${totalScore}. Attempts: ${currentAttempts}`);
 }
 
 // Function to start the timer
@@ -279,21 +333,39 @@ function handleTimeLimitChange() {
     }
 }
 
+// Randomize answers into active faces
+let answerMapping = []; // Maps face index to answer index
+let disabledFaces = new Set(); // Track disabled faces for current question
+
+function randomizeAnswers(answers) {
+    // Create array of indices [0, 1, 2]
+    const indices = [0, 1, 2];
+
+    // Shuffle the indices
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+
+    answerMapping = indices;
+    console.log('Answer mapping:', answerMapping);
+}
+
 // Function to update cube materials
-function updateCubeMaterials(showAnswers = false, questionIndex = -1, highlightFace = -1) {
+function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
     const newMaterials = [];
 
-    if (showAnswers && questionIndex >= 0) {
+    if (showAnswers && currentQuestion) {
         // Show answers on active faces only (right, top, front)
-        const answers = shuffledQuestions[questionIndex].answers;
-        const disabled = disabledFaces[questionIndex] || new Set();
+        const answers = currentQuestion.answers;
 
         for (let i = 0; i < 6; i++) {
             const activeIndex = activeFaces.indexOf(i);
             if (activeIndex !== -1) {
                 // This is an active face - show answer (or blank if disabled)
-                const isDisabled = disabled.has(activeIndex);
-                const text = isDisabled ? '' : answers[activeIndex].text;
+                const isDisabled = disabledFaces.has(activeIndex);
+                const answerIndex = answerMapping[activeIndex];
+                const text = isDisabled ? '' : answers[answerIndex].text;
                 newMaterials.push(new THREE.MeshBasicMaterial({
                     map: createTextTexture(text, colors[i], 50, i === highlightFace)
                 }));
@@ -305,14 +377,13 @@ function updateCubeMaterials(showAnswers = false, questionIndex = -1, highlightF
             }
         }
     } else {
-        // Show questions on active faces only (right, top, front)
+        // Show question on all active faces (right, top, front)
         for (let i = 0; i < 6; i++) {
             const activeIndex = activeFaces.indexOf(i);
-            if (activeIndex !== -1 && shuffledQuestions[activeIndex]) {
+            if (activeIndex !== -1 && currentQuestion) {
                 // This is an active face - show question
-                const question = shuffledQuestions[activeIndex].question;
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(question, colors[i], 35, i === highlightFace)
+                    map: createTextTexture(currentQuestion.question, colors[i], 35, i === highlightFace)
                 }));
             } else {
                 // Inactive face - show blank colored face
@@ -329,16 +400,29 @@ function updateCubeMaterials(showAnswers = false, questionIndex = -1, highlightF
 // Cube variable - will be initialized after data loads
 let cube;
 
-// Function to initialize the cube with loaded questions
+// Function to initialize the cube with first question
 function initializeCube() {
-    // Initialize materials with questions on active faces only
+    // Get first question at d4 difficulty
+    currentQuestion = getNextQuestion(currentDifficulty);
+
+    if (!currentQuestion) {
+        console.error('No questions available');
+        return;
+    }
+
+    console.log('Starting with question:', currentQuestion.question, 'Difficulty:', currentQuestion.difficulty);
+
+    // Mark question as used
+    usedQuestionIds.add(currentQuestion.id);
+
+    // Initialize materials with question on active faces
     const materials = [];
     for (let i = 0; i < 6; i++) {
         const activeIndex = activeFaces.indexOf(i);
-        if (activeIndex !== -1 && shuffledQuestions[activeIndex]) {
+        if (activeIndex !== -1) {
             // Active face - show question
             materials.push(new THREE.MeshBasicMaterial({
-                map: createTextTexture(shuffledQuestions[activeIndex].question, colors[i], 35)
+                map: createTextTexture(currentQuestion.question, colors[i], 35)
             }));
         } else {
             // Inactive face - show blank colored face
@@ -349,11 +433,7 @@ function initializeCube() {
     }
 
     cube = new THREE.Mesh(geometry, materials);
-
-    // Rotate cube for perfect isometric view showing 3 equal sides
-    // No rotation needed - camera position creates the isometric view
     cube.rotation.set(0, 0, 0);
-
     scene.add(cube);
 }
 
@@ -384,7 +464,7 @@ function animate(currentTime) {
         if (clickElapsed >= clickEffectDuration) {
             // Click effect finished, remove highlight
             clickedFaceIndex = -1;
-            updateCubeMaterials(showingAnswers, selectedQuestionIndex);
+            updateCubeMaterials(showingAnswers);
         }
     }
 
@@ -415,9 +495,10 @@ function animate(currentTime) {
             renderer.domElement.style.filter = 'blur(0px)';
 
             // Show answers after animation completes
-            if (selectedQuestionIndex >= 0) {
-                showingAnswers = true;
-                updateCubeMaterials(true, selectedQuestionIndex);
+            if (showingAnswers) {
+                // Randomize answers into faces
+                randomizeAnswers(currentQuestion.answers);
+                updateCubeMaterials(true);
             }
         }
     }
@@ -435,7 +516,7 @@ const mouse = new THREE.Vector2();
 // Handle click/touch on cube
 function handleInteraction(clientX, clientY) {
     // Don't start new animation if one is already playing or cube not initialized
-    if (isAnimating || !cube) return;
+    if (isAnimating || !cube || !currentQuestion) return;
 
     // Check if timer has expired
     if (timerStarted && !timerActive) {
@@ -469,40 +550,66 @@ function handleInteraction(clientX, clientY) {
         }
 
         if (showingAnswers) {
+            // Answering mode
             // Check if this face is disabled
-            const disabled = disabledFaces[selectedQuestionIndex] || new Set();
-            if (disabled.has(activeIndex)) {
+            if (disabledFaces.has(activeIndex)) {
                 // Ignore clicks on disabled faces
                 console.log('Face is disabled, ignoring click');
                 return;
             }
 
-            // Check if the answer is correct
-            const answer = shuffledQuestions[selectedQuestionIndex].answers[activeIndex];
+            // Get the actual answer based on mapping
+            const answerIndex = answerMapping[activeIndex];
+            const answer = currentQuestion.answers[answerIndex];
+
             if (!answer.correct) {
                 // Wrong answer - disable this face and increment attempt counter
-                disabledFaces[selectedQuestionIndex].add(activeIndex);
-                // Increment attempt counter for this question
-                attemptsPerQuestion[selectedQuestionIndex] = (attemptsPerQuestion[selectedQuestionIndex] || 0) + 1;
-                console.log('Wrong answer! Face disabled.');
-                console.log(`Attempts for question ${selectedQuestionIndex}: ${attemptsPerQuestion[selectedQuestionIndex]}`);
+                disabledFaces.add(activeIndex);
+                currentAttempts++;
+                console.log('Wrong answer! Face disabled. Attempts:', currentAttempts);
                 // Update materials to remove text from this face
-                updateCubeMaterials(true, selectedQuestionIndex, -1);
+                updateCubeMaterials(true, -1);
                 return; // Don't animate or change state
             }
-            // If correct answer, award points and continue to go back to questions
-            awardPoints(selectedQuestionIndex);
+
+            // Correct answer! Award points
+            awardPoints();
+
+            // Determine next difficulty
+            const nextDiff = getNextDifficulty(currentQuestion.difficulty, currentAttempts);
+
+            if (!nextDiff) {
+                console.log('No more questions available!');
+                alert('Quiz complete! Your score: ' + totalScore);
+                return;
+            }
+
+            console.log(`Moving from ${currentQuestion.difficulty} to ${nextDiff} (attempts: ${currentAttempts})`);
+            currentDifficulty = nextDiff;
+
+            // Get next question
+            const nextQuestion = getNextQuestion(currentDifficulty);
+            if (!nextQuestion) {
+                console.log('No more questions available!');
+                alert('Quiz complete! Your score: ' + totalScore);
+                return;
+            }
+
+            currentQuestion = nextQuestion;
+            usedQuestionIds.add(currentQuestion.id);
+            currentAttempts = 0;
+            disabledFaces.clear();
 
             // Trigger click effect
             clickedFaceIndex = faceIndex;
             clickEffectStartTime = performance.now();
-            updateCubeMaterials(showingAnswers, selectedQuestionIndex, faceIndex);
+            updateCubeMaterials(true, faceIndex);
 
-            // Clicked correct answer, go back to questions
+            // Go back to question display
             showingAnswers = false;
-            selectedQuestionIndex = -1;
-            updateCubeMaterials(false, -1, faceIndex);
+            updateCubeMaterials(false, faceIndex);
         } else {
+            // Question viewing mode - transition to answering
             // Start timer on first question click
             if (!timerStarted) {
                 startTimer();
@@ -511,14 +618,10 @@ function handleInteraction(clientX, clientY) {
             // Trigger click effect
             clickedFaceIndex = faceIndex;
             clickEffectStartTime = performance.now();
-            updateCubeMaterials(showingAnswers, selectedQuestionIndex, faceIndex);
+            updateCubeMaterials(false, faceIndex);
 
-            // Showing questions - store which question was clicked (use activeIndex)
-            selectedQuestionIndex = activeIndex;
-            // Initialize attempt counter for this question if not exists
-            if (!(selectedQuestionIndex in attemptsPerQuestion)) {
-                attemptsPerQuestion[selectedQuestionIndex] = 0;
-            }
+            // Set to show answers mode
+            showingAnswers = true;
         }
 
         // Start spin animation

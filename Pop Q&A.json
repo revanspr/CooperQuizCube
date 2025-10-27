@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "difficulty": "d1",
+    "question": "What color is the sky on a clear day?",
+    "answers": [
+      { "text": "Blue", "correct": true },
+      { "text": "Green", "correct": false },
+      { "text": "Red", "correct": false }
+    ]
+  },
+  {
+    "id": 2,
+    "difficulty": "d1",
+    "question": "How many legs does a dog have?",
+    "answers": [
+      { "text": "4", "correct": true },
+      { "text": "2", "correct": false },
+      { "text": "6", "correct": false }
+    ]
+  },
+  {
+    "id": 3,
+    "difficulty": "d2",
+    "question": "What is the capital of France?",
+    "answers": [
+      { "text": "London", "correct": false },
+      { "text": "Paris", "correct": true },
+      { "text": "Berlin", "correct": false }
+    ]
+  },
+  {
+    "id": 4,
+    "difficulty": "d2",
+    "question": "What is 5 + 7?",
+    "answers": [
+      { "text": "11", "correct": false },
+      { "text": "12", "correct": true },
+      { "text": "13", "correct": false }
+    ]
+  },
+  {
+    "id": 5,
+    "difficulty": "d3",
+    "question": "Which planet is known as the Red Planet?",
+    "answers": [
+      { "text": "Venus", "correct": false },
+      { "text": "Jupiter", "correct": false },
+      { "text": "Mars", "correct": true }
+    ]
+  },
+  {
+    "id": 6,
+    "difficulty": "d3",
+    "question": "What is the largest ocean on Earth?",
+    "answers": [
+      { "text": "Atlantic Ocean", "correct": false },
+      { "text": "Pacific Ocean", "correct": true },
+      { "text": "Indian Ocean", "correct": false }
+    ]
+  },
+  {
+    "id": 7,
+    "difficulty": "d4",
+    "question": "How many continents are there?",
+    "answers": [
+      { "text": "5", "correct": false },
+      { "text": "6", "correct": false },
+      { "text": "7", "correct": true }
+    ]
+  },
+  {
+    "id": 8,
+    "difficulty": "d4",
+    "question": "What is the smallest prime number?",
+    "answers": [
+      { "text": "1", "correct": false },
+      { "text": "2", "correct": true },
+      { "text": "3", "correct": false }
+    ]
+  },
+  {
+    "id": 9,
+    "difficulty": "d5",
+    "question": "What year did World War II end?",
+    "answers": [
+      { "text": "1945", "correct": true },
+      { "text": "1944", "correct": false },
+      { "text": "1946", "correct": false }
+    ]
+  },
+  {
+    "id": 10,
+    "difficulty": "d5",
+    "question": "What is the chemical symbol for gold?",
+    "answers": [
+      { "text": "Go", "correct": false },
+      { "text": "Au", "correct": true },
+      { "text": "Gd", "correct": false }
+    ]
+  },
+  {
+    "id": 11,
+    "difficulty": "d6",
+    "question": "Which animal is the fastest land animal?",
+    "answers": [
+      { "text": "Lion", "correct": false },
+      { "text": "Cheetah", "correct": true },
+      { "text": "Leopard", "correct": false }
+    ]
+  },
+  {
+    "id": 12,
+    "difficulty": "d6",
+    "question": "What is the speed of light in vacuum?",
+    "answers": [
+      { "text": "299,792 km/s", "correct": true },
+      { "text": "150,000 km/s", "correct": false },
+      { "text": "400,000 km/s", "correct": false }
+    ]
+  }
+]

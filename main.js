@@ -75,10 +75,12 @@ function getDifficultyIndex(difficulty) {
 function getNextDifficulty(currentDiff, attempts) {
     const currentIndex = getDifficultyIndex(currentDiff);
     let nextIndex = currentIndex;
+    let preferredDirection = 0; // 0 = same, 1 = harder, -1 = easier
 
     if (attempts === 0) {
         // First try - go harder
         nextIndex = currentIndex + 1;
+        preferredDirection = 1;
     } else if (attempts === 1) {
         // Second try - check if this is the last question in difficulty
         const remainingInCurrentDiff = popQuizData.filter(q =>
@@ -88,13 +90,16 @@ function getNextDifficulty(currentDiff, attempts) {
         if (remainingInCurrentDiff === 0) {
             // Last question in group answered on second try - go easier
             nextIndex = currentIndex - 1;
+            preferredDirection = -1;
         } else {
             // Stay at same difficulty
             nextIndex = currentIndex;
+            preferredDirection = 0;
         }
     } else if (attempts === 2) {
         // Third try - go easier
         nextIndex = currentIndex - 1;
+        preferredDirection = -1;
     }
 
     // Find next available difficulty level in preferred direction
@@ -109,7 +114,7 @@ function getNextDifficulty(currentDiff, attempts) {
         }
 
         // No questions at this level, try to move in the same direction
-        if (attempts === 0) {
+        if (preferredDirection >= 0) {
             nextIndex++; // Keep going harder
         } else {
             nextIndex--; // Keep going easier
@@ -117,14 +122,29 @@ function getNextDifficulty(currentDiff, attempts) {
     }
 
     // If we couldn't find questions in the preferred direction,
-    // search ALL difficulty levels for any remaining questions
-    for (let i = 0; i < difficultyLevels.length; i++) {
+    // systematically search: try going harder first, then easier
+    // First, try going harder from current position
+    for (let i = currentIndex + 1; i < difficultyLevels.length; i++) {
         const testDifficulty = difficultyLevels[i];
         const availableQuestions = popQuizData.filter(q =>
             q.difficulty === testDifficulty && !usedQuestionIds.has(q.id)
         );
 
         if (availableQuestions.length > 0) {
+            console.log(`No questions in preferred direction, switching to harder: ${testDifficulty}`);
+            return testDifficulty;
+        }
+    }
+
+    // Then try going easier from current position
+    for (let i = currentIndex - 1; i >= 0; i--) {
+        const testDifficulty = difficultyLevels[i];
+        const availableQuestions = popQuizData.filter(q =>
+            q.difficulty === testDifficulty && !usedQuestionIds.has(q.id)
+        );
+
+        if (availableQuestions.length > 0) {
+            console.log(`No questions in preferred direction, switching to easier: ${testDifficulty}`);
             return testDifficulty;
         }
     }

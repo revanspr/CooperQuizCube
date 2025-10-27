@@ -97,7 +97,7 @@ function getNextDifficulty(currentDiff, attempts) {
         nextIndex = currentIndex - 1;
     }
 
-    // Find next available difficulty level
+    // Find next available difficulty level in preferred direction
     while (nextIndex >= 0 && nextIndex < difficultyLevels.length) {
         const testDifficulty = difficultyLevels[nextIndex];
         const availableQuestions = popQuizData.filter(q =>
@@ -116,7 +116,20 @@ function getNextDifficulty(currentDiff, attempts) {
         }
     }
 
-    // If we're here, we've run out of questions
+    // If we couldn't find questions in the preferred direction,
+    // search ALL difficulty levels for any remaining questions
+    for (let i = 0; i < difficultyLevels.length; i++) {
+        const testDifficulty = difficultyLevels[i];
+        const availableQuestions = popQuizData.filter(q =>
+            q.difficulty === testDifficulty && !usedQuestionIds.has(q.id)
+        );
+
+        if (availableQuestions.length > 0) {
+            return testDifficulty;
+        }
+    }
+
+    // If we're here, we've truly run out of all questions
     return null;
 }
 

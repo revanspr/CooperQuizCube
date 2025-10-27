@@ -2,7 +2,7 @@
   {
     "id": 1,
     "question": "What is the name of Taylor Swift's 12th studio album released in 2025?",
-    "difficulty": "d3",
+    "difficulty": "d4",
     "answers": [
       { "text": "Midnights", "correct": false },
       { "text": "The Life of a Showgirl", "correct": true },
@@ -32,7 +32,7 @@
   {
     "id": 4,
     "question": "What is the name of Sabrina Carpenter's seventh studio album released in 2025?",
-    "difficulty": "d3",
+    "difficulty": "d4",
     "answers": [
       { "text": "Short n' Sweet", "correct": false },
       { "text": "Man's Best Friend", "correct": true },
@@ -42,7 +42,7 @@
   {
     "id": 5,
     "question": "How many Grammy nominations did Billie Eilish receive in 2025?",
-    "difficulty": "d2",
+    "difficulty": "d3",
     "answers": [
       { "text": "Five", "correct": false },
       { "text": "Seven", "correct": true },
@@ -52,7 +52,7 @@
   {
     "id": 6,
     "question": "What is the name of Billie Eilish's 2025 tour?",
-    "difficulty": "d3",
+    "difficulty": "d4",
     "answers": [
       { "text": "Happier Than Ever Tour", "correct": false },
       { "text": "Hit Me Hard and Soft Tour", "correct": true },
@@ -62,7 +62,7 @@
   {
     "id": 7,
     "question": "What song did Lady Gaga and Bruno Mars win a Grammy for in 2025?",
-    "difficulty": "d4",
+    "difficulty": "d5",
     "answers": [
       { "text": "Shallow", "correct": false },
       { "text": "Die With a Smile", "correct": true },
@@ -72,7 +72,7 @@
   {
     "id": 8,
     "question": "What classic song did Lady Gaga and Bruno Mars perform at the 2025 Grammys?",
-    "difficulty": "d2",
+    "difficulty": "d3",
     "answers": [
       { "text": "California Dreamin'", "correct": true },
       { "text": "Hotel California", "correct": false },
@@ -82,7 +82,7 @@
   {
     "id": 9,
     "question": "What is the name of Chappell Roan's 2025 country-inspired single?",
-    "difficulty": "d3",
+    "difficulty": "d4",
     "answers": [
       { "text": "Pink Pony Club", "correct": false },
       { "text": "The Giver", "correct": true },
@@ -92,7 +92,7 @@
   {
     "id": 10,
     "question": "What Grammy Award did Chappell Roan win in 2025?",
-    "difficulty": "d4",
+    "difficulty": "d5",
     "answers": [
       { "text": "Best New Artist", "correct": true },
       { "text": "Song of the Year", "correct": false },
@@ -102,7 +102,7 @@
   {
     "id": 11,
     "question": "What is the title of The Weeknd's album released in January 2025?",
-    "difficulty": "d3",
+    "difficulty": "d4",
     "answers": [
       { "text": "After Hours", "correct": false },
       { "text": "Hurry Up Tomorrow", "correct": true },
@@ -112,7 +112,7 @@
   {
     "id": 12,
     "question": "What did The Weeknd hint about his career in 2025?",
-    "difficulty": "d2",
+    "difficulty": "d3",
     "answers": [
       { "text": "Starting a record label", "correct": false },
       { "text": "Retiring his persona", "correct": true },
@@ -122,7 +122,7 @@
   {
     "id": 13,
     "question": "What is the name of Ed Sheeran's eighth studio album released in 2025?",
-    "difficulty": "d3",
+    "difficulty": "d4",
     "answers": [
       { "text": "Divide", "correct": false },
       { "text": "Play", "correct": true },
@@ -132,7 +132,7 @@
   {
     "id": 14,
     "question": "Which prestigious list did Ed Sheeran make in 2025?",
-    "difficulty": "d2",
+    "difficulty": "d3",
     "answers": [
       { "text": "Forbes 30 Under 30", "correct": false },
       { "text": "TIME 100 Most Influential People", "correct": true },
@@ -142,7 +142,7 @@
   {
     "id": 15,
     "question": "What is the name of Doja Cat's fifth studio album released in September 2025?",
-    "difficulty": "d3",
+    "difficulty": "d4",
     "answers": [
       { "text": "Planet Her", "correct": false },
       { "text": "Vie", "correct": true },
@@ -152,7 +152,7 @@
   {
     "id": 16,
     "question": "What video game did Doja Cat collaborate with in October 2025?",
-    "difficulty": "d4",
+    "difficulty": "d5",
     "answers": [
       { "text": "Call of Duty", "correct": false },
       { "text": "Fortnite", "correct": true },
@@ -162,7 +162,7 @@
   {
     "id": 17,
     "question": "What is the name of Tate McRae's third studio album released in 2025?",
-    "difficulty": "d3",
+    "difficulty": "d4",
     "answers": [
       { "text": "Think Later", "correct": false },
       { "text": "So Close to What", "correct": true },
@@ -182,7 +182,7 @@
   {
     "id": 19,
     "question": "What is the name of Benson Boone's 2025 tour?",
-    "difficulty": "d3",
+    "difficulty": "d4",
     "answers": [
       { "text": "Beautiful Things Tour", "correct": false },
       { "text": "American Heart Tour", "correct": true },
@@ -192,7 +192,7 @@
   {
     "id": 20,
     "question": "What Grammy category was Benson Boone nominated for in 2025?",
-    "difficulty": "d4",
+    "difficulty": "d5",
     "answers": [
       { "text": "Best Pop Solo Performance", "correct": false },
       { "text": "Best New Artist", "correct": true },
@@ -232,7 +232,7 @@
   {
     "id": 24,
     "question": "What festival is Sabrina Carpenter headlining in April?",
-    "difficulty": "d4",
+    "difficulty": "d5",
     "answers": [
       { "text": "Lollapalooza", "correct": false },
       { "text": "Coachella", "correct": true },
@@ -262,7 +262,7 @@
   {
     "id": 27,
     "question": "Who stars alongside The Weeknd in the 'Hurry Up Tomorrow' movie?",
-    "difficulty": "d2",
+    "difficulty": "d3",
     "answers": [
       { "text": "Zendaya and Tom Holland", "correct": false },
       { "text": "Jenna Ortega and Barry Keoghan", "correct": true },
@@ -282,7 +282,7 @@
   {
     "id": 29,
     "question": "What was the lead single from Ed Sheeran's 'Play' album?",
-    "difficulty": "d2",
+    "difficulty": "d3",
     "answers": [
       { "text": "Shape of You", "correct": false },
       { "text": "Azizam", "correct": true },
@@ -302,7 +302,7 @@
   {
     "id": 31,
     "question": "What character does Doja Cat play in Fortnite?",
-    "difficulty": "d2",
+    "difficulty": "d3",
     "answers": [
       { "text": "Queen of Hearts", "correct": false },
       { "text": "Mother of Thorns", "correct": true },
@@ -332,7 +332,7 @@
   {
     "id": 34,
     "question": "What is the name of Tate McRae's 2025 world tour?",
-    "difficulty": "d3",
+    "difficulty": "d4",
     "answers": [
       { "text": "Think Later Tour", "correct": false },
       { "text": "Miss Possessive Tour", "correct": true },
@@ -342,7 +342,7 @@
   {
     "id": 35,
     "question": "What is Benson Boone's most streamed song that earned him an IFPI Global Single Award?",
-    "difficulty": "d4",
+    "difficulty": "d5",
     "answers": [
       { "text": "In The Stars", "correct": false },
       { "text": "Beautiful Things", "correct": true },
@@ -382,7 +382,7 @@
   {
     "id": 39,
     "question": "What influences did Ed Sheeran's 'Play' album draw from?",
-    "difficulty": "d1",
+    "difficulty": "d2",
     "answers": [
       { "text": "African and Caribbean", "correct": false },
       { "text": "Indian and Persian", "correct": true },
@@ -392,7 +392,7 @@
   {
     "id": 40,
     "question": "What TV show did Chappell Roan make her debut on in 2025?",
-    "difficulty": "d4",
+    "difficulty": "d5",
     "answers": [
       { "text": "The Tonight Show", "correct": false },
       { "text": "Saturday Night Live", "correct": true },
@@ -442,7 +442,7 @@
   {
     "id": 45,
     "question": "What decade inspired the sound of Doja Cat's 'Vie' album?",
-    "difficulty": "d3",
+    "difficulty": "d4",
     "answers": [
       { "text": "70s", "correct": false },
       { "text": "80s", "correct": true },
@@ -452,7 +452,7 @@
   {
     "id": 46,
     "question": "What Billboard record did Taylor Swift's 'The Life of a Showgirl' break?",
-    "difficulty": "d1",
+    "difficulty": "d2",
     "answers": [
       { "text": "Most weeks at number one", "correct": false },
       { "text": "All songs charted from No. 1 to No. 12 uninterrupted", "correct": true },
@@ -462,7 +462,7 @@
   {
     "id": 47,
     "question": "What benefit concert did Lady Gaga perform at in early 2025?",
-    "difficulty": "d3",
+    "difficulty": "d5",
     "answers": [
       { "text": "Hurricane Relief", "correct": false },
       { "text": "FireAid for LA wildfires", "correct": true },
@@ -492,11 +492,111 @@
   {
     "id": 50,
     "question": "What record did Lady Gaga and Bruno Mars' 'Die With a Smile' break on Spotify?",
-    "difficulty": "d1",
+    "difficulty": "d2",
     "answers": [
       { "text": "Most streams in a single day", "correct": false },
       { "text": "Longest-reigning daily number-one song", "correct": true },
       { "text": "Fastest to 500 million streams", "correct": false }
+    ]
+  },
+  {
+    "id": 51,
+    "question": "What year did Taylor Swift begin her Eras Tour?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "2022", "correct": false },
+      { "text": "2023", "correct": true },
+      { "text": "2024", "correct": false }
+    ]
+  },
+  {
+    "id": 52,
+    "question": "What is the name of Sabrina Carpenter's makeup line?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Sabrina Beauty", "correct": false },
+      { "text": "Catwalk", "correct": true },
+      { "text": "Sweet & Short", "correct": false }
+    ]
+  },
+  {
+    "id": 53,
+    "question": "What brand did Billie Eilish collaborate with for a sustainable fashion line?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Nike", "correct": true },
+      { "text": "Adidas", "correct": false },
+      { "text": "Puma", "correct": false }
+    ]
+  },
+  {
+    "id": 54,
+    "question": "What streaming service produced The Weeknd's concert documentary in 2024?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Netflix", "correct": false },
+      { "text": "Prime Video", "correct": true },
+      { "text": "Apple TV+", "correct": false }
+    ]
+  },
+  {
+    "id": 55,
+    "question": "What instrument did Ed Sheeran famously lose at an airport?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "His childhood guitar", "correct": true },
+      { "text": "A harmonica set", "correct": false },
+      { "text": "His loop pedal", "correct": false }
+    ]
+  },
+  {
+    "id": 56,
+    "question": "What cosmetics brand is Doja Cat the face of?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "MAC", "correct": false },
+      { "text": "e.l.f. Cosmetics", "correct": true },
+      { "text": "Fenty Beauty", "correct": false }
+    ]
+  },
+  {
+    "id": 57,
+    "question": "What dance company did Tate McRae train with as a child?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "The Royal Ballet", "correct": false },
+      { "text": "YYC Dance Project", "correct": true },
+      { "text": "Alvin Ailey", "correct": false }
+    ]
+  },
+  {
+    "id": 58,
+    "question": "What talent agency does Benson Boone sign with?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "CAA", "correct": false },
+      { "text": "WME", "correct": true },
+      { "text": "UTA", "correct": false }
+    ]
+  },
+  {
+    "id": 59,
+    "question": "What song earned Chappell Roan her first Billboard Hot 100 entry?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Red Wine Supernova", "correct": false },
+      { "text": "Good Luck, Babe!", "correct": true },
+      { "text": "Casual", "correct": false }
+    ]
+  },
+  {
+    "id": 60,
+    "question": "What Oscar-winning film featured Lady Gaga's song 'Hold My Hand'?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "A Star is Born", "correct": false },
+      { "text": "Top Gun: Maverick", "correct": true },
+      { "text": "House of Gucci", "correct": false }
     ]
   }
 ]

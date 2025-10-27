@@ -539,8 +539,7 @@ function animate(currentTime) {
 
             // Show answers after animation completes
             if (showingAnswers && selectedQuestionIndex >= 0) {
-                // Randomize answers into faces
-                randomizeAnswers(currentQuestions[selectedQuestionIndex].answers);
+                // Update to show answers (already randomized)
                 updateCubeMaterials(true);
             }
         }
@@ -677,6 +676,9 @@ function handleInteraction(clientX, clientY) {
             // Set which question was selected
             selectedQuestionIndex = activeIndex;
             console.log(`Selected question ${activeIndex}:`, currentQuestions[activeIndex].question);
+
+            // Randomize answers immediately
+            randomizeAnswers(currentQuestions[activeIndex].answers);
 
             // Trigger click effect
             clickedFaceIndex = faceIndex;

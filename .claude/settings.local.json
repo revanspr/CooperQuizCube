@@ -16,7 +16,10 @@
       "Bash(git add:*)",
       "Bash(ls:*)",
       "Bash(timeout 3 bash:*)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(for level in d1 d2 d3 d4 d5 d6)",
+      "Bash(do echo -n \"$level: \")",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []

@@ -216,7 +216,7 @@ function updateCubeMaterials(showAnswers = false, questionIndex = -1, highlightF
     const newMaterials = [];
 
     if (showAnswers && questionIndex >= 0) {
-        // Show answers on active faces only (left, top, front)
+        // Show answers on active faces only (right, top, front)
         const answers = shuffledQuestions[questionIndex].answers;
         const disabled = disabledFaces[questionIndex] || new Set();
 
@@ -226,32 +226,30 @@ function updateCubeMaterials(showAnswers = false, questionIndex = -1, highlightF
                 // This is an active face - show answer (or blank if disabled)
                 const isDisabled = disabled.has(activeIndex);
                 const text = isDisabled ? '' : answers[activeIndex].text;
-                const label = activeFaceLabels[activeIndex];
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(text, colors[i], 50, i === highlightFace, label)
+                    map: createTextTexture(text, colors[i], 50, i === highlightFace)
                 }));
             } else {
                 // Inactive face - show blank colored face
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture('', colors[i], 50, i === highlightFace, '')
+                    map: createTextTexture('', colors[i], 50, i === highlightFace)
                 }));
             }
         }
     } else {
-        // Show questions on active faces only (left, top, front)
+        // Show questions on active faces only (right, top, front)
         for (let i = 0; i < 6; i++) {
             const activeIndex = activeFaces.indexOf(i);
             if (activeIndex !== -1 && shuffledQuestions[activeIndex]) {
                 // This is an active face - show question
                 const question = shuffledQuestions[activeIndex].question;
-                const label = activeFaceLabels[activeIndex];
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(question, colors[i], 35, i === highlightFace, label)
+                    map: createTextTexture(question, colors[i], 35, i === highlightFace)
                 }));
             } else {
                 // Inactive face - show blank colored face
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture('', colors[i], 35, i === highlightFace, '')
+                    map: createTextTexture('', colors[i], 35, i === highlightFace)
                 }));
             }
         }
@@ -270,15 +268,14 @@ function initializeCube() {
     for (let i = 0; i < 6; i++) {
         const activeIndex = activeFaces.indexOf(i);
         if (activeIndex !== -1 && shuffledQuestions[activeIndex]) {
-            // Active face - show question with label
-            const label = activeFaceLabels[activeIndex];
+            // Active face - show question
             materials.push(new THREE.MeshBasicMaterial({
-                map: createTextTexture(shuffledQuestions[activeIndex].question, colors[i], 35, false, label)
+                map: createTextTexture(shuffledQuestions[activeIndex].question, colors[i], 35)
             }));
         } else {
             // Inactive face - show blank colored face
             materials.push(new THREE.MeshBasicMaterial({
-                map: createTextTexture('', colors[i], 35, false, '')
+                map: createTextTexture('', colors[i], 35)
             }));
         }
     }

@@ -249,7 +249,6 @@ const clickEffectDuration = 300; // 300ms flash effect
 
 // Score tracking
 let totalScore = 0;
-let currentAttempts = 0; // Track attempts for current question
 
 // Timer tracking
 let timerStarted = false;
@@ -417,11 +416,18 @@ let cube;
 
 // Function to initialize the cube with 3 questions
 function initializeCube() {
+    console.log('initializeCube called');
+    console.log('popQuizData length:', popQuizData.length);
+    console.log('currentDifficulty:', currentDifficulty);
+
     // Get 3 questions at d4 difficulty
     currentQuestions = getThreeQuestions(currentDifficulty);
 
+    console.log('currentQuestions:', currentQuestions);
+
     if (!currentQuestions || currentQuestions.length === 0) {
         console.error('No questions available');
+        alert('No questions available for difficulty: ' + currentDifficulty);
         return;
     }
 
@@ -436,20 +442,24 @@ function initializeCube() {
         const activeIndex = activeFaces.indexOf(i);
         if (activeIndex !== -1 && currentQuestions[activeIndex]) {
             // Active face - show question
+            console.log(`Creating material for face ${i} with question:`, currentQuestions[activeIndex].question);
             materials.push(new THREE.MeshBasicMaterial({
                 map: createTextTexture(currentQuestions[activeIndex].question, colors[i], 35)
             }));
         } else {
             // Inactive face - show blank colored face
+            console.log(`Creating blank material for face ${i}`);
             materials.push(new THREE.MeshBasicMaterial({
                 map: createTextTexture('', colors[i], 35)
             }));
         }
     }
 
+    console.log('Creating cube with', materials.length, 'materials');
     cube = new THREE.Mesh(geometry, materials);
     cube.rotation.set(0, 0, 0);
     scene.add(cube);
+    console.log('Cube added to scene');
 }
 
 // Add ambient lighting

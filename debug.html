@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Page</title>
+</head>
+<body>
+    <h1>Cube Debug Page</h1>
+    <div id="output"></div>
+    <script type="module">
+        const output = document.getElementById('output');
+
+        output.innerHTML += '<p>Starting checks...</p>';
+
+        // Check if PopQA.json loads
+        fetch('./PopQA.json')
+            .then(response => {
+                output.innerHTML += `<p>PopQA.json fetch status: ${response.status}</p>`;
+                return response.json();
+            })
+            .then(data => {
+                output.innerHTML += `<p>PopQA.json loaded: ${data.length} questions</p>`;
+                output.innerHTML += `<p>First question: ${data[0].question}</p>`;
+                output.innerHTML += `<pre>${JSON.stringify(data[0], null, 2)}</pre>`;
+            })
+            .catch(error => {
+                output.innerHTML += `<p style="color: red;">Error loading PopQA.json: ${error.message}</p>`;
+            });
+
+        // Check Three.js
+        import('https://unpkg.com/three@0.160.0/build/three.module.js')
+            .then(THREE => {
+                output.innerHTML += '<p>Three.js loaded successfully</p>';
+            })
+            .catch(error => {
+                output.innerHTML += `<p style="color: red;">Error loading Three.js: ${error.message}</p>`;
+            });
+    </script>
+</body>
+</html>

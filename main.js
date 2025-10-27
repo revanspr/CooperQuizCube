@@ -184,6 +184,13 @@ const clickEffectDuration = 300; // 300ms flash effect
 let totalScore = 0;
 let attemptsPerQuestion = {}; // Track attempts for each question
 
+// Timer tracking
+let timerStarted = false;
+let timerActive = false;
+let timerEndTime = null;
+let timerInterval = null;
+let selectedTimeLimit = 1; // Default 1 minute
+
 // Function to update score display
 function updateScoreDisplay() {
     const scoreElement = document.getElementById('score-display');
@@ -209,6 +216,68 @@ function awardPoints(questionIndex) {
     totalScore += points;
     updateScoreDisplay();
     console.log(`Awarded ${points} points. Total score: ${totalScore}`);
+}
+
+// Function to start the timer
+function startTimer() {
+    if (timerStarted) return; // Timer already started
+
+    timerStarted = true;
+    timerActive = true;
+
+    // Get selected time limit in minutes
+    const timeLimitMinutes = selectedTimeLimit;
+    const timeLimitMs = timeLimitMinutes * 60 * 1000;
+
+    timerEndTime = Date.now() + timeLimitMs;
+
+    // Update timer display immediately
+    updateTimerDisplay();
+
+    // Update timer every second
+    timerInterval = setInterval(updateTimerDisplay, 1000);
+
+    console.log(`Timer started for ${timeLimitMinutes} minute(s)`);
+}
+
+// Function to update timer display
+function updateTimerDisplay() {
+    const timerDisplay = document.getElementById('timer-display');
+    if (!timerDisplay) return;
+
+    if (!timerStarted) {
+        timerDisplay.textContent = 'Not Started';
+        return;
+    }
+
+    const remainingMs = timerEndTime - Date.now();
+
+    if (remainingMs <= 0) {
+        // Timer expired
+        timerDisplay.textContent = 'Time Up!';
+        timerDisplay.style.color = '#ff0000';
+        timerActive = false;
+        clearInterval(timerInterval);
+        console.log('Timer expired!');
+        return;
+    }
+
+    // Convert to minutes and seconds
+    const totalSeconds = Math.ceil(remainingMs / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    timerDisplay.style.color = '#ffd700';
+}
+
+// Function to handle time limit selection
+function handleTimeLimitChange() {
+    const selectElement = document.getElementById('time-select');
+    if (selectElement) {
+        selectedTimeLimit = parseInt(selectElement.value);
+        console.log(`Time limit set to ${selectedTimeLimit} minute(s)`);
+    }
 }
 
 // Function to update cube materials
@@ -369,6 +438,12 @@ function handleInteraction(clientX, clientY) {
     // Don't start new animation if one is already playing or cube not initialized
     if (isAnimating || !cube) return;
 
+    // Check if timer has expired
+    if (timerStarted && !timerActive) {
+        console.log('Timer has expired, ignoring click');
+        return;
+    }
+
     // Calculate position in normalized device coordinates (-1 to +1)
     mouse.x = (clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(clientY / window.innerHeight) * 2 + 1;
@@ -386,7 +461,7 @@ function handleInteraction(clientX, clientY) {
 
         console.log(`Clicked on ${faceName} face (index: ${faceIndex})`);
 
-        // Check if this is an active face (left, top, or front)
+        // Check if this is an active face (right, top, or front)
         const activeIndex = activeFaces.indexOf(faceIndex);
         if (activeIndex === -1) {
             // Clicked on inactive face, ignore
@@ -429,6 +504,11 @@ function handleInteraction(clientX, clientY) {
             selectedQuestionIndex = -1;
             updateCubeMaterials(false, -1, faceIndex);
         } else {
+            // Start timer on first question click
+            if (!timerStarted) {
+                startTimer();
+            }
+
             // Trigger click effect
             clickedFaceIndex = faceIndex;
             clickEffectStartTime = performance.now();
@@ -482,6 +562,18 @@ window.addEventListener('resize', () => {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.render(scene, camera);
+});
+
+// Initialize time limit dropdown
+window.addEventListener('DOMContentLoaded', () => {
+    const timeSelect = document.getElementById('time-select');
+    if (timeSelect) {
+        // Set initial value
+        selectedTimeLimit = parseInt(timeSelect.value);
+
+        // Listen for changes
+        timeSelect.addEventListener('change', handleTimeLimitChange);
+    }
 });
 
 // Load quiz data and initialize the cube

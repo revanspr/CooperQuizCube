@@ -9,6 +9,16 @@
 <body>
     <div id="canvas-container"></div>
     <div id="score-display">Score: 0</div>
+    <div id="timer-container">
+        <label for="time-select">Time Limit:</label>
+        <select id="time-select">
+            <option value="1">1 min</option>
+            <option value="5">5 mins</option>
+            <option value="10">10 mins</option>
+            <option value="15">15 mins</option>
+        </select>
+        <div id="timer-display">Not Started</div>
+    </div>
     <script type="importmap">
         {
             "imports": {

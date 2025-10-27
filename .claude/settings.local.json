@@ -15,7 +15,8 @@
       "Bash(rm:*)",
       "Bash(git add:*)",
       "Bash(ls:*)",
-      "Bash(timeout 3 bash:*)"
+      "Bash(timeout 3 bash:*)",
+      "Bash(mv:*)"
     ],
     "deny": [],
     "ask": []

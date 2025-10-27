@@ -14,8 +14,8 @@ let currentAttempts = 0; // Track attempts for current question
 // Load quiz data from JSON file
 async function loadQuizData() {
     try {
-        // Load PoP! Quiz data - URL encode the space
-        const popResponse = await fetch('./Pop%20Q%26A.json');
+        // Load PoP! Quiz data
+        const popResponse = await fetch('./PopQA.json');
 
         if (!popResponse.ok) {
             throw new Error(`HTTP error! status: ${popResponse.status}`);
@@ -29,6 +29,7 @@ async function loadQuizData() {
         initializeCube();
     } catch (error) {
         console.error('Error loading quiz data:', error);
+        alert('Error loading quiz data: ' + error.message);
         // Fallback to empty data if file can't be loaded
         popQuizData = [{
             id: 1,

@@ -251,7 +251,7 @@ let timerStarted = false;
 let timerActive = false;
 let timerEndTime = null;
 let timerInterval = null;
-let selectedTimeLimit = 10; // Default 10 seconds
+let selectedTimeLimit = 30; // Default 30 seconds (0.5m)
 
 // Function to update score display
 function updateScoreDisplay() {
@@ -323,11 +323,13 @@ function updateTimerDisplay() {
         return;
     }
 
-    // Convert to seconds
+    // Convert to minutes and seconds
     const totalSeconds = Math.ceil(remainingMs / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
 
-    // Display in seconds format
-    timerDisplay.textContent = `${totalSeconds}s`;
+    // Display in MM:SS format
+    timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
     timerDisplay.style.color = '#ffd700';
 }
 

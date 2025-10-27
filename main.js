@@ -326,6 +326,11 @@ function updateTimerDisplay() {
         return;
     }
 
+    // If "No timer" is selected, don't update display or check expiration
+    if (selectedTimeLimit === 0) {
+        return;
+    }
+
     const remainingMs = timerEndTime - Date.now();
 
     if (remainingMs <= 0) {

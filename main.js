@@ -3,6 +3,9 @@ import * as THREE from 'three';
 // Questions and answers data - will be loaded from Q&A.json
 let quizData = [];
 let shuffledQuestions = [];
+// Track which faces are disabled (wrong answers) for each question
+// disabledFaces[questionIndex] = Set of face indices (0-2) that are disabled
+let disabledFaces = {};
 
 // Load quiz data from JSON file
 async function loadQuizData() {
@@ -10,22 +13,41 @@ async function loadQuizData() {
         const response = await fetch('./Q&A.json');
         const data = await response.json();
 
-        // Transform the data to match our cube format
+        // Transform the data to match our cube format, preserving correct flag
         quizData = data.map(item => ({
             question: item.question,
-            answers: item.answers.map(a => a.text)
+            answers: item.answers.map(a => ({
+                text: a.text,
+                correct: a.correct
+            }))
         }));
 
         // Shuffle questions after loading
         shuffledQuestions = shuffleArray(quizData);
+
+        // Initialize disabled faces tracking for all questions
+        shuffledQuestions.forEach((_, index) => {
+            disabledFaces[index] = new Set();
+        });
 
         // Initialize the cube with questions
         initializeCube();
     } catch (error) {
         console.error('Error loading quiz data:', error);
         // Fallback to empty data if file can't be loaded
-        quizData = Array(6).fill({ question: "Question not loaded", answers: ["A", "B", "C"] });
+        quizData = Array(6).fill({
+            question: "Question not loaded",
+            answers: [
+                { text: "A", correct: false },
+                { text: "B", correct: false },
+                { text: "C", correct: false }
+            ]
+        });
         shuffledQuestions = quizData;
+        // Initialize disabled faces tracking
+        shuffledQuestions.forEach((_, index) => {
+            disabledFaces[index] = new Set();
+        });
         initializeCube();
     }
 }
@@ -147,11 +169,15 @@ function updateCubeMaterials(showAnswers = false, questionIndex = -1, highlightF
     if (showAnswers && questionIndex >= 0) {
         // Show answers on 3 faces, other 3 faces show "Pick a Question"
         const answers = shuffledQuestions[questionIndex].answers;
+        const disabled = disabledFaces[questionIndex] || new Set();
+
         for (let i = 0; i < 6; i++) {
             if (i < 3) {
-                // First 3 faces show answers
+                // First 3 faces show answers (or blank if disabled)
+                const isDisabled = disabled.has(i);
+                const text = isDisabled ? '' : answers[i].text;
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(answers[i], colors[i], 50, i === highlightFace)
+                    map: createTextTexture(text, colors[i], 50, i === highlightFace)
                 }));
             } else {
                 // Other 3 faces show instruction
@@ -294,18 +320,45 @@ function handleInteraction(clientX, clientY) {
 
         console.log(`Clicked on ${faceName} face (index: ${faceIndex})`);
 
-        // Trigger click effect
-        clickedFaceIndex = faceIndex;
-        clickEffectStartTime = performance.now();
-        updateCubeMaterials(showingAnswers, selectedQuestionIndex, faceIndex);
-
         if (showingAnswers) {
+            // Check if this is an answer face (0-2) and if it's disabled
+            if (faceIndex < 3) {
+                const disabled = disabledFaces[selectedQuestionIndex] || new Set();
+                if (disabled.has(faceIndex)) {
+                    // Ignore clicks on disabled faces
+                    console.log('Face is disabled, ignoring click');
+                    return;
+                }
+
+                // Check if the answer is correct
+                const answer = shuffledQuestions[selectedQuestionIndex].answers[faceIndex];
+                if (!answer.correct) {
+                    // Wrong answer - disable this face
+                    disabledFaces[selectedQuestionIndex].add(faceIndex);
+                    console.log('Wrong answer! Face disabled.');
+                    // Update materials to remove text from this face
+                    updateCubeMaterials(true, selectedQuestionIndex, -1);
+                    return; // Don't animate or change state
+                }
+                // If correct answer, continue to go back to questions
+            }
+
+            // Trigger click effect
+            clickedFaceIndex = faceIndex;
+            clickEffectStartTime = performance.now();
+            updateCubeMaterials(showingAnswers, selectedQuestionIndex, faceIndex);
+
             // If showing answers and clicked on a "Pick a Question" face (index >= 3)
-            // or any face, go back to questions
+            // or clicked correct answer, go back to questions
             showingAnswers = false;
             selectedQuestionIndex = -1;
             updateCubeMaterials(false, -1, faceIndex);
         } else {
+            // Trigger click effect
+            clickedFaceIndex = faceIndex;
+            clickEffectStartTime = performance.now();
+            updateCubeMaterials(showingAnswers, selectedQuestionIndex, faceIndex);
+
             // Showing questions - store which question was clicked
             selectedQuestionIndex = faceIndex;
         }

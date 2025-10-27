@@ -67,7 +67,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
 // Function to create a canvas texture with text (supports multi-line)
-function createTextTexture(text, bgColor, fontSize = 40) {
+function createTextTexture(text, bgColor, fontSize = 40, isHighlighted = false) {
     const canvas = document.createElement('canvas');
     canvas.width = 512;
     canvas.height = 512;
@@ -76,6 +76,20 @@ function createTextTexture(text, bgColor, fontSize = 40) {
     // Background
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Add highlight effect
+    if (isHighlighted) {
+        // Add bright border
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 20;
+        ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+
+        // Add glow effect
+        ctx.shadowColor = '#ffffff';
+        ctx.shadowBlur = 30;
+        ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+        ctx.shadowBlur = 0;
+    }
 
     // Text
     ctx.fillStyle = '#ffffff';
@@ -123,9 +137,12 @@ const colors = ['#ff6347', '#ffd700', '#ff69b4', '#9370db', '#32cd32', '#87ceeb'
 // State management
 let showingAnswers = false;
 let selectedQuestionIndex = -1;
+let clickedFaceIndex = -1;
+let clickEffectStartTime = 0;
+const clickEffectDuration = 300; // 300ms flash effect
 
 // Function to update cube materials
-function updateCubeMaterials(showAnswers = false, questionIndex = -1) {
+function updateCubeMaterials(showAnswers = false, questionIndex = -1, highlightFace = -1) {
     const newMaterials = [];
 
     if (showAnswers && questionIndex >= 0) {
@@ -135,12 +152,12 @@ function updateCubeMaterials(showAnswers = false, questionIndex = -1) {
             if (i < 3) {
                 // First 3 faces show answers
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(answers[i], colors[i], 50)
+                    map: createTextTexture(answers[i], colors[i], 50, i === highlightFace)
                 }));
             } else {
                 // Other 3 faces show instruction
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture('Pick a Question', colors[i], 40)
+                    map: createTextTexture('Pick a Question', colors[i], 40, i === highlightFace)
                 }));
             }
         }
@@ -149,7 +166,7 @@ function updateCubeMaterials(showAnswers = false, questionIndex = -1) {
         for (let i = 0; i < 6; i++) {
             const question = shuffledQuestions[i].question;
             newMaterials.push(new THREE.MeshBasicMaterial({
-                map: createTextTexture(question, colors[i], 35)
+                map: createTextTexture(question, colors[i], 35, i === highlightFace)
             }));
         }
     }
@@ -187,6 +204,16 @@ let targetRotation = { x: 0, y: 0, z: 0 };
 // Animation loop
 function animate(currentTime) {
     requestAnimationFrame(animate);
+
+    // Handle click effect
+    if (clickedFaceIndex >= 0) {
+        const clickElapsed = currentTime - clickEffectStartTime;
+        if (clickElapsed >= clickEffectDuration) {
+            // Click effect finished, remove highlight
+            clickedFaceIndex = -1;
+            updateCubeMaterials(showingAnswers, selectedQuestionIndex);
+        }
+    }
 
     if (isAnimating) {
         const elapsed = currentTime - animationStartTime;
@@ -255,12 +282,17 @@ function handleInteraction(clientX, clientY) {
 
         console.log(`Clicked on ${faceName} face (index: ${faceIndex})`);
 
+        // Trigger click effect
+        clickedFaceIndex = faceIndex;
+        clickEffectStartTime = performance.now();
+        updateCubeMaterials(showingAnswers, selectedQuestionIndex, faceIndex);
+
         if (showingAnswers) {
             // If showing answers and clicked on a "Pick a Question" face (index >= 3)
             // or any face, go back to questions
             showingAnswers = false;
             selectedQuestionIndex = -1;
-            updateCubeMaterials(false);
+            updateCubeMaterials(false, -1, faceIndex);
         } else {
             // Showing questions - store which question was clicked
             selectedQuestionIndex = faceIndex;

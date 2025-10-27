@@ -237,7 +237,6 @@ const activeFaceLabels = ['Right', 'Top', 'Front']; // Display names for active 
 
 // State management
 let showingAnswers = false;
-let selectedQuestionIndex = -1;
 let clickedFaceIndex = -1;
 let clickEffectStartTime = 0;
 const clickEffectDuration = 300; // 300ms flash effect

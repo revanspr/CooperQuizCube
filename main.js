@@ -155,6 +155,11 @@ const geometry = new THREE.BoxGeometry(2, 2, 2);
 // Color palette for faces
 const colors = ['#ff6347', '#ffd700', '#ff69b4', '#9370db', '#32cd32', '#87ceeb'];
 
+// Face indices for BoxGeometry: 0=right, 1=left, 2=top, 3=bottom, 4=front, 5=back
+// We only use: left (1), top (2), front (4)
+const activeFaces = [1, 2, 4]; // left, top, front
+const faceNames = ['right', 'left', 'top', 'bottom', 'front', 'back'];
+
 // State management
 let showingAnswers = false;
 let selectedQuestionIndex = -1;
@@ -167,32 +172,42 @@ function updateCubeMaterials(showAnswers = false, questionIndex = -1, highlightF
     const newMaterials = [];
 
     if (showAnswers && questionIndex >= 0) {
-        // Show answers on 3 faces, other 3 faces show "Pick a Question"
+        // Show answers on active faces only (left, top, front)
         const answers = shuffledQuestions[questionIndex].answers;
         const disabled = disabledFaces[questionIndex] || new Set();
 
         for (let i = 0; i < 6; i++) {
-            if (i < 3) {
-                // First 3 faces show answers (or blank if disabled)
-                const isDisabled = disabled.has(i);
-                const text = isDisabled ? '' : answers[i].text;
+            const activeIndex = activeFaces.indexOf(i);
+            if (activeIndex !== -1) {
+                // This is an active face - show answer (or blank if disabled)
+                const isDisabled = disabled.has(activeIndex);
+                const text = isDisabled ? '' : answers[activeIndex].text;
                 newMaterials.push(new THREE.MeshBasicMaterial({
                     map: createTextTexture(text, colors[i], 50, i === highlightFace)
                 }));
             } else {
-                // Other 3 faces show instruction
+                // Inactive face - show blank colored face
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture('Pick a Question', colors[i], 40, i === highlightFace)
+                    map: createTextTexture('', colors[i], 40, i === highlightFace)
                 }));
             }
         }
     } else {
-        // Show questions on all 6 faces
+        // Show questions on active faces only (left, top, front)
         for (let i = 0; i < 6; i++) {
-            const question = shuffledQuestions[i].question;
-            newMaterials.push(new THREE.MeshBasicMaterial({
-                map: createTextTexture(question, colors[i], 35, i === highlightFace)
-            }));
+            const activeIndex = activeFaces.indexOf(i);
+            if (activeIndex !== -1 && shuffledQuestions[activeIndex]) {
+                // This is an active face - show question
+                const question = shuffledQuestions[activeIndex].question;
+                newMaterials.push(new THREE.MeshBasicMaterial({
+                    map: createTextTexture(question, colors[i], 35, i === highlightFace)
+                }));
+            } else {
+                // Inactive face - show blank colored face
+                newMaterials.push(new THREE.MeshBasicMaterial({
+                    map: createTextTexture('', colors[i], 35, i === highlightFace)
+                }));
+            }
         }
     }
 
@@ -204,13 +219,21 @@ let cube;
 
 // Function to initialize the cube with loaded questions
 function initializeCube() {
-    // Initialize materials with questions
+    // Initialize materials with questions on active faces only
     const materials = [];
     for (let i = 0; i < 6; i++) {
-        const questionData = shuffledQuestions[i] || { question: "", answers: ["", "", ""] };
-        materials.push(new THREE.MeshBasicMaterial({
-            map: createTextTexture(questionData.question, colors[i], 35)
-        }));
+        const activeIndex = activeFaces.indexOf(i);
+        if (activeIndex !== -1 && shuffledQuestions[activeIndex]) {
+            // Active face - show question
+            materials.push(new THREE.MeshBasicMaterial({
+                map: createTextTexture(shuffledQuestions[activeIndex].question, colors[i], 35)
+            }));
+        } else {
+            // Inactive face - show blank colored face
+            materials.push(new THREE.MeshBasicMaterial({
+                map: createTextTexture('', colors[i], 35)
+            }));
+        }
     }
 
     cube = new THREE.Mesh(geometry, materials);
@@ -315,41 +338,45 @@ function handleInteraction(clientX, clientY) {
     if (intersects.length > 0) {
         // Get the face that was clicked
         const faceIndex = Math.floor(intersects[0].faceIndex / 2);
-        const faceNames = ['right', 'left', 'top', 'bottom', 'front', 'back'];
         const faceName = faceNames[faceIndex];
 
         console.log(`Clicked on ${faceName} face (index: ${faceIndex})`);
 
-        if (showingAnswers) {
-            // Check if this is an answer face (0-2) and if it's disabled
-            if (faceIndex < 3) {
-                const disabled = disabledFaces[selectedQuestionIndex] || new Set();
-                if (disabled.has(faceIndex)) {
-                    // Ignore clicks on disabled faces
-                    console.log('Face is disabled, ignoring click');
-                    return;
-                }
+        // Check if this is an active face (left, top, or front)
+        const activeIndex = activeFaces.indexOf(faceIndex);
+        if (activeIndex === -1) {
+            // Clicked on inactive face, ignore
+            console.log('Inactive face clicked, ignoring');
+            return;
+        }
 
-                // Check if the answer is correct
-                const answer = shuffledQuestions[selectedQuestionIndex].answers[faceIndex];
-                if (!answer.correct) {
-                    // Wrong answer - disable this face
-                    disabledFaces[selectedQuestionIndex].add(faceIndex);
-                    console.log('Wrong answer! Face disabled.');
-                    // Update materials to remove text from this face
-                    updateCubeMaterials(true, selectedQuestionIndex, -1);
-                    return; // Don't animate or change state
-                }
-                // If correct answer, continue to go back to questions
+        if (showingAnswers) {
+            // Check if this face is disabled
+            const disabled = disabledFaces[selectedQuestionIndex] || new Set();
+            if (disabled.has(activeIndex)) {
+                // Ignore clicks on disabled faces
+                console.log('Face is disabled, ignoring click');
+                return;
             }
+
+            // Check if the answer is correct
+            const answer = shuffledQuestions[selectedQuestionIndex].answers[activeIndex];
+            if (!answer.correct) {
+                // Wrong answer - disable this face
+                disabledFaces[selectedQuestionIndex].add(activeIndex);
+                console.log('Wrong answer! Face disabled.');
+                // Update materials to remove text from this face
+                updateCubeMaterials(true, selectedQuestionIndex, -1);
+                return; // Don't animate or change state
+            }
+            // If correct answer, continue to go back to questions
 
             // Trigger click effect
             clickedFaceIndex = faceIndex;
             clickEffectStartTime = performance.now();
             updateCubeMaterials(showingAnswers, selectedQuestionIndex, faceIndex);
 
-            // If showing answers and clicked on a "Pick a Question" face (index >= 3)
-            // or clicked correct answer, go back to questions
+            // Clicked correct answer, go back to questions
             showingAnswers = false;
             selectedQuestionIndex = -1;
             updateCubeMaterials(false, -1, faceIndex);
@@ -359,8 +386,8 @@ function handleInteraction(clientX, clientY) {
             clickEffectStartTime = performance.now();
             updateCubeMaterials(showingAnswers, selectedQuestionIndex, faceIndex);
 
-            // Showing questions - store which question was clicked
-            selectedQuestionIndex = faceIndex;
+            // Showing questions - store which question was clicked (use activeIndex)
+            selectedQuestionIndex = activeIndex;
         }
 
         // Start spin animation

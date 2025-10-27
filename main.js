@@ -644,11 +644,18 @@ function handleInteraction(clientX, clientY) {
             usedQuestionIds.add(selectedQuestion.id);
             console.log(`Question answered: ${selectedQuestion.question}`);
 
+            // Block further clicks immediately
+            isAnimating = true;
+
             // Determine next difficulty
             const nextDiff = getNextDifficulty(selectedQuestion.difficulty, currentAttempts);
 
             if (!nextDiff) {
                 console.log('No more questions available!');
+                // Clear the cube to prevent further interaction
+                currentQuestions = [];
+                showingAnswers = false;
+                isAnimating = false; // Allow animation to stop
                 alert('Quiz complete! Your score: ' + totalScore);
                 return;
             }
@@ -660,6 +667,10 @@ function handleInteraction(clientX, clientY) {
             const nextQuestions = getThreeQuestions(currentDifficulty);
             if (!nextQuestions || nextQuestions.length === 0) {
                 console.log('No more questions available!');
+                // Clear the cube to prevent further interaction
+                currentQuestions = [];
+                showingAnswers = false;
+                isAnimating = false; // Allow animation to stop
                 alert('Quiz complete! Your score: ' + totalScore);
                 return;
             }
@@ -674,14 +685,23 @@ function handleInteraction(clientX, clientY) {
                 console.log(`Face ${i}:`, q.question);
             });
 
-            // Trigger click effect
-            clickedFaceIndex = faceIndex;
-            clickEffectStartTime = performance.now();
-            updateCubeMaterials(true, faceIndex);
-
             // Go back to question display
             showingAnswers = false;
             updateCubeMaterials(false, faceIndex);
+
+            // Start spin animation (isAnimating already set to true above)
+            animationStartTime = performance.now();
+            startRotation = {
+                x: cube.rotation.x,
+                y: cube.rotation.y,
+                z: cube.rotation.z
+            };
+            // Spin 360 degrees (2 * PI radians) on Y axis
+            targetRotation = {
+                x: startRotation.x,
+                y: startRotation.y + Math.PI * 2,
+                z: startRotation.z
+            };
         } else {
             // Question viewing mode - transition to answering
             // Start timer on first question click
@@ -703,22 +723,22 @@ function handleInteraction(clientX, clientY) {
 
             // Set to show answers mode
             showingAnswers = true;
-        }
 
-        // Start spin animation
-        isAnimating = true;
-        animationStartTime = performance.now();
-        startRotation = {
-            x: cube.rotation.x,
-            y: cube.rotation.y,
-            z: cube.rotation.z
-        };
-        // Spin 360 degrees (2 * PI radians) on Y axis
-        targetRotation = {
-            x: startRotation.x,
-            y: startRotation.y + Math.PI * 2,
-            z: startRotation.z
-        };
+            // Start spin animation
+            isAnimating = true;
+            animationStartTime = performance.now();
+            startRotation = {
+                x: cube.rotation.x,
+                y: cube.rotation.y,
+                z: cube.rotation.z
+            };
+            // Spin 360 degrees (2 * PI radians) on Y axis
+            targetRotation = {
+                x: startRotation.x,
+                y: startRotation.y + Math.PI * 2,
+                z: startRotation.z
+            };
+        }
     }
 }
 

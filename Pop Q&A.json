@@ -1,122 +1,502 @@
 [
   {
     "id": 1,
-    "difficulty": "d1",
-    "question": "What color is the sky on a clear day?",
+    "question": "What is the name of Taylor Swift's 12th studio album released in 2025?",
+    "difficulty": "d3",
     "answers": [
-      { "text": "Blue", "correct": true },
-      { "text": "Green", "correct": false },
-      { "text": "Red", "correct": false }
+      { "text": "Midnights", "correct": false },
+      { "text": "The Life of a Showgirl", "correct": true },
+      { "text": "Lover", "correct": false }
     ]
   },
   {
     "id": 2,
-    "difficulty": "d1",
-    "question": "How many legs does a dog have?",
+    "question": "Who is Taylor Swift engaged to?",
+    "difficulty": "d5",
     "answers": [
-      { "text": "4", "correct": true },
-      { "text": "2", "correct": false },
-      { "text": "6", "correct": false }
+      { "text": "Travis Kelce", "correct": true },
+      { "text": "Joe Alwyn", "correct": false },
+      { "text": "Harry Styles", "correct": false }
     ]
   },
   {
     "id": 3,
+    "question": "What award did Sabrina Carpenter receive from Variety in 2025?",
     "difficulty": "d2",
-    "question": "What is the capital of France?",
     "answers": [
-      { "text": "London", "correct": false },
-      { "text": "Paris", "correct": true },
-      { "text": "Berlin", "correct": false }
+      { "text": "Artist of the Year", "correct": false },
+      { "text": "Hitmaker of the Year", "correct": true },
+      { "text": "Performer of the Year", "correct": false }
     ]
   },
   {
     "id": 4,
-    "difficulty": "d2",
-    "question": "What is 5 + 7?",
+    "question": "What is the name of Sabrina Carpenter's seventh studio album released in 2025?",
+    "difficulty": "d3",
     "answers": [
-      { "text": "11", "correct": false },
-      { "text": "12", "correct": true },
-      { "text": "13", "correct": false }
+      { "text": "Short n' Sweet", "correct": false },
+      { "text": "Man's Best Friend", "correct": true },
+      { "text": "Emails I Can't Send", "correct": false }
     ]
   },
   {
     "id": 5,
-    "difficulty": "d3",
-    "question": "Which planet is known as the Red Planet?",
+    "question": "How many Grammy nominations did Billie Eilish receive in 2025?",
+    "difficulty": "d2",
     "answers": [
-      { "text": "Venus", "correct": false },
-      { "text": "Jupiter", "correct": false },
-      { "text": "Mars", "correct": true }
+      { "text": "Five", "correct": false },
+      { "text": "Seven", "correct": true },
+      { "text": "Nine", "correct": false }
     ]
   },
   {
     "id": 6,
+    "question": "What is the name of Billie Eilish's 2025 tour?",
     "difficulty": "d3",
-    "question": "What is the largest ocean on Earth?",
     "answers": [
-      { "text": "Atlantic Ocean", "correct": false },
-      { "text": "Pacific Ocean", "correct": true },
-      { "text": "Indian Ocean", "correct": false }
+      { "text": "Happier Than Ever Tour", "correct": false },
+      { "text": "Hit Me Hard and Soft Tour", "correct": true },
+      { "text": "Where Do We Go Tour", "correct": false }
     ]
   },
   {
     "id": 7,
+    "question": "What song did Lady Gaga and Bruno Mars win a Grammy for in 2025?",
     "difficulty": "d4",
-    "question": "How many continents are there?",
     "answers": [
-      { "text": "5", "correct": false },
-      { "text": "6", "correct": false },
-      { "text": "7", "correct": true }
+      { "text": "Shallow", "correct": false },
+      { "text": "Die With a Smile", "correct": true },
+      { "text": "Just the Way You Are", "correct": false }
     ]
   },
   {
     "id": 8,
-    "difficulty": "d4",
-    "question": "What is the smallest prime number?",
+    "question": "What classic song did Lady Gaga and Bruno Mars perform at the 2025 Grammys?",
+    "difficulty": "d2",
     "answers": [
-      { "text": "1", "correct": false },
-      { "text": "2", "correct": true },
-      { "text": "3", "correct": false }
+      { "text": "California Dreamin'", "correct": true },
+      { "text": "Hotel California", "correct": false },
+      { "text": "I Left My Heart in San Francisco", "correct": false }
     ]
   },
   {
     "id": 9,
-    "difficulty": "d5",
-    "question": "What year did World War II end?",
+    "question": "What is the name of Chappell Roan's 2025 country-inspired single?",
+    "difficulty": "d3",
     "answers": [
-      { "text": "1945", "correct": true },
-      { "text": "1944", "correct": false },
-      { "text": "1946", "correct": false }
+      { "text": "Pink Pony Club", "correct": false },
+      { "text": "The Giver", "correct": true },
+      { "text": "Good Luck, Babe!", "correct": false }
     ]
   },
   {
     "id": 10,
-    "difficulty": "d5",
-    "question": "What is the chemical symbol for gold?",
+    "question": "What Grammy Award did Chappell Roan win in 2025?",
+    "difficulty": "d4",
     "answers": [
-      { "text": "Go", "correct": false },
-      { "text": "Au", "correct": true },
-      { "text": "Gd", "correct": false }
+      { "text": "Best New Artist", "correct": true },
+      { "text": "Song of the Year", "correct": false },
+      { "text": "Album of the Year", "correct": false }
     ]
   },
   {
     "id": 11,
-    "difficulty": "d6",
-    "question": "Which animal is the fastest land animal?",
+    "question": "What is the title of The Weeknd's album released in January 2025?",
+    "difficulty": "d3",
     "answers": [
-      { "text": "Lion", "correct": false },
-      { "text": "Cheetah", "correct": true },
-      { "text": "Leopard", "correct": false }
+      { "text": "After Hours", "correct": false },
+      { "text": "Hurry Up Tomorrow", "correct": true },
+      { "text": "Dawn FM", "correct": false }
     ]
   },
   {
     "id": 12,
-    "difficulty": "d6",
-    "question": "What is the speed of light in vacuum?",
+    "question": "What did The Weeknd hint about his career in 2025?",
+    "difficulty": "d2",
     "answers": [
-      { "text": "299,792 km/s", "correct": true },
-      { "text": "150,000 km/s", "correct": false },
-      { "text": "400,000 km/s", "correct": false }
+      { "text": "Starting a record label", "correct": false },
+      { "text": "Retiring his persona", "correct": true },
+      { "text": "Moving to Europe", "correct": false }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "What is the name of Ed Sheeran's eighth studio album released in 2025?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Divide", "correct": false },
+      { "text": "Play", "correct": true },
+      { "text": "Equals", "correct": false }
+    ]
+  },
+  {
+    "id": 14,
+    "question": "Which prestigious list did Ed Sheeran make in 2025?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Forbes 30 Under 30", "correct": false },
+      { "text": "TIME 100 Most Influential People", "correct": true },
+      { "text": "Billboard Power 100", "correct": false }
+    ]
+  },
+  {
+    "id": 15,
+    "question": "What is the name of Doja Cat's fifth studio album released in September 2025?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Planet Her", "correct": false },
+      { "text": "Vie", "correct": true },
+      { "text": "Scarlet", "correct": false }
+    ]
+  },
+  {
+    "id": 16,
+    "question": "What video game did Doja Cat collaborate with in October 2025?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Call of Duty", "correct": false },
+      { "text": "Fortnite", "correct": true },
+      { "text": "Minecraft", "correct": false }
+    ]
+  },
+  {
+    "id": 17,
+    "question": "What is the name of Tate McRae's third studio album released in 2025?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Think Later", "correct": false },
+      { "text": "So Close to What", "correct": true },
+      { "text": "I Used to Think I Could Fly", "correct": false }
+    ]
+  },
+  {
+    "id": 18,
+    "question": "What position did Tate McRae's album debut at on the Billboard 200?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Number one", "correct": true },
+      { "text": "Number three", "correct": false },
+      { "text": "Number five", "correct": false }
+    ]
+  },
+  {
+    "id": 19,
+    "question": "What is the name of Benson Boone's 2025 tour?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Beautiful Things Tour", "correct": false },
+      { "text": "American Heart Tour", "correct": true },
+      { "text": "Fireworks Tour", "correct": false }
+    ]
+  },
+  {
+    "id": 20,
+    "question": "What Grammy category was Benson Boone nominated for in 2025?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Best Pop Solo Performance", "correct": false },
+      { "text": "Best New Artist", "correct": true },
+      { "text": "Song of the Year", "correct": false }
+    ]
+  },
+  {
+    "id": 21,
+    "question": "How many episodes will Taylor Swift's Disney+ Eras Tour docuseries have?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Four", "correct": false },
+      { "text": "Six", "correct": true },
+      { "text": "Eight", "correct": false }
+    ]
+  },
+  {
+    "id": 22,
+    "question": "When is Taylor Swift's Disney+ concert film and docuseries set to release?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "November 12", "correct": false },
+      { "text": "December 12", "correct": true },
+      { "text": "January 12", "correct": false }
+    ]
+  },
+  {
+    "id": 23,
+    "question": "How many nights is Sabrina Carpenter performing at Madison Square Garden?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Three", "correct": false },
+      { "text": "Five", "correct": true },
+      { "text": "Seven", "correct": false }
+    ]
+  },
+  {
+    "id": 24,
+    "question": "What festival is Sabrina Carpenter headlining in April?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Lollapalooza", "correct": false },
+      { "text": "Coachella", "correct": true },
+      { "text": "Bonnaroo", "correct": false }
+    ]
+  },
+  {
+    "id": 25,
+    "question": "What song did Billie Eilish perform at the 2025 Grammys?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Bad Guy", "correct": false },
+      { "text": "Birds of a Feather", "correct": true },
+      { "text": "Happier Than Ever", "correct": false }
+    ]
+  },
+  {
+    "id": 26,
+    "question": "When does Billie Eilish's 2025 tour conclude?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "October 23", "correct": false },
+      { "text": "November 23", "correct": true },
+      { "text": "December 23", "correct": false }
+    ]
+  },
+  {
+    "id": 27,
+    "question": "Who stars alongside The Weeknd in the 'Hurry Up Tomorrow' movie?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Zendaya and Tom Holland", "correct": false },
+      { "text": "Jenna Ortega and Barry Keoghan", "correct": true },
+      { "text": "Anya Taylor-Joy and Bill Skarsgård", "correct": false }
+    ]
+  },
+  {
+    "id": 28,
+    "question": "When does The Weeknd's 'Hurry Up Tomorrow' movie hit theaters?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "March 16, 2025", "correct": false },
+      { "text": "May 16, 2025", "correct": true },
+      { "text": "July 16, 2025", "correct": false }
+    ]
+  },
+  {
+    "id": 29,
+    "question": "What was the lead single from Ed Sheeran's 'Play' album?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Shape of You", "correct": false },
+      { "text": "Azizam", "correct": true },
+      { "text": "Perfect", "correct": false }
+    ]
+  },
+  {
+    "id": 30,
+    "question": "What tour did Ed Sheeran conclude with over 8 million tickets sold?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Divide Tour", "correct": false },
+      { "text": "Mathematics Tour", "correct": true },
+      { "text": "Plus Tour", "correct": false }
+    ]
+  },
+  {
+    "id": 31,
+    "question": "What character does Doja Cat play in Fortnite?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Queen of Hearts", "correct": false },
+      { "text": "Mother of Thorns", "correct": true },
+      { "text": "Goddess of Fire", "correct": false }
+    ]
+  },
+  {
+    "id": 32,
+    "question": "What fashion event did Doja Cat perform at in October 2025?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Met Gala", "correct": false },
+      { "text": "Vogue World: Hollywood", "correct": true },
+      { "text": "Fashion Week Paris", "correct": false }
+    ]
+  },
+  {
+    "id": 33,
+    "question": "What song did Tate McRae release on September 26, 2025?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Greedy", "correct": false },
+      { "text": "Tit for Tat", "correct": true },
+      { "text": "You Broke Me First", "correct": false }
+    ]
+  },
+  {
+    "id": 34,
+    "question": "What is the name of Tate McRae's 2025 world tour?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Think Later Tour", "correct": false },
+      { "text": "Miss Possessive Tour", "correct": true },
+      { "text": "All The Things I Never Said Tour", "correct": false }
+    ]
+  },
+  {
+    "id": 35,
+    "question": "What is Benson Boone's most streamed song that earned him an IFPI Global Single Award?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "In The Stars", "correct": false },
+      { "text": "Beautiful Things", "correct": true },
+      { "text": "Ghost Town", "correct": false }
+    ]
+  },
+  {
+    "id": 36,
+    "question": "How many times is Benson Boone's hit song certified Platinum?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "3x Platinum", "correct": false },
+      { "text": "5x Platinum", "correct": true },
+      { "text": "7x Platinum", "correct": false }
+    ]
+  },
+  {
+    "id": 37,
+    "question": "Which festival did The Weeknd headline on September 27, 2025?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Coachella", "correct": false },
+      { "text": "Global Citizen Festival", "correct": true },
+      { "text": "Lollapalooza", "correct": false }
+    ]
+  },
+  {
+    "id": 38,
+    "question": "What Instagram account did Ed Sheeran launch to promote his new album?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "@EdSheeranArchive", "correct": false },
+      { "text": "@TeddysOldPhone", "correct": true },
+      { "text": "@EdSheeranMemories", "correct": false }
+    ]
+  },
+  {
+    "id": 39,
+    "question": "What influences did Ed Sheeran's 'Play' album draw from?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "African and Caribbean", "correct": false },
+      { "text": "Indian and Persian", "correct": true },
+      { "text": "Latin and Brazilian", "correct": false }
+    ]
+  },
+  {
+    "id": 40,
+    "question": "What TV show did Chappell Roan make her debut on in 2025?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "The Tonight Show", "correct": false },
+      { "text": "Saturday Night Live", "correct": true },
+      { "text": "Jimmy Kimmel Live", "correct": false }
+    ]
+  },
+  {
+    "id": 41,
+    "question": "How many nominations did Sabrina Carpenter receive at the 2025 MTV VMAs?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Six", "correct": false },
+      { "text": "Eight", "correct": true },
+      { "text": "Ten", "correct": false }
+    ]
+  },
+  {
+    "id": 42,
+    "question": "What TV show spoof did Sabrina Carpenter do in her SNL promo?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Friends", "correct": false },
+      { "text": "Sex and the City", "correct": true },
+      { "text": "The Sopranos", "correct": false }
+    ]
+  },
+  {
+    "id": 43,
+    "question": "What month was The Weeknd's album 'Hurry Up Tomorrow' released?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "December 2024", "correct": false },
+      { "text": "January 2025", "correct": true },
+      { "text": "February 2025", "correct": false }
+    ]
+  },
+  {
+    "id": 44,
+    "question": "What was Doja Cat's album 'Vie' inspired by?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Travel and adventure", "correct": false },
+      { "text": "Love, romance and relationships", "correct": true },
+      { "text": "Social media and technology", "correct": false }
+    ]
+  },
+  {
+    "id": 45,
+    "question": "What decade inspired the sound of Doja Cat's 'Vie' album?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "70s", "correct": false },
+      { "text": "80s", "correct": true },
+      { "text": "90s", "correct": false }
+    ]
+  },
+  {
+    "id": 46,
+    "question": "What Billboard record did Taylor Swift's 'The Life of a Showgirl' break?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Most weeks at number one", "correct": false },
+      { "text": "All songs charted from No. 1 to No. 12 uninterrupted", "correct": true },
+      { "text": "Most simultaneous top 10 hits", "correct": false }
+    ]
+  },
+  {
+    "id": 47,
+    "question": "What benefit concert did Lady Gaga perform at in early 2025?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Hurricane Relief", "correct": false },
+      { "text": "FireAid for LA wildfires", "correct": true },
+      { "text": "Earthquake Recovery", "correct": false }
+    ]
+  },
+  {
+    "id": 48,
+    "question": "What song did Lady Gaga premiere during a Grammys commercial break?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Bad Romance", "correct": false },
+      { "text": "Abracadabra", "correct": true },
+      { "text": "Poker Face", "correct": false }
+    ]
+  },
+  {
+    "id": 49,
+    "question": "When was Benson Boone's album 'American Heart' released?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "May 20, 2025", "correct": false },
+      { "text": "June 20, 2025", "correct": true },
+      { "text": "July 20, 2025", "correct": false }
+    ]
+  },
+  {
+    "id": 50,
+    "question": "What record did Lady Gaga and Bruno Mars' 'Die With a Smile' break on Spotify?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Most streams in a single day", "correct": false },
+      { "text": "Longest-reigning daily number-one song", "correct": true },
+      { "text": "Fastest to 500 million streams", "correct": false }
     ]
   }
 ]

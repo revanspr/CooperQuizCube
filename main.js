@@ -14,8 +14,13 @@ let currentAttempts = 0; // Track attempts for current question
 // Load quiz data from JSON file
 async function loadQuizData() {
     try {
-        // Load PoP! Quiz data
-        const popResponse = await fetch('./Pop Q&A.json');
+        // Load PoP! Quiz data - URL encode the space
+        const popResponse = await fetch('./Pop%20Q%26A.json');
+
+        if (!popResponse.ok) {
+            throw new Error(`HTTP error! status: ${popResponse.status}`);
+        }
+
         popQuizData = await popResponse.json();
 
         console.log('PoP! Quiz data loaded:', popQuizData.length, 'questions');

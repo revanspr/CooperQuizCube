@@ -189,7 +189,7 @@ let timerStarted = false;
 let timerActive = false;
 let timerEndTime = null;
 let timerInterval = null;
-let selectedTimeLimit = 1; // Default 1 minute
+let selectedTimeLimit = 10; // Default 10 seconds
 
 // Function to update score display
 function updateScoreDisplay() {
@@ -225,9 +225,9 @@ function startTimer() {
     timerStarted = true;
     timerActive = true;
 
-    // Get selected time limit in minutes
-    const timeLimitMinutes = selectedTimeLimit;
-    const timeLimitMs = timeLimitMinutes * 60 * 1000;
+    // Get selected time limit in seconds
+    const timeLimitSeconds = selectedTimeLimit;
+    const timeLimitMs = timeLimitSeconds * 1000;
 
     timerEndTime = Date.now() + timeLimitMs;
 
@@ -237,7 +237,7 @@ function startTimer() {
     // Update timer every second
     timerInterval = setInterval(updateTimerDisplay, 1000);
 
-    console.log(`Timer started for ${timeLimitMinutes} minute(s)`);
+    console.log(`Timer started for ${timeLimitSeconds} second(s)`);
 }
 
 // Function to update timer display
@@ -276,7 +276,7 @@ function handleTimeLimitChange() {
     const selectElement = document.getElementById('time-select');
     if (selectElement) {
         selectedTimeLimit = parseInt(selectElement.value);
-        console.log(`Time limit set to ${selectedTimeLimit} minute(s)`);
+        console.log(`Time limit set to ${selectedTimeLimit} second(s)`);
     }
 }
 

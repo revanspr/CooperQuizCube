@@ -287,20 +287,19 @@ function awardPoints() {
 function startTimer() {
     if (timerStarted) return; // Timer already started
 
+    timerStarted = true;
+    timerActive = true; // Always set to true, including for "No timer"
+
     // Check if "No timer" is selected
     if (selectedTimeLimit === 0) {
-        timerStarted = true;
         const timerDisplay = document.getElementById('timer-display');
         if (timerDisplay) {
             timerDisplay.textContent = 'No Timer';
             timerDisplay.style.color = '#ffffff';
         }
-        console.log('No timer selected - timer disabled');
+        console.log('No timer selected - infinite time');
         return;
     }
-
-    timerStarted = true;
-    timerActive = true;
 
     // Get selected time limit in seconds
     const timeLimitSeconds = selectedTimeLimit;

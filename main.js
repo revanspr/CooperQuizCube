@@ -59,11 +59,27 @@ function getThreeQuestions(difficulty) {
     // Shuffle available questions
     const shuffled = shuffleArray(availableQuestions);
 
-    // Take up to 3 questions
+    // Take up to 3 questions from the current difficulty
     const selected = shuffled.slice(0, Math.min(3, shuffled.length));
 
-    console.log(`Selected ${selected.length} questions from difficulty ${difficulty}`);
-    return selected;
+    // If we have fewer than 3 questions, fill with questions from other difficulties
+    if (selected.length < 3) {
+        console.log(`Only ${selected.length} questions available at ${difficulty}, filling with other difficulties`);
+
+        // Get all unused questions from other difficulties
+        const otherQuestions = popQuizData.filter(q =>
+            q.difficulty !== difficulty && !usedQuestionIds.has(q.id)
+        );
+
+        if (otherQuestions.length > 0) {
+            const shuffledOthers = shuffleArray(otherQuestions);
+            const needed = 3 - selected.length;
+            selected.push(...shuffledOthers.slice(0, needed));
+        }
+    }
+
+    console.log(`Selected ${selected.length} questions from difficulty ${difficulty}${selected.length < 3 ? ' (mixed with other difficulties)' : ''}`);
+    return selected.length > 0 ? selected : null;
 }
 
 // Get difficulty index

@@ -262,12 +262,11 @@ function updateTimerDisplay() {
         return;
     }
 
-    // Convert to minutes and seconds
+    // Convert to seconds
     const totalSeconds = Math.ceil(remainingMs / 1000);
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
 
-    timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    // Display in seconds format
+    timerDisplay.textContent = `${totalSeconds}s`;
     timerDisplay.style.color = '#ffd700';
 }
 

@@ -168,10 +168,10 @@ const geometry = new THREE.BoxGeometry(2, 2, 2);
 const colors = ['#ff6347', '#ffd700', '#ff69b4', '#9370db', '#32cd32', '#87ceeb'];
 
 // Face indices for BoxGeometry: 0=right, 1=left, 2=top, 3=bottom, 4=front, 5=back
-// We only use: left (1), top (2), front (4)
-const activeFaces = [1, 2, 4]; // left, top, front
+// We only use: right (0), top (2), front (4)
+const activeFaces = [0, 2, 4]; // right, top, front
 const faceNames = ['right', 'left', 'top', 'bottom', 'front', 'back'];
-const activeFaceLabels = ['Left', 'Top', 'Front']; // Display names for active faces
+const activeFaceLabels = ['Right', 'Top', 'Front']; // Display names for active faces
 
 // State management
 let showingAnswers = false;

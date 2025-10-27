@@ -188,7 +188,7 @@ function updateCubeMaterials(showAnswers = false, questionIndex = -1, highlightF
             } else {
                 // Inactive face - show blank colored face
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture('', colors[i], 40, i === highlightFace)
+                    map: createTextTexture('', colors[i], 50, i === highlightFace)
                 }));
             }
         }

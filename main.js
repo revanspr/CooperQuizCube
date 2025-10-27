@@ -180,6 +180,37 @@ let clickedFaceIndex = -1;
 let clickEffectStartTime = 0;
 const clickEffectDuration = 300; // 300ms flash effect
 
+// Score tracking
+let totalScore = 0;
+let attemptsPerQuestion = {}; // Track attempts for each question
+
+// Function to update score display
+function updateScoreDisplay() {
+    const scoreElement = document.getElementById('score-display');
+    if (scoreElement) {
+        scoreElement.textContent = `Score: ${totalScore}`;
+    }
+}
+
+// Function to calculate and award points based on attempts
+function awardPoints(questionIndex) {
+    const attempts = attemptsPerQuestion[questionIndex] || 0;
+    let points = 0;
+
+    if (attempts === 0) {
+        points = 3; // First try
+    } else if (attempts === 1) {
+        points = 2; // Second try
+    } else if (attempts === 2) {
+        points = 1; // Third try
+    }
+    // No points for more than 3 attempts
+
+    totalScore += points;
+    updateScoreDisplay();
+    console.log(`Awarded ${points} points. Total score: ${totalScore}`);
+}
+
 // Function to update cube materials
 function updateCubeMaterials(showAnswers = false, questionIndex = -1, highlightFace = -1) {
     const newMaterials = [];
@@ -378,14 +409,18 @@ function handleInteraction(clientX, clientY) {
             // Check if the answer is correct
             const answer = shuffledQuestions[selectedQuestionIndex].answers[activeIndex];
             if (!answer.correct) {
-                // Wrong answer - disable this face
+                // Wrong answer - disable this face and increment attempt counter
                 disabledFaces[selectedQuestionIndex].add(activeIndex);
+                // Increment attempt counter for this question
+                attemptsPerQuestion[selectedQuestionIndex] = (attemptsPerQuestion[selectedQuestionIndex] || 0) + 1;
                 console.log('Wrong answer! Face disabled.');
+                console.log(`Attempts for question ${selectedQuestionIndex}: ${attemptsPerQuestion[selectedQuestionIndex]}`);
                 // Update materials to remove text from this face
                 updateCubeMaterials(true, selectedQuestionIndex, -1);
                 return; // Don't animate or change state
             }
-            // If correct answer, continue to go back to questions
+            // If correct answer, award points and continue to go back to questions
+            awardPoints(selectedQuestionIndex);
 
             // Trigger click effect
             clickedFaceIndex = faceIndex;
@@ -404,6 +439,10 @@ function handleInteraction(clientX, clientY) {
 
             // Showing questions - store which question was clicked (use activeIndex)
             selectedQuestionIndex = activeIndex;
+            // Initialize attempt counter for this question if not exists
+            if (!(selectedQuestionIndex in attemptsPerQuestion)) {
+                attemptsPerQuestion[selectedQuestionIndex] = 0;
+            }
         }
 
         // Start spin animation

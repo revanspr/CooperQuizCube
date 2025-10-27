@@ -4,10 +4,12 @@ import * as THREE from 'three';
 let quizData = [];
 let popQuizData = []; // PoP! Quiz data with difficulty levels
 let currentQuizType = 'pop'; // Default to PoP! Quiz
-let currentQuestion = null; // Current question being displayed
+let currentQuestions = []; // Array of 3 current questions being displayed
 let usedQuestionIds = new Set(); // Track used questions to prevent repeats
 let currentDifficulty = 'd4'; // Start with d4
 let difficultyLevels = ['d1', 'd2', 'd3', 'd4', 'd5', 'd6'];
+let selectedQuestionIndex = -1; // Which of the 3 questions was selected
+let currentAttempts = 0; // Track attempts for current question
 
 // Load quiz data from JSON file
 async function loadQuizData() {
@@ -37,8 +39,8 @@ async function loadQuizData() {
     }
 }
 
-// Get next question based on difficulty
-function getNextQuestion(difficulty) {
+// Get 3 different questions from the same difficulty
+function getThreeQuestions(difficulty) {
     // Filter questions by difficulty that haven't been used
     const availableQuestions = popQuizData.filter(q =>
         q.difficulty === difficulty && !usedQuestionIds.has(q.id)
@@ -48,9 +50,14 @@ function getNextQuestion(difficulty) {
         return null;
     }
 
-    // Pick a random question from available ones
-    const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-    return availableQuestions[randomIndex];
+    // Shuffle available questions
+    const shuffled = shuffleArray(availableQuestions);
+
+    // Take up to 3 questions
+    const selected = shuffled.slice(0, Math.min(3, shuffled.length));
+
+    console.log(`Selected ${selected.length} questions from difficulty ${difficulty}`);
+    return selected;
 }
 
 // Get difficulty index
@@ -355,9 +362,10 @@ function randomizeAnswers(answers) {
 function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
     const newMaterials = [];
 
-    if (showAnswers && currentQuestion) {
-        // Show answers on active faces only (right, top, front)
-        const answers = currentQuestion.answers;
+    if (showAnswers && selectedQuestionIndex >= 0 && currentQuestions[selectedQuestionIndex]) {
+        // Show answers for the selected question
+        const selectedQuestion = currentQuestions[selectedQuestionIndex];
+        const answers = selectedQuestion.answers;
 
         for (let i = 0; i < 6; i++) {
             const activeIndex = activeFaces.indexOf(i);
@@ -377,13 +385,13 @@ function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
             }
         }
     } else {
-        // Show question on all active faces (right, top, front)
+        // Show 3 different questions on active faces (right, top, front)
         for (let i = 0; i < 6; i++) {
             const activeIndex = activeFaces.indexOf(i);
-            if (activeIndex !== -1 && currentQuestion) {
+            if (activeIndex !== -1 && currentQuestions[activeIndex]) {
                 // This is an active face - show question
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(currentQuestion.question, colors[i], 35, i === highlightFace)
+                    map: createTextTexture(currentQuestions[activeIndex].question, colors[i], 35, i === highlightFace)
                 }));
             } else {
                 // Inactive face - show blank colored face
@@ -400,29 +408,29 @@ function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
 // Cube variable - will be initialized after data loads
 let cube;
 
-// Function to initialize the cube with first question
+// Function to initialize the cube with 3 questions
 function initializeCube() {
-    // Get first question at d4 difficulty
-    currentQuestion = getNextQuestion(currentDifficulty);
+    // Get 3 questions at d4 difficulty
+    currentQuestions = getThreeQuestions(currentDifficulty);
 
-    if (!currentQuestion) {
+    if (!currentQuestions || currentQuestions.length === 0) {
         console.error('No questions available');
         return;
     }
 
-    console.log('Starting with question:', currentQuestion.question, 'Difficulty:', currentQuestion.difficulty);
+    console.log('Starting with', currentQuestions.length, 'questions at difficulty:', currentDifficulty);
+    currentQuestions.forEach((q, i) => {
+        console.log(`Face ${i}:`, q.question);
+    });
 
-    // Mark question as used
-    usedQuestionIds.add(currentQuestion.id);
-
-    // Initialize materials with question on active faces
+    // Initialize materials with questions on active faces
     const materials = [];
     for (let i = 0; i < 6; i++) {
         const activeIndex = activeFaces.indexOf(i);
-        if (activeIndex !== -1) {
+        if (activeIndex !== -1 && currentQuestions[activeIndex]) {
             // Active face - show question
             materials.push(new THREE.MeshBasicMaterial({
-                map: createTextTexture(currentQuestion.question, colors[i], 35)
+                map: createTextTexture(currentQuestions[activeIndex].question, colors[i], 35)
             }));
         } else {
             // Inactive face - show blank colored face
@@ -495,9 +503,9 @@ function animate(currentTime) {
             renderer.domElement.style.filter = 'blur(0px)';
 
             // Show answers after animation completes
-            if (showingAnswers) {
+            if (showingAnswers && selectedQuestionIndex >= 0) {
                 // Randomize answers into faces
-                randomizeAnswers(currentQuestion.answers);
+                randomizeAnswers(currentQuestions[selectedQuestionIndex].answers);
                 updateCubeMaterials(true);
             }
         }
@@ -516,7 +524,7 @@ const mouse = new THREE.Vector2();
 // Handle click/touch on cube
 function handleInteraction(clientX, clientY) {
     // Don't start new animation if one is already playing or cube not initialized
-    if (isAnimating || !cube || !currentQuestion) return;
+    if (isAnimating || !cube || currentQuestions.length === 0) return;
 
     // Check if timer has expired
     if (timerStarted && !timerActive) {
@@ -549,6 +557,12 @@ function handleInteraction(clientX, clientY) {
             return;
         }
 
+        // Check if there's a question on this face
+        if (!currentQuestions[activeIndex]) {
+            console.log('No question on this face');
+            return;
+        }
+
         if (showingAnswers) {
             // Answering mode
             // Check if this face is disabled
@@ -560,7 +574,8 @@ function handleInteraction(clientX, clientY) {
 
             // Get the actual answer based on mapping
             const answerIndex = answerMapping[activeIndex];
-            const answer = currentQuestion.answers[answerIndex];
+            const selectedQuestion = currentQuestions[selectedQuestionIndex];
+            const answer = selectedQuestion.answers[answerIndex];
 
             if (!answer.correct) {
                 // Wrong answer - disable this face and increment attempt counter
@@ -575,8 +590,12 @@ function handleInteraction(clientX, clientY) {
             // Correct answer! Award points
             awardPoints();
 
+            // Mark this question as used
+            usedQuestionIds.add(selectedQuestion.id);
+            console.log(`Question answered: ${selectedQuestion.question}`);
+
             // Determine next difficulty
-            const nextDiff = getNextDifficulty(currentQuestion.difficulty, currentAttempts);
+            const nextDiff = getNextDifficulty(selectedQuestion.difficulty, currentAttempts);
 
             if (!nextDiff) {
                 console.log('No more questions available!');
@@ -584,21 +603,26 @@ function handleInteraction(clientX, clientY) {
                 return;
             }
 
-            console.log(`Moving from ${currentQuestion.difficulty} to ${nextDiff} (attempts: ${currentAttempts})`);
+            console.log(`Moving from ${selectedQuestion.difficulty} to ${nextDiff} (attempts: ${currentAttempts})`);
             currentDifficulty = nextDiff;
 
-            // Get next question
-            const nextQuestion = getNextQuestion(currentDifficulty);
-            if (!nextQuestion) {
+            // Get next set of 3 questions
+            const nextQuestions = getThreeQuestions(currentDifficulty);
+            if (!nextQuestions || nextQuestions.length === 0) {
                 console.log('No more questions available!');
                 alert('Quiz complete! Your score: ' + totalScore);
                 return;
             }
 
-            currentQuestion = nextQuestion;
-            usedQuestionIds.add(currentQuestion.id);
+            currentQuestions = nextQuestions;
             currentAttempts = 0;
             disabledFaces.clear();
+            selectedQuestionIndex = -1;
+
+            console.log('New questions loaded:');
+            currentQuestions.forEach((q, i) => {
+                console.log(`Face ${i}:`, q.question);
+            });
 
             // Trigger click effect
             clickedFaceIndex = faceIndex;
@@ -614,6 +638,10 @@ function handleInteraction(clientX, clientY) {
             if (!timerStarted) {
                 startTimer();
             }
+
+            // Set which question was selected
+            selectedQuestionIndex = activeIndex;
+            console.log(`Selected question ${activeIndex}:`, currentQuestions[activeIndex].question);
 
             // Trigger click effect
             clickedFaceIndex = faceIndex;

@@ -255,7 +255,7 @@ let timerStarted = false;
 let timerActive = false;
 let timerEndTime = null;
 let timerInterval = null;
-let selectedTimeLimit = 30; // Default 30 seconds (0.5m)
+let selectedTimeLimit = 0; // Default to No timer
 
 // Function to update score display
 function updateScoreDisplay() {
@@ -286,6 +286,18 @@ function awardPoints() {
 // Function to start the timer
 function startTimer() {
     if (timerStarted) return; // Timer already started
+
+    // Check if "No timer" is selected
+    if (selectedTimeLimit === 0) {
+        timerStarted = true;
+        const timerDisplay = document.getElementById('timer-display');
+        if (timerDisplay) {
+            timerDisplay.textContent = 'No Timer';
+            timerDisplay.style.color = '#ffffff';
+        }
+        console.log('No timer selected - timer disabled');
+        return;
+    }
 
     timerStarted = true;
     timerActive = true;

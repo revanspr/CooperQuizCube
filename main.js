@@ -231,7 +231,7 @@ function createTextTexture(text, bgColor, fontSize = 40, isHighlighted = false, 
 
     // Draw label at the top if provided
     if (label) {
-        ctx.fillStyle = '#ffffff';
+        ctx.fillStyle = '#000000';
         ctx.font = 'bold 24px Arial';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'top';
@@ -239,7 +239,7 @@ function createTextTexture(text, bgColor, fontSize = 40, isHighlighted = false, 
     }
 
     // Text
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = '#000000';
     ctx.font = `bold ${fontSize}px Arial`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';

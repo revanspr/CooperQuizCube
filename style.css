@@ -147,7 +147,7 @@ canvas {
     }
 
     #quiz-selector {
-        top: 110px;
+        top: 130px;
         left: 5px;
         padding: 2px 4px;
         font-size: 8px;
@@ -166,7 +166,7 @@ canvas {
     }
 
     #score-display {
-        top: 110px;
+        top: 130px;
         right: 5px;
         padding: 4px 6px;
         font-size: 8px;
@@ -174,7 +174,7 @@ canvas {
     }
 
     #timer-container {
-        top: 140px;
+        top: 160px;
         right: 5px;
         padding: 2px 4px;
         background-color: rgba(0, 0, 0, 0.9);
@@ -200,7 +200,7 @@ canvas {
         align-items: center;
         justify-content: center;
         padding: 140px 5px 50px 5px;
-        margin-top: -30px;
+        margin-top: -60px;
     }
 }
 
@@ -217,7 +217,7 @@ canvas {
     }
 
     #quiz-selector {
-        top: 100px;
+        top: 120px;
         left: 3px;
         padding: 2px 3px;
         font-size: 7px;
@@ -235,7 +235,7 @@ canvas {
     }
 
     #score-display {
-        top: 100px;
+        top: 120px;
         right: 3px;
         padding: 3px 5px;
         font-size: 7px;
@@ -243,7 +243,7 @@ canvas {
     }
 
     #timer-container {
-        top: 120px;
+        top: 140px;
         right: 3px;
         padding: 2px 3px;
         background-color: rgba(0, 0, 0, 0.9);
@@ -264,6 +264,6 @@ canvas {
 
     #canvas-container {
         padding: 125px 3px 45px 3px;
-        margin-top: -30px;
+        margin-top: -60px;
     }
 }

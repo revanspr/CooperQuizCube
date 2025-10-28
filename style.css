@@ -135,7 +135,7 @@ canvas {
 /* Mobile responsive styles */
 @media screen and (max-width: 768px) {
     #question-display {
-        font-size: 6px;
+        font-size: 12px;
         padding: 12px 20px;
         max-width: 90%;
         bottom: -100px;
@@ -199,7 +199,7 @@ canvas {
 
 @media screen and (max-width: 480px) {
     #question-display {
-        font-size: 6px;
+        font-size: 12px;
         padding: 10px 15px;
         max-width: 95%;
     }

@@ -306,11 +306,47 @@ let timerEndTime = null;
 let timerInterval = null;
 let selectedTimeLimit = 0; // Default to No timer
 
+// Question display element
+let questionDisplayElement = null;
+
 // Function to update score display
 function updateScoreDisplay() {
     const scoreElement = document.getElementById('score-display');
     if (scoreElement) {
         scoreElement.textContent = `Score: ${totalScore}`;
+    }
+}
+
+// Function to show question at bottom of screen with animation
+function showQuestionAtBottom(questionText) {
+    if (!questionDisplayElement) {
+        questionDisplayElement = document.getElementById('question-display');
+    }
+
+    if (questionDisplayElement) {
+        questionDisplayElement.textContent = questionText;
+        // Force a reflow to ensure the transition works
+        questionDisplayElement.offsetHeight;
+        questionDisplayElement.classList.remove('removing');
+        questionDisplayElement.classList.add('visible');
+    }
+}
+
+// Function to hide question at bottom of screen with animation
+function hideQuestionAtBottom() {
+    if (!questionDisplayElement) {
+        questionDisplayElement = document.getElementById('question-display');
+    }
+
+    if (questionDisplayElement) {
+        questionDisplayElement.classList.remove('visible');
+        questionDisplayElement.classList.add('removing');
+
+        // Clear the text after animation completes
+        setTimeout(() => {
+            questionDisplayElement.textContent = '';
+            questionDisplayElement.classList.remove('removing');
+        }, 500); // Match the transition duration
     }
 }
 
@@ -689,6 +725,9 @@ function handleInteraction(clientX, clientY) {
             // Correct answer! Award points
             awardPoints();
 
+            // Hide the question display at bottom
+            hideQuestionAtBottom();
+
             // Mark this question as used
             usedQuestionIds.add(selectedQuestion.id);
             console.log(`Question answered: ${selectedQuestion.question}`);
@@ -760,10 +799,14 @@ function handleInteraction(clientX, clientY) {
 
             // Set which question was selected
             selectedQuestionIndex = activeIndex;
-            console.log(`Selected question ${activeIndex}:`, currentQuestions[activeIndex].question);
+            const selectedQuestion = currentQuestions[activeIndex];
+            console.log(`Selected question ${activeIndex}:`, selectedQuestion.question);
+
+            // Show the question at the bottom of the screen
+            showQuestionAtBottom(selectedQuestion.question);
 
             // Randomize answers immediately
-            randomizeAnswers(currentQuestions[activeIndex].answers);
+            randomizeAnswers(selectedQuestion.answers);
 
             // Trigger click effect
             clickedFaceIndex = faceIndex;

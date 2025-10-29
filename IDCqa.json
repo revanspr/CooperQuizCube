@@ -1,0 +1,722 @@
+[
+  {
+    "id": 1,
+    "question": "What does HTML stand for?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Hyper Text Markup Language", "correct": true },
+      { "text": "High Tech Modern Language", "correct": false },
+      { "text": "Home Tool Markup Language", "correct": false }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Which protocol is primarily used for web browsing?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "FTP", "correct": false },
+      { "text": "HTTP/HTTPS", "correct": true },
+      { "text": "SMTP", "correct": false }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "What does CSS stand for?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Computer Style Sheets", "correct": false },
+      { "text": "Cascading Style Sheets", "correct": true },
+      { "text": "Creative Style System", "correct": false }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "Which language is primarily used for adding interactivity to web pages?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Python", "correct": false },
+      { "text": "JavaScript", "correct": true },
+      { "text": "Ruby", "correct": false }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "What is a wireframe in interface design?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "A type of network connection", "correct": false },
+      { "text": "A low-fidelity visual guide for page structure", "correct": true },
+      { "text": "A programming framework", "correct": false }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Which design principle emphasizes making the most important elements stand out?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Proximity", "correct": false },
+      { "text": "Hierarchy", "correct": true },
+      { "text": "Alignment", "correct": false }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "What does the 'responsive design' approach prioritize?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Faster server response times", "correct": false },
+      { "text": "Adapting layouts to different screen sizes", "correct": true },
+      { "text": "Reducing file sizes", "correct": false }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "Which HTML attribute is used to make a link open in a new tab?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "target='_self'", "correct": false },
+      { "text": "target='_blank'", "correct": true },
+      { "text": "href='new'", "correct": false }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "What is the purpose of the Document Object Model (DOM)?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "To store website files", "correct": false },
+      { "text": "To represent the structure of HTML as an object tree", "correct": true },
+      { "text": "To encrypt web traffic", "correct": false }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Which CSS property is used to create animations?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "transition", "correct": false },
+      { "text": "@keyframes with animation", "correct": true },
+      { "text": "transform", "correct": false }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "What is the purpose of semantic HTML?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "To improve website speed", "correct": false },
+      { "text": "To provide meaning and structure for accessibility and SEO", "correct": true },
+      { "text": "To reduce code size", "correct": false }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "Which JavaScript method is used to select an element by its ID?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "querySelector()", "correct": false },
+      { "text": "getElementById()", "correct": true },
+      { "text": "selectElement()", "correct": false }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "What is a dark pattern in web design?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Using dark color schemes", "correct": false },
+      { "text": "Deceptive design that tricks users into unwanted actions", "correct": true },
+      { "text": "Website designs for night mode", "correct": false }
+    ]
+  },
+  {
+    "id": 14,
+    "question": "Which of the following is an example of a dark pattern?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Clear privacy settings", "correct": false },
+      { "text": "Hidden subscription fees in checkout", "correct": true },
+      { "text": "Large font sizes", "correct": false }
+    ]
+  },
+  {
+    "id": 15,
+    "question": "What is web scraping?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Deleting old website content", "correct": false },
+      { "text": "Extracting data from websites automatically", "correct": true },
+      { "text": "Cleaning up website code", "correct": false }
+    ]
+  },
+  {
+    "id": 16,
+    "question": "What are cookies primarily used for on websites?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Improving website graphics", "correct": false },
+      { "text": "Tracking user behavior and storing session data", "correct": true },
+      { "text": "Protecting against viruses", "correct": false }
+    ]
+  },
+  {
+    "id": 17,
+    "question": "What is the 'roach motel' dark pattern?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Websites with poor design quality", "correct": false },
+      { "text": "Making it easy to sign up but difficult to cancel", "correct": true },
+      { "text": "Sites that redirect users repeatedly", "correct": false }
+    ]
+  },
+  {
+    "id": 18,
+    "question": "What does the term 'data mining' refer to?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Storing data in cloud servers", "correct": false },
+      { "text": "Analyzing large datasets to discover patterns", "correct": true },
+      { "text": "Deleting unnecessary data", "correct": false }
+    ]
+  },
+  {
+    "id": 19,
+    "question": "What is 'confirmshaming' in dark patterns?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Requiring email confirmation for accounts", "correct": false },
+      { "text": "Using guilt-inducing language to discourage opting out", "correct": true },
+      { "text": "Shaming users for incorrect passwords", "correct": false }
+    ]
+  },
+  {
+    "id": 20,
+    "question": "Which technology allows websites to track users across multiple sites?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "First-party cookies", "correct": false },
+      { "text": "Third-party cookies and tracking pixels", "correct": true },
+      { "text": "HTML tags", "correct": false }
+    ]
+  },
+  {
+    "id": 21,
+    "question": "What is 'disguised ads' as a dark pattern?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Ads that don't load properly", "correct": false },
+      { "text": "Advertisements designed to look like content or navigation", "correct": true },
+      { "text": "Hidden product placements", "correct": false }
+    ]
+  },
+  {
+    "id": 22,
+    "question": "What is browser fingerprinting used for?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Securing login credentials", "correct": false },
+      { "text": "Tracking users without cookies by identifying unique browser characteristics", "correct": true },
+      { "text": "Improving browser performance", "correct": false }
+    ]
+  },
+  {
+    "id": 23,
+    "question": "What legislation requires websites to disclose cookie usage in the EU?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "COPPA", "correct": false },
+      { "text": "GDPR", "correct": true },
+      { "text": "CCPA", "correct": false }
+    ]
+  },
+  {
+    "id": 24,
+    "question": "What is 'privacy zuckering' named after?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "A security researcher", "correct": false },
+      { "text": "Mark Zuckerberg and tricking users into sharing private information", "correct": true },
+      { "text": "A type of malware", "correct": false }
+    ]
+  },
+  {
+    "id": 25,
+    "question": "What is astroturfing?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Installing artificial grass", "correct": false },
+      { "text": "Creating fake grassroots campaigns or reviews", "correct": true },
+      { "text": "Optimizing search engine rankings", "correct": false }
+    ]
+  },
+  {
+    "id": 26,
+    "question": "What is the 'dead internet theory'?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "The internet will eventually stop working", "correct": false },
+      { "text": "Most online content is generated by bots, not humans", "correct": true },
+      { "text": "Old websites become inaccessible", "correct": false }
+    ]
+  },
+  {
+    "id": 27,
+    "question": "What are click farms?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Automated testing facilities", "correct": false },
+      { "text": "Operations using people or bots to inflate engagement metrics", "correct": true },
+      { "text": "Data centers for cloud computing", "correct": false }
+    ]
+  },
+  {
+    "id": 28,
+    "question": "What is 'doomscrolling'?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Playing video games excessively", "correct": false },
+      { "text": "Endlessly scrolling through negative news content", "correct": true },
+      { "text": "Deleting old social media posts", "correct": false }
+    ]
+  },
+  {
+    "id": 29,
+    "question": "What is the primary purpose of bot farms?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Testing software applications", "correct": false },
+      { "text": "Manipulating social media engagement and spreading misinformation", "correct": true },
+      { "text": "Mining cryptocurrency", "correct": false }
+    ]
+  },
+  {
+    "id": 30,
+    "question": "What is 'manufactured consensus' in online spaces?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Democratic voting on website features", "correct": false },
+      { "text": "Creating the illusion of widespread agreement through fake accounts", "correct": true },
+      { "text": "Automated content moderation", "correct": false }
+    ]
+  },
+  {
+    "id": 31,
+    "question": "What is a 'sock puppet account'?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "An account for puppetry enthusiasts", "correct": false },
+      { "text": "A fake online identity used to deceive or manipulate", "correct": true },
+      { "text": "A demo account for testing", "correct": false }
+    ]
+  },
+  {
+    "id": 32,
+    "question": "What psychological effect does misinformation exploit?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "The Dunning-Kruger effect", "correct": false },
+      { "text": "Confirmation bias and emotional reasoning", "correct": true },
+      { "text": "The placebo effect", "correct": false }
+    ]
+  },
+  {
+    "id": 33,
+    "question": "What is 'computational propaganda'?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Teaching propaganda in computer science", "correct": false },
+      { "text": "Using algorithms and automation to manipulate public opinion", "correct": true },
+      { "text": "Propaganda about technology", "correct": false }
+    ]
+  },
+  {
+    "id": 34,
+    "question": "What role do 'troll farms' play in online discourse?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Moderating online communities", "correct": false },
+      { "text": "Coordinated campaigns to spread disinformation and sow discord", "correct": true },
+      { "text": "Creating humorous content", "correct": false }
+    ]
+  },
+  {
+    "id": 35,
+    "question": "What is the 'illusory truth effect' in the context of misinformation?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "People believe optical illusions online", "correct": false },
+      { "text": "Repeated exposure to false information increases belief in it", "correct": true },
+      { "text": "Truth always prevails on the internet", "correct": false }
+    ]
+  },
+  {
+    "id": 36,
+    "question": "What percentage of internet traffic is estimated to be bot-generated?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "10-20%", "correct": false },
+      { "text": "40-50%", "correct": true },
+      { "text": "70-80%", "correct": false }
+    ]
+  },
+  {
+    "id": 37,
+    "question": "What does AI stand for?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Automatic Intelligence", "correct": false },
+      { "text": "Artificial Intelligence", "correct": true },
+      { "text": "Advanced Internet", "correct": false }
+    ]
+  },
+  {
+    "id": 38,
+    "question": "Which type of AI is designed to perform specific tasks?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "General AI", "correct": false },
+      { "text": "Narrow AI", "correct": true },
+      { "text": "Super AI", "correct": false }
+    ]
+  },
+  {
+    "id": 39,
+    "question": "What is machine learning?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Teaching computers to physically operate machines", "correct": false },
+      { "text": "Algorithms that learn patterns from data without explicit programming", "correct": true },
+      { "text": "Online courses for robots", "correct": false }
+    ]
+  },
+  {
+    "id": 40,
+    "question": "What does NLP stand for in AI?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Network Learning Protocol", "correct": false },
+      { "text": "Natural Language Processing", "correct": true },
+      { "text": "Neural Logic Programming", "correct": false }
+    ]
+  },
+  {
+    "id": 41,
+    "question": "What is a neural network in AI?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "A network of connected computers", "correct": false },
+      { "text": "A computing system modeled after the human brain", "correct": true },
+      { "text": "A social network for scientists", "correct": false }
+    ]
+  },
+  {
+    "id": 42,
+    "question": "What is the 'training data' in machine learning?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Instructions for programmers", "correct": false },
+      { "text": "Dataset used to teach an AI model patterns", "correct": true },
+      { "text": "Educational materials for AI users", "correct": false }
+    ]
+  },
+  {
+    "id": 43,
+    "question": "What is overfitting in machine learning?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "When a model uses too much memory", "correct": false },
+      { "text": "When a model learns training data too specifically and fails to generalize", "correct": true },
+      { "text": "When too many models are trained", "correct": false }
+    ]
+  },
+  {
+    "id": 44,
+    "question": "What is a Large Language Model (LLM)?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "A translation service", "correct": false },
+      { "text": "An AI trained on vast text data to understand and generate language", "correct": true },
+      { "text": "A programming language compiler", "correct": false }
+    ]
+  },
+  {
+    "id": 45,
+    "question": "What is 'bias' in AI systems?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "The model's preference for certain hardware", "correct": false },
+      { "text": "Systematic errors reflecting prejudices in training data", "correct": true },
+      { "text": "The speed at which AI processes data", "correct": false }
+    ]
+  },
+  {
+    "id": 46,
+    "question": "What is the Turing Test designed to evaluate?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Computer processing speed", "correct": false },
+      { "text": "Whether a machine can exhibit intelligent behavior indistinguishable from a human", "correct": true },
+      { "text": "Software reliability", "correct": false }
+    ]
+  },
+  {
+    "id": 47,
+    "question": "What is 'reinforcement learning'?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Repeating training multiple times", "correct": false },
+      { "text": "Learning through rewards and penalties for actions taken", "correct": true },
+      { "text": "Strengthening computer hardware", "correct": false }
+    ]
+  },
+  {
+    "id": 48,
+    "question": "What does 'explainable AI' (XAI) aim to achieve?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Making AI cheaper to develop", "correct": false },
+      { "text": "Making AI decision-making processes transparent and interpretable", "correct": true },
+      { "text": "Teaching AI to explain concepts to humans", "correct": false }
+    ]
+  },
+  {
+    "id": 49,
+    "question": "What is a deepfake?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "A deep-sea exploration video", "correct": false },
+      { "text": "AI-generated synthetic media that convincingly mimics real people", "correct": true },
+      { "text": "A type of computer virus", "correct": false }
+    ]
+  },
+  {
+    "id": 50,
+    "question": "What technology primarily powers deepfakes?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Blockchain", "correct": false },
+      { "text": "Deep learning and neural networks", "correct": true },
+      { "text": "Quantum computing", "correct": false }
+    ]
+  },
+  {
+    "id": 51,
+    "question": "What is 'face swapping' in deepfakes?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Trading profile pictures on social media", "correct": false },
+      { "text": "Replacing one person's face with another's in video or images", "correct": true },
+      { "text": "A photo editing filter", "correct": false }
+    ]
+  },
+  {
+    "id": 52,
+    "question": "What is 'voice cloning' technology?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Recording someone's voice", "correct": false },
+      { "text": "AI-generated speech that mimics a specific person's voice", "correct": true },
+      { "text": "Using voice recognition for security", "correct": false }
+    ]
+  },
+  {
+    "id": 53,
+    "question": "What does GAN stand for in deepfake technology?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Global AI Network", "correct": false },
+      { "text": "Generative Adversarial Network", "correct": true },
+      { "text": "Graphical Animation Node", "correct": false }
+    ]
+  },
+  {
+    "id": 54,
+    "question": "How do GANs work to create deepfakes?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "By copying existing videos exactly", "correct": false },
+      { "text": "Two networks compete: one generates fakes, one detects them", "correct": true },
+      { "text": "By manually editing each frame", "correct": false }
+    ]
+  },
+  {
+    "id": 55,
+    "question": "What is a common indicator of a deepfake video?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "High video quality", "correct": false },
+      { "text": "Unnatural blinking patterns or facial movements", "correct": true },
+      { "text": "Clear audio", "correct": false }
+    ]
+  },
+  {
+    "id": 56,
+    "question": "What is 'synthetic media'?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Media stored on synthetic materials", "correct": false },
+      { "text": "Content entirely or partially generated by AI", "correct": true },
+      { "text": "Music created with synthesizers", "correct": false }
+    ]
+  },
+  {
+    "id": 57,
+    "question": "What is the C2PA standard designed to address?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Cloud computing protocols", "correct": false },
+      { "text": "Content authentication and provenance to combat deepfakes", "correct": true },
+      { "text": "Copyright protection", "correct": false }
+    ]
+  },
+  {
+    "id": 58,
+    "question": "What is 'liveness detection' used for?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Monitoring server uptime", "correct": false },
+      { "text": "Verifying that biometric input comes from a real, present person", "correct": true },
+      { "text": "Detecting live streaming content", "correct": false }
+    ]
+  },
+  {
+    "id": 59,
+    "question": "What legislation has been proposed to regulate deepfakes?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "SOPA", "correct": false },
+      { "text": "DEEPFAKES Accountability Act", "correct": true },
+      { "text": "COPPA", "correct": false }
+    ]
+  },
+  {
+    "id": 60,
+    "question": "What forensic technique analyzes biological signals to detect deepfakes?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "DNA sequencing", "correct": false },
+      { "text": "Photoplethysmography (detecting blood flow patterns)", "correct": true },
+      { "text": "Fingerprint analysis", "correct": false }
+    ]
+  },
+  {
+    "id": 61,
+    "question": "What is an AI agent?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "A human representative for AI companies", "correct": false },
+      { "text": "An autonomous system that perceives and acts to achieve goals", "correct": true },
+      { "text": "A software license manager", "correct": false }
+    ]
+  },
+  {
+    "id": 62,
+    "question": "What distinguishes an AI agent from a regular program?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "It runs faster", "correct": false },
+      { "text": "It can make autonomous decisions and adapt", "correct": true },
+      { "text": "It uses more memory", "correct": false }
+    ]
+  },
+  {
+    "id": 63,
+    "question": "What is a 'reflex agent'?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "An agent that responds slowly", "correct": false },
+      { "text": "An agent that acts based on current perception without memory", "correct": true },
+      { "text": "An agent that only reflects data", "correct": false }
+    ]
+  },
+  {
+    "id": 64,
+    "question": "What are 'multi-agent systems'?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Multiple copies of the same program", "correct": false },
+      { "text": "Multiple AI agents interacting to solve complex problems", "correct": true },
+      { "text": "Agents that multitask", "correct": false }
+    ]
+  },
+  {
+    "id": 65,
+    "question": "What is the 'environment' in the context of AI agents?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "The room where servers are located", "correct": false },
+      { "text": "The external system or world the agent perceives and acts upon", "correct": true },
+      { "text": "The programming language used", "correct": false }
+    ]
+  },
+  {
+    "id": 66,
+    "question": "What is a 'goal-based agent'?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "An agent focused on sports", "correct": false },
+      { "text": "An agent that makes decisions to achieve specific objectives", "correct": true },
+      { "text": "An agent that sets goals for users", "correct": false }
+    ]
+  },
+  {
+    "id": 67,
+    "question": "What is the 'PEAS' framework for agent design?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Power, Efficiency, Accuracy, Speed", "correct": false },
+      { "text": "Performance, Environment, Actuators, Sensors", "correct": true },
+      { "text": "Process, Execute, Analyze, Store", "correct": false }
+    ]
+  },
+  {
+    "id": 68,
+    "question": "What is 'bounded rationality' in AI agents?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Agents with physical limitations", "correct": false },
+      { "text": "Decision-making limited by computational resources and time", "correct": true },
+      { "text": "Agents confined to specific domains", "correct": false }
+    ]
+  },
+  {
+    "id": 69,
+    "question": "What is a 'utility-based agent'?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "An agent designed for household utilities", "correct": false },
+      { "text": "An agent that maximizes a utility function to measure desirability", "correct": true },
+      { "text": "An agent with multiple useful features", "correct": false }
+    ]
+  },
+  {
+    "id": 70,
+    "question": "What is 'emergent behavior' in multi-agent systems?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Agents activating during emergencies", "correct": false },
+      { "text": "Complex patterns arising from simple agent interactions", "correct": true },
+      { "text": "Agents that appear suddenly", "correct": false }
+    ]
+  },
+  {
+    "id": 71,
+    "question": "What is the 'frame problem' in AI agent design?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Difficulty displaying agent outputs", "correct": false },
+      { "text": "The challenge of representing what remains unchanged after actions", "correct": true },
+      { "text": "Limitation of frames per second in processing", "correct": false }
+    ]
+  },
+  {
+    "id": 72,
+    "question": "What is 'swarm intelligence'?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "AI trained on insect behavior", "correct": false },
+      { "text": "Collective behavior of decentralized, self-organized agents", "correct": true },
+      { "text": "Mass deployment of identical agents", "correct": false }
+    ]
+  }
+]

@@ -3,6 +3,7 @@ import * as THREE from 'three';
 // Questions and answers data - will be loaded from Q&A.json
 let quizData = [];
 let popQuizData = []; // PoP! Quiz data with difficulty levels
+let idcQuizData = []; // IDC Quiz data with difficulty levels
 let currentQuizType = 'pop'; // Default to PoP! Quiz
 let currentQuestions = []; // Array of 3 current questions being displayed
 let usedQuestionIds = new Set(); // Track used questions to prevent repeats
@@ -25,6 +26,17 @@ async function loadQuizData() {
 
         console.log('PoP! Quiz data loaded:', popQuizData.length, 'questions');
 
+        // Load IDC Quiz data
+        const idcResponse = await fetch('./IDCqa.json');
+
+        if (!idcResponse.ok) {
+            throw new Error(`HTTP error! status: ${idcResponse.status}`);
+        }
+
+        idcQuizData = await idcResponse.json();
+
+        console.log('IDC Quiz data loaded:', idcQuizData.length, 'questions');
+
         // Initialize the cube with first question
         initializeCube();
     } catch (error) {
@@ -45,10 +57,16 @@ async function loadQuizData() {
     }
 }
 
+// Get current quiz data based on selected quiz type
+function getCurrentQuizData() {
+    return currentQuizType === 'pop' ? popQuizData : idcQuizData;
+}
+
 // Get 3 different questions from the same difficulty
 function getThreeQuestions(difficulty) {
+    const quizData = getCurrentQuizData();
     // Filter questions by difficulty that haven't been used
-    const availableQuestions = popQuizData.filter(q =>
+    const availableQuestions = quizData.filter(q =>
         q.difficulty === difficulty && !usedQuestionIds.has(q.id)
     );
 
@@ -67,7 +85,7 @@ function getThreeQuestions(difficulty) {
         console.log(`Only ${selected.length} questions available at ${difficulty}, filling with other difficulties`);
 
         // Get all unused questions from other difficulties
-        const otherQuestions = popQuizData.filter(q =>
+        const otherQuestions = quizData.filter(q =>
             q.difficulty !== difficulty && !usedQuestionIds.has(q.id)
         );
 
@@ -89,6 +107,7 @@ function getDifficultyIndex(difficulty) {
 
 // Move to next difficulty level
 function getNextDifficulty(currentDiff, attempts) {
+    const quizData = getCurrentQuizData();
     const currentIndex = getDifficultyIndex(currentDiff);
     let nextIndex = currentIndex;
     let preferredDirection = 0; // 0 = same, 1 = harder, -1 = easier
@@ -99,7 +118,7 @@ function getNextDifficulty(currentDiff, attempts) {
         preferredDirection = 1;
     } else if (attempts === 1) {
         // Second try - check if this is the last question in difficulty
-        const remainingInCurrentDiff = popQuizData.filter(q =>
+        const remainingInCurrentDiff = quizData.filter(q =>
             q.difficulty === currentDiff && !usedQuestionIds.has(q.id)
         ).length;
 
@@ -121,7 +140,7 @@ function getNextDifficulty(currentDiff, attempts) {
     // Find next available difficulty level in preferred direction
     while (nextIndex >= 0 && nextIndex < difficultyLevels.length) {
         const testDifficulty = difficultyLevels[nextIndex];
-        const availableQuestions = popQuizData.filter(q =>
+        const availableQuestions = quizData.filter(q =>
             q.difficulty === testDifficulty && !usedQuestionIds.has(q.id)
         );
 
@@ -142,7 +161,7 @@ function getNextDifficulty(currentDiff, attempts) {
     // First, try going harder from current position
     for (let i = currentIndex + 1; i < difficultyLevels.length; i++) {
         const testDifficulty = difficultyLevels[i];
-        const availableQuestions = popQuizData.filter(q =>
+        const availableQuestions = quizData.filter(q =>
             q.difficulty === testDifficulty && !usedQuestionIds.has(q.id)
         );
 
@@ -155,7 +174,7 @@ function getNextDifficulty(currentDiff, attempts) {
     // Then try going easier from current position
     for (let i = currentIndex - 1; i >= 0; i--) {
         const testDifficulty = difficultyLevels[i];
-        const availableQuestions = popQuizData.filter(q =>
+        const availableQuestions = quizData.filter(q =>
             q.difficulty === testDifficulty && !usedQuestionIds.has(q.id)
         );
 
@@ -535,8 +554,9 @@ let cube;
 
 // Function to initialize the cube with 3 questions
 function initializeCube() {
+    const quizData = getCurrentQuizData();
     console.log('initializeCube called');
-    console.log('popQuizData length:', popQuizData.length);
+    console.log(`${currentQuizType} Quiz data length:`, quizData.length);
     console.log('currentDifficulty:', currentDifficulty);
 
     // Get 3 questions at d4 difficulty
@@ -859,6 +879,51 @@ window.addEventListener('resize', () => {
     renderer.render(scene, camera);
 });
 
+// Function to handle quiz type selection
+function handleQuizTypeChange() {
+    const selectElement = document.getElementById('quiz-select');
+    if (selectElement) {
+        const newQuizType = selectElement.value;
+        if (newQuizType !== currentQuizType) {
+            console.log(`Switching quiz from ${currentQuizType} to ${newQuizType}`);
+            currentQuizType = newQuizType;
+
+            // Reset quiz state
+            usedQuestionIds.clear();
+            currentDifficulty = 'd4';
+            currentAttempts = 0;
+            selectedQuestionIndex = -1;
+            showingAnswers = false;
+            disabledFaces.clear();
+            totalScore = 0;
+            updateScoreDisplay();
+
+            // Reset timer
+            timerStarted = false;
+            timerActive = false;
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+            const timerDisplay = document.getElementById('timer-display');
+            if (timerDisplay) {
+                timerDisplay.textContent = 'Not Started';
+                timerDisplay.style.color = '#ffffff';
+            }
+
+            // Hide question display
+            hideQuestionAtBottom();
+
+            // Remove old cube
+            if (cube) {
+                scene.remove(cube);
+            }
+
+            // Initialize with new quiz data
+            initializeCube();
+        }
+    }
+}
+
 // Initialize time limit dropdown
 window.addEventListener('DOMContentLoaded', () => {
     const timeSelect = document.getElementById('time-select');
@@ -868,6 +933,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
         // Listen for changes
         timeSelect.addEventListener('change', handleTimeLimitChange);
+    }
+
+    // Initialize quiz selector
+    const quizSelect = document.getElementById('quiz-select');
+    if (quizSelect) {
+        // Listen for changes
+        quizSelect.addEventListener('change', handleQuizTypeChange);
     }
 });
 

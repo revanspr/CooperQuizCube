@@ -4,6 +4,7 @@ import * as THREE from 'three';
 let quizData = [];
 let popQuizData = []; // PoP! Quiz data with difficulty levels
 let idcQuizData = []; // IDC Quiz data with difficulty levels
+let radioheadQuizData = []; // Radiohead Quiz data with difficulty levels
 let currentQuizType = 'pop'; // Default to PoP! Quiz
 let currentQuestions = []; // Array of 3 current questions being displayed
 let usedQuestionIds = new Set(); // Track used questions to prevent repeats
@@ -37,6 +38,17 @@ async function loadQuizData() {
 
         console.log('IDC Quiz data loaded:', idcQuizData.length, 'questions');
 
+        // Load Radiohead Quiz data
+        const radioheadResponse = await fetch('./RadioHead.json');
+
+        if (!radioheadResponse.ok) {
+            throw new Error(`HTTP error! status: ${radioheadResponse.status}`);
+        }
+
+        radioheadQuizData = await radioheadResponse.json();
+
+        console.log('Radiohead Quiz data loaded:', radioheadQuizData.length, 'questions');
+
         // Initialize the cube with first question
         initializeCube();
     } catch (error) {
@@ -59,7 +71,14 @@ async function loadQuizData() {
 
 // Get current quiz data based on selected quiz type
 function getCurrentQuizData() {
-    return currentQuizType === 'pop' ? popQuizData : idcQuizData;
+    if (currentQuizType === 'pop') {
+        return popQuizData;
+    } else if (currentQuizType === 'idc') {
+        return idcQuizData;
+    } else if (currentQuizType === 'radiohead') {
+        return radioheadQuizData;
+    }
+    return popQuizData; // Default fallback
 }
 
 // Get 3 different questions from the same difficulty

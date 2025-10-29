@@ -769,14 +769,18 @@ function handleInteraction(clientX, clientY) {
             const selectedQuestion = currentQuestions[selectedQuestionIndex];
             const answer = selectedQuestion.answers[answerIndex];
 
+            // Trigger click effect (1 second highlight) for the clicked answer
+            clickedFaceIndex = faceIndex;
+            clickEffectStartTime = performance.now();
+            updateCubeMaterials(true, faceIndex);
+
             if (!answer.correct) {
                 // Wrong answer - disable this face and increment attempt counter
                 disabledFaces.add(activeIndex);
                 currentAttempts++;
                 console.log('Wrong answer! Face disabled. Attempts:', currentAttempts);
-                // Update materials to remove text from this face
-                updateCubeMaterials(true, -1);
-                return; // Don't animate or change state
+                // Don't animate or change state, just wait for highlight to fade
+                return;
             }
 
             // Correct answer! Award points

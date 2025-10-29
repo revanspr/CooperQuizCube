@@ -466,8 +466,25 @@ function handleTimeLimitChange() {
     }
 }
 
+// Randomize questions into active faces
+let questionMapping = []; // Maps active face index (0, 1, 2) to question index (0, 1, 2)
+
+function randomizeQuestions() {
+    // Create array of indices [0, 1, 2]
+    const indices = [0, 1, 2];
+
+    // Shuffle the indices
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+
+    questionMapping = indices;
+    console.log('Question mapping:', questionMapping);
+}
+
 // Randomize answers into active faces
-let answerMapping = []; // Maps face index to answer index
+let answerMapping = []; // Maps active face index (0, 1, 2) to answer index (0, 1, 2)
 let disabledFaces = new Set(); // Track disabled faces for current question
 
 function randomizeAnswers(answers) {
@@ -529,13 +546,22 @@ function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
         // Show 3 different questions on active faces (right, top, front)
         for (let i = 0; i < 6; i++) {
             const activeIndex = activeFaces.indexOf(i);
-            if (activeIndex !== -1 && currentQuestions[activeIndex]) {
-                // This is an active face - show question
-                const questionText = currentQuestions[activeIndex].question;
-                console.log(`Face ${i} (activeIndex ${activeIndex}): ${questionText.substring(0, 50)}...`);
-                newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(questionText, colors[i], 35, i === highlightFace)
-                }));
+            if (activeIndex !== -1) {
+                // This is an active face - show question using question mapping
+                const questionIndex = questionMapping[activeIndex];
+                if (questionIndex !== undefined && currentQuestions[questionIndex]) {
+                    const questionText = currentQuestions[questionIndex].question;
+                    console.log(`Face ${i} (activeIndex ${activeIndex}, questionIndex ${questionIndex}): ${questionText.substring(0, 50)}...`);
+                    newMaterials.push(new THREE.MeshBasicMaterial({
+                        map: createTextTexture(questionText, colors[i], 35, i === highlightFace)
+                    }));
+                } else {
+                    // No question for this face
+                    console.log(`Face ${i}: blank (no question mapped)`);
+                    newMaterials.push(new THREE.MeshBasicMaterial({
+                        map: createTextTexture('', colors[i], 35, i === highlightFace)
+                    }));
+                }
             } else {
                 // Inactive face - show blank colored face
                 console.log(`Face ${i}: blank (activeIndex: ${activeIndex})`);
@@ -570,21 +596,32 @@ function initializeCube() {
         return;
     }
 
+    // Randomize which question appears on which face
+    randomizeQuestions();
+
     console.log('Starting with', currentQuestions.length, 'questions at difficulty:', currentDifficulty);
     currentQuestions.forEach((q, i) => {
-        console.log(`Face ${i}:`, q.question);
+        console.log(`Question ${i}:`, q.question);
     });
 
     // Initialize materials with questions on active faces
     const materials = [];
     for (let i = 0; i < 6; i++) {
         const activeIndex = activeFaces.indexOf(i);
-        if (activeIndex !== -1 && currentQuestions[activeIndex]) {
-            // Active face - show question
-            console.log(`Creating material for face ${i} with question:`, currentQuestions[activeIndex].question);
-            materials.push(new THREE.MeshBasicMaterial({
-                map: createTextTexture(currentQuestions[activeIndex].question, colors[i], 35)
-            }));
+        if (activeIndex !== -1) {
+            // Active face - show question using question mapping
+            const questionIndex = questionMapping[activeIndex];
+            if (questionIndex !== undefined && currentQuestions[questionIndex]) {
+                console.log(`Creating material for face ${i} (activeIndex ${activeIndex}) with question ${questionIndex}:`, currentQuestions[questionIndex].question);
+                materials.push(new THREE.MeshBasicMaterial({
+                    map: createTextTexture(currentQuestions[questionIndex].question, colors[i], 35)
+                }));
+            } else {
+                console.log(`Creating blank material for face ${i} (no question mapped)`);
+                materials.push(new THREE.MeshBasicMaterial({
+                    map: createTextTexture('', colors[i], 35)
+                }));
+            }
         } else {
             // Inactive face - show blank colored face
             console.log(`Creating blank material for face ${i}`);
@@ -784,13 +821,17 @@ function handleInteraction(clientX, clientY) {
             }
 
             currentQuestions = nextQuestions;
+
+            // Randomize which question appears on which face
+            randomizeQuestions();
+
             currentAttempts = 0;
             disabledFaces.clear();
             selectedQuestionIndex = -1;
 
             console.log('New questions loaded:');
             currentQuestions.forEach((q, i) => {
-                console.log(`Face ${i}:`, q.question);
+                console.log(`Question ${i}:`, q.question);
             });
 
             // Go back to question display
@@ -817,10 +858,13 @@ function handleInteraction(clientX, clientY) {
                 startTimer();
             }
 
-            // Set which question was selected
-            selectedQuestionIndex = activeIndex;
-            const selectedQuestion = currentQuestions[activeIndex];
-            console.log(`Selected question ${activeIndex}:`, selectedQuestion.question);
+            // Get the actual question index from the mapping
+            const questionIndex = questionMapping[activeIndex];
+            const selectedQuestion = currentQuestions[questionIndex];
+
+            // Set which question was selected (using the actual question index)
+            selectedQuestionIndex = questionIndex;
+            console.log(`Selected face ${activeIndex} -> question ${questionIndex}:`, selectedQuestion.question);
 
             // Show the question at the bottom of the screen
             showQuestionAtBottom(selectedQuestion.question);

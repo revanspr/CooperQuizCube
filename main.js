@@ -224,7 +224,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
 // Function to create a canvas texture with text (supports multi-line)
-function createTextTexture(text, bgColor, fontSize = 40, isHighlighted = false, label = '') {
+function createTextTexture(text, bgColor, fontSize = 40, label = '') {
     const canvas = document.createElement('canvas');
     canvas.width = 512;
     canvas.height = 512;
@@ -233,20 +233,6 @@ function createTextTexture(text, bgColor, fontSize = 40, isHighlighted = false, 
     // Background
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Add highlight effect
-    if (isHighlighted) {
-        // Add bright border
-        ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth = 20;
-        ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
-
-        // Add glow effect
-        ctx.shadowColor = '#ffffff';
-        ctx.shadowBlur = 30;
-        ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
-        ctx.shadowBlur = 0;
-    }
 
     // Draw label at the top if provided
     if (label) {
@@ -311,9 +297,6 @@ const activeFaceLabels = ['Right', 'Top', 'Front']; // Display names for active 
 
 // State management
 let showingAnswers = false;
-let clickedFaceIndex = -1;
-let clickEffectStartTime = 0;
-const clickEffectDuration = 300; // 300ms flash effect
 
 // Score tracking
 let totalScore = 0;
@@ -502,7 +485,7 @@ function randomizeAnswers(answers) {
 }
 
 // Function to update cube materials
-function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
+function updateCubeMaterials(showAnswers = false) {
     const newMaterials = [];
 
     if (showAnswers && selectedQuestionIndex >= 0 && currentQuestions[selectedQuestionIndex]) {
@@ -525,7 +508,7 @@ function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
                 if (answerIndex === undefined || !answers[answerIndex]) {
                     console.error(`Invalid answerIndex ${answerIndex} for activeIndex ${activeIndex}`);
                     newMaterials.push(new THREE.MeshBasicMaterial({
-                        map: createTextTexture('', colors[i], 50, i === highlightFace)
+                        map: createTextTexture('', colors[i], 50)
                     }));
                     continue;
                 }
@@ -533,12 +516,12 @@ function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
                 const text = isDisabled ? '' : answers[answerIndex].text;
                 console.log(`Face ${i} (activeIndex ${activeIndex}): answer ${answerIndex} = ${text}`);
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(text, colors[i], 50, i === highlightFace)
+                    map: createTextTexture(text, colors[i], 50)
                 }));
             } else {
                 // Inactive face - show blank colored face
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture('', colors[i], 50, i === highlightFace)
+                    map: createTextTexture('', colors[i], 50)
                 }));
             }
         }
@@ -553,20 +536,20 @@ function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
                     const questionText = currentQuestions[questionIndex].question;
                     console.log(`Face ${i} (activeIndex ${activeIndex}, questionIndex ${questionIndex}): ${questionText.substring(0, 50)}...`);
                     newMaterials.push(new THREE.MeshBasicMaterial({
-                        map: createTextTexture(questionText, colors[i], 35, i === highlightFace)
+                        map: createTextTexture(questionText, colors[i], 35)
                     }));
                 } else {
                     // No question for this face
                     console.log(`Face ${i}: blank (no question mapped)`);
                     newMaterials.push(new THREE.MeshBasicMaterial({
-                        map: createTextTexture('', colors[i], 35, i === highlightFace)
+                        map: createTextTexture('', colors[i], 35)
                     }));
                 }
             } else {
                 // Inactive face - show blank colored face
                 console.log(`Face ${i}: blank (activeIndex: ${activeIndex})`);
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture('', colors[i], 35, i === highlightFace)
+                    map: createTextTexture('', colors[i], 35)
                 }));
             }
         }
@@ -657,16 +640,6 @@ function animate(currentTime) {
     if (!cube) {
         renderer.render(scene, camera);
         return;
-    }
-
-    // Handle click effect
-    if (clickedFaceIndex >= 0) {
-        const clickElapsed = currentTime - clickEffectStartTime;
-        if (clickElapsed >= clickEffectDuration) {
-            // Click effect finished, remove highlight
-            clickedFaceIndex = -1;
-            updateCubeMaterials(showingAnswers);
-        }
     }
 
     if (isAnimating) {
@@ -775,7 +748,7 @@ function handleInteraction(clientX, clientY) {
                 currentAttempts++;
                 console.log('Wrong answer! Face disabled. Attempts:', currentAttempts);
                 // Update materials to remove text from this face
-                updateCubeMaterials(true, -1);
+                updateCubeMaterials(true);
                 return; // Don't animate or change state
             }
 
@@ -836,7 +809,7 @@ function handleInteraction(clientX, clientY) {
 
             // Go back to question display
             showingAnswers = false;
-            updateCubeMaterials(false, faceIndex);
+            updateCubeMaterials(false);
 
             // Start spin animation (isAnimating already set to true above)
             animationStartTime = performance.now();
@@ -871,11 +844,6 @@ function handleInteraction(clientX, clientY) {
 
             // Randomize answers immediately
             randomizeAnswers(selectedQuestion.answers);
-
-            // Trigger click effect
-            clickedFaceIndex = faceIndex;
-            clickEffectStartTime = performance.now();
-            updateCubeMaterials(false, faceIndex);
 
             // Set to show answers mode
             showingAnswers = true;

@@ -565,10 +565,26 @@ function showTimeUpEffect() {
     isAnimating = false;
     showingAnswers = false;
 
+    // Freeze cube at current rotation position
+    // Store current rotation as both start and target to prevent any future rotation
+    startRotation = {
+        x: cube.rotation.x,
+        y: cube.rotation.y,
+        z: cube.rotation.z
+    };
+    targetRotation = {
+        x: cube.rotation.x,
+        y: cube.rotation.y,
+        z: cube.rotation.z
+    };
+
+    // Remove any blur effect
+    renderer.domElement.style.filter = 'blur(0px)';
+
     // Hide question display if showing
     hideQuestionAtBottom();
 
-    console.log('Time up effect applied to cube - cube is now locked');
+    console.log('Time up effect applied to cube - cube is now frozen and locked');
 }
 
 // Function to update timer display

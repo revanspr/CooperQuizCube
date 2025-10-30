@@ -1062,13 +1062,8 @@ function handleInteraction(clientX, clientY) {
             // Correct answer! Award points
             awardPoints();
 
-            // Hide the question display immediately
-            hideQuestionAtBottom();
-
-            // Hide the answer display after a brief delay to allow user to see it
-            setTimeout(() => {
-                hideAnswerAtBottom();
-            }, 1000); // 1 second delay
+            // Keep the question and answer bubbles visible until new question is selected
+            // Don't hide them here
 
             // Mark this question as used
             usedQuestionIds.add(selectedQuestion.id);
@@ -1150,6 +1145,9 @@ function handleInteraction(clientX, clientY) {
             // Set which question was selected (using the actual question index)
             selectedQuestionIndex = questionIndex;
             console.log(`Selected face ${activeIndex} -> question ${questionIndex}:`, selectedQuestion.question);
+
+            // Hide the answer bubble from previous question (if any)
+            hideAnswerAtBottom();
 
             // Show the question at the bottom of the screen
             showQuestionAtBottom(selectedQuestion.question);

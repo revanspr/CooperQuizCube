@@ -270,6 +270,74 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 document.getElementById('canvas-container').appendChild(renderer.domElement);
 
+// Function to create a canvas texture with melting text effect
+function createMeltingTextTexture(text, bgColor) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 512;
+    canvas.height = 512;
+    const ctx = canvas.getContext('2d');
+
+    // Blood red background
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Draw melting text
+    ctx.fillStyle = '#8B0000'; // Dark red/blood red
+    ctx.font = 'bold 80px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    // Add dripping shadow effect
+    ctx.shadowColor = '#FF0000';
+    ctx.shadowBlur = 20;
+    ctx.shadowOffsetY = 5;
+
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+
+    // Draw main text
+    ctx.fillText(text, centerX, centerY);
+
+    // Create drip effect - multiple drips at different positions
+    const words = text.split(' ');
+    const wordSpacing = 120;
+    const startX = centerX - ((words.length - 1) * wordSpacing) / 2;
+
+    words.forEach((word, wordIndex) => {
+        const wordX = startX + wordIndex * wordSpacing;
+
+        // Create 2-3 drips per word at random positions within the word width
+        const numDrips = Math.floor(Math.random() * 2) + 2;
+        for (let i = 0; i < numDrips; i++) {
+            const dripX = wordX + (Math.random() - 0.5) * 60;
+            const dripStartY = centerY + 35;
+            const dripLength = Math.random() * 40 + 30;
+
+            // Draw drip as a gradient
+            const gradient = ctx.createLinearGradient(dripX, dripStartY, dripX, dripStartY + dripLength);
+            gradient.addColorStop(0, '#8B0000');
+            gradient.addColorStop(0.7, '#8B0000');
+            gradient.addColorStop(1, 'rgba(139, 0, 0, 0)');
+
+            ctx.fillStyle = gradient;
+            ctx.shadowBlur = 10;
+
+            // Draw drip shape (tapered)
+            ctx.beginPath();
+            ctx.moveTo(dripX - 3, dripStartY);
+            ctx.lineTo(dripX - 2, dripStartY + dripLength * 0.7);
+            ctx.lineTo(dripX, dripStartY + dripLength);
+            ctx.lineTo(dripX + 2, dripStartY + dripLength * 0.7);
+            ctx.lineTo(dripX + 3, dripStartY);
+            ctx.closePath();
+            ctx.fill();
+        }
+    });
+
+    const texture = new THREE.CanvasTexture(canvas);
+    return texture;
+}
+
 // Function to create a canvas texture with text (supports multi-line)
 function createTextTexture(text, bgColor, fontSize = 40, isHighlighted = false, label = '') {
     const canvas = document.createElement('canvas');
@@ -371,6 +439,7 @@ let timerActive = false;
 let timerEndTime = null;
 let timerInterval = null;
 let selectedTimeLimit = 0; // Default to No timer
+let isTimeUp = false; // Track if time has expired for visual effect
 
 // Question display element
 let questionDisplayElement = null;
@@ -467,6 +536,33 @@ function startTimer() {
     console.log(`Timer started for ${timeLimitSeconds} second(s)`);
 }
 
+// Function to show "Time Up!" blood red effect on cube
+function showTimeUpEffect() {
+    if (!cube) return;
+
+    const bloodRed = '#8B0000'; // Dark blood red
+    const newMaterials = [];
+
+    // Set all 6 faces to blood red
+    for (let i = 0; i < 6; i++) {
+        const activeIndex = activeFaces.indexOf(i);
+        if (activeIndex !== -1) {
+            // Active face - show melting "Time up!" text
+            newMaterials.push(new THREE.MeshBasicMaterial({
+                map: createMeltingTextTexture('Time up!', bloodRed)
+            }));
+        } else {
+            // Inactive face - solid blood red
+            newMaterials.push(new THREE.MeshBasicMaterial({
+                map: createTextTexture('', bloodRed, 50)
+            }));
+        }
+    }
+
+    cube.material = newMaterials;
+    console.log('Time up effect applied to cube');
+}
+
 // Function to update timer display
 function updateTimerDisplay() {
     const timerDisplay = document.getElementById('timer-display');
@@ -489,8 +585,12 @@ function updateTimerDisplay() {
         timerDisplay.textContent = 'Time Up!';
         timerDisplay.style.color = '#ff0000';
         timerActive = false;
+        isTimeUp = true; // Set time up flag
         clearInterval(timerInterval);
         console.log('Timer expired!');
+
+        // Trigger blood red visual effect on cube
+        showTimeUpEffect();
         return;
     }
 
@@ -996,6 +1096,7 @@ function handleQuizTypeChange() {
             // Reset timer
             timerStarted = false;
             timerActive = false;
+            isTimeUp = false;
             if (timerInterval) {
                 clearInterval(timerInterval);
             }

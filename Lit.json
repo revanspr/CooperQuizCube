@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "question": "What is Thomas Mann's most famous novel about a sanatorium in the Swiss Alps?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Doctor Faustus", "correct": false },
+      { "text": "The Magic Mountain", "correct": true },
+      { "text": "Buddenbrooks", "correct": false }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Which Thomas Mann novella tells the story of an aging writer obsessed with a beautiful boy?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Tonio Kröger", "correct": false },
+      { "text": "Death in Venice", "correct": true },
+      { "text": "Mario and the Magician", "correct": false }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "What is the name of the family in Mann's novel Buddenbrooks?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "The Castorps", "correct": false },
+      { "text": "The Buddenbrooks", "correct": true },
+      { "text": "The Leverkühns", "correct": false }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "Which Thomas Mann novel is based on the Faust legend?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "The Magic Mountain", "correct": false },
+      { "text": "Doctor Faustus", "correct": true },
+      { "text": "Joseph and His Brothers", "correct": false }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "What year did Thomas Mann win the Nobel Prize in Literature?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "1924", "correct": false },
+      { "text": "1929", "correct": true },
+      { "text": "1935", "correct": false }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Which Mann work is a tetralogy retelling the biblical story of Joseph?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "The Holy Sinner", "correct": false },
+      { "text": "Joseph and His Brothers", "correct": true },
+      { "text": "The Black Swan", "correct": false }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "In Death in Venice, what city does Gustav von Aschenbach visit?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Rome", "correct": false },
+      { "text": "Venice", "correct": true },
+      { "text": "Florence", "correct": false }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What is the name of the composer protagonist in Doctor Faustus?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Hans Castorp", "correct": false },
+      { "text": "Adrian Leverkühn", "correct": true },
+      { "text": "Tonio Kröger", "correct": false }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Which Thomas Mann novella features a hypnotic performer in an Italian village?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Disorder and Early Sorrow", "correct": false },
+      { "text": "Mario and the Magician", "correct": true },
+      { "text": "The Black Swan", "correct": false }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "What country did Thomas Mann flee to when the Nazis came to power?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "England", "correct": false },
+      { "text": "Switzerland", "correct": true },
+      { "text": "France", "correct": false }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Which Calvino novel features a baron who lives his entire life in trees?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "The Nonexistent Knight", "correct": false },
+      { "text": "The Baron in the Trees", "correct": true },
+      { "text": "Invisible Cities", "correct": false }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "What is Calvino's novel about Marco Polo describing cities to Kublai Khan?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "If on a winter's night a traveler", "correct": false },
+      { "text": "Invisible Cities", "correct": true },
+      { "text": "Cosmicomics", "correct": false }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "Which Calvino work is a metafictional novel about reading novels?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "The Castle of Crossed Destinies", "correct": false },
+      { "text": "If on a winter's night a traveler", "correct": true },
+      { "text": "Mr. Palomar", "correct": false }
+    ]
+  },
+  {
+    "id": 14,
+    "question": "What is the name of Calvino's trilogy about a fantastical Italian family?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "The Italian Chronicles", "correct": false },
+      { "text": "Our Ancestors", "correct": true },
+      { "text": "The Fantastic Tales", "correct": false }
+    ]
+  },
+  {
+    "id": 15,
+    "question": "Which Calvino book features stories narrated by an ancient cosmic being?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Mr. Palomar", "correct": false },
+      { "text": "Cosmicomics", "correct": true },
+      { "text": "Invisible Cities", "correct": false }
+    ]
+  },
+  {
+    "id": 16,
+    "question": "What is the title of Calvino's novel about a suit of armor with no one inside?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "The Baron in the Trees", "correct": false },
+      { "text": "The Nonexistent Knight", "correct": true },
+      { "text": "The Cloven Viscount", "correct": false }
+    ]
+  },
+  {
+    "id": 17,
+    "question": "In which city was Italo Calvino born?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Rome", "correct": false },
+      { "text": "Santiago de las Vegas, Cuba", "correct": true },
+      { "text": "Turin", "correct": false }
+    ]
+  },
+  {
+    "id": 18,
+    "question": "What is the name of the character who lives his life on trees in The Baron in the Trees?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Agilulfo", "correct": false },
+      { "text": "Cosimo", "correct": true },
+      { "text": "Medardo", "correct": false }
+    ]
+  },
+  {
+    "id": 19,
+    "question": "Which Calvino novel features a viscount split into good and evil halves?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "The Baron in the Trees", "correct": false },
+      { "text": "The Cloven Viscount", "correct": true },
+      { "text": "The Nonexistent Knight", "correct": false }
+    ]
+  },
+  {
+    "id": 20,
+    "question": "What literary movement was Calvino associated with in Italy?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Futurism", "correct": false },
+      { "text": "Neorealism", "correct": true },
+      { "text": "Verismo", "correct": false }
+    ]
+  },
+  {
+    "id": 21,
+    "question": "Which Le Guin series features the planets of Gethen and Anarres?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Earthsea", "correct": false },
+      { "text": "Hainish Cycle", "correct": true },
+      { "text": "Annals of the Western Shore", "correct": false }
+    ]
+  },
+  {
+    "id": 22,
+    "question": "What is the name of the wizard protagonist in the Earthsea series?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Shevek", "correct": false },
+      { "text": "Ged", "correct": true },
+      { "text": "Estraven", "correct": false }
+    ]
+  },
+  {
+    "id": 23,
+    "question": "Which Le Guin novel features a planet where inhabitants can change gender?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "The Dispossessed", "correct": false },
+      { "text": "The Left Hand of Darkness", "correct": true },
+      { "text": "The Word for World is Forest", "correct": false }
+    ]
+  },
+  {
+    "id": 24,
+    "question": "What is the anarchist planet called in The Dispossessed?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Urras", "correct": false },
+      { "text": "Anarres", "correct": true },
+      { "text": "Gethen", "correct": false }
+    ]
+  },
+  {
+    "id": 25,
+    "question": "What is the first book in the Earthsea Cycle?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "The Tombs of Atuan", "correct": false },
+      { "text": "A Wizard of Earthsea", "correct": true },
+      { "text": "The Farthest Shore", "correct": false }
+    ]
+  },
+  {
+    "id": 26,
+    "question": "Which Le Guin novella critiques exploitation through an allegory about a suffering child?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "The Day Before the Revolution", "correct": false },
+      { "text": "The Ones Who Walk Away from Omelas", "correct": true },
+      { "text": "Nine Lives", "correct": false }
+    ]
+  },
+  {
+    "id": 27,
+    "question": "What is Ged's true name in the Earthsea series?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Sparrowhawk", "correct": false },
+      { "text": "Ged", "correct": true },
+      { "text": "Archmage", "correct": false }
+    ]
+  },
+  {
+    "id": 28,
+    "question": "Which Le Guin novel is subtitled 'An Ambiguous Utopia'?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "The Left Hand of Darkness", "correct": false },
+      { "text": "The Dispossessed", "correct": true },
+      { "text": "Always Coming Home", "correct": false }
+    ]
+  },
+  {
+    "id": 29,
+    "question": "What planet is the setting for The Left Hand of Darkness?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Anarres", "correct": false },
+      { "text": "Gethen (Winter)", "correct": true },
+      { "text": "Athshe", "correct": false }
+    ]
+  },
+  {
+    "id": 30,
+    "question": "Which famous author was Ursula K. Le Guin's father?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Carl Jung", "correct": false },
+      { "text": "Alfred Kroeber", "correct": true },
+      { "text": "Joseph Campbell", "correct": false }
+    ]
+  },
+  {
+    "id": 31,
+    "question": "What novel by Philip K. Dick inspired the film Blade Runner?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "A Scanner Darkly", "correct": false },
+      { "text": "Do Androids Dream of Electric Sheep?", "correct": true },
+      { "text": "Ubik", "correct": false }
+    ]
+  },
+  {
+    "id": 32,
+    "question": "Which PKD novel features a reality-altering aerosol spray?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "The Three Stigmata of Palmer Eldritch", "correct": false },
+      { "text": "Ubik", "correct": true },
+      { "text": "Flow My Tears, the Policeman Said", "correct": false }
+    ]
+  },
+  {
+    "id": 33,
+    "question": "What is the name of the alternate history novel where the Axis won WWII?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Time Out of Joint", "correct": false },
+      { "text": "The Man in the High Castle", "correct": true },
+      { "text": "The Penultimate Truth", "correct": false }
+    ]
+  },
+  {
+    "id": 34,
+    "question": "Which PKD novel features an undercover narcotics agent losing his identity?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Ubik", "correct": false },
+      { "text": "A Scanner Darkly", "correct": true },
+      { "text": "VALIS", "correct": false }
+    ]
+  },
+  {
+    "id": 35,
+    "question": "What hallucinogenic drug appears in The Three Stigmata of Palmer Eldritch?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Substance D", "correct": false },
+      { "text": "Chew-Z", "correct": true },
+      { "text": "Can-D", "correct": false }
+    ]
+  },
+  {
+    "id": 36,
+    "question": "Which semi-autobiographical PKD novel explores mystical experiences?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Radio Free Albemuth", "correct": false },
+      { "text": "VALIS", "correct": true },
+      { "text": "The Transmigration of Timothy Archer", "correct": false }
+    ]
+  },
+  {
+    "id": 37,
+    "question": "What book within The Man in the High Castle depicts an alternate reality?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "The Penultimate Truth", "correct": false },
+      { "text": "The Grasshopper Lies Heavy", "correct": true },
+      { "text": "The Book of Changes", "correct": false }
+    ]
+  },
+  {
+    "id": 38,
+    "question": "What drug does Bob Arctor investigate in A Scanner Darkly?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Chew-Z", "correct": false },
+      { "text": "Substance D", "correct": true },
+      { "text": "JJ-180", "correct": false }
+    ]
+  },
+  {
+    "id": 39,
+    "question": "Which PKD novel features Joe Chip fighting entropy?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Martian Time-Slip", "correct": false },
+      { "text": "Ubik", "correct": true },
+      { "text": "Now Wait for Last Year", "correct": false }
+    ]
+  },
+  {
+    "id": 40,
+    "question": "What year did Philip K. Dick die?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "1980", "correct": false },
+      { "text": "1982", "correct": true },
+      { "text": "1984", "correct": false }
+    ]
+  },
+  {
+    "id": 41,
+    "question": "What is Susanna Clarke's debut novel?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Piranesi", "correct": false },
+      { "text": "Jonathan Strange & Mr Norrell", "correct": true },
+      { "text": "The Ladies of Grace Adieu", "correct": false }
+    ]
+  },
+  {
+    "id": 42,
+    "question": "In which time period is Jonathan Strange & Mr Norrell set?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Victorian Era", "correct": false },
+      { "text": "Napoleonic Era", "correct": true },
+      { "text": "Georgian Era", "correct": false }
+    ]
+  },
+  {
+    "id": 43,
+    "question": "What is the name of the mysterious house in Piranesi?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "The Labyrinth", "correct": false },
+      { "text": "The House", "correct": true },
+      { "text": "The Palace", "correct": false }
+    ]
+  },
+  {
+    "id": 44,
+    "question": "Who is the Raven King in Jonathan Strange & Mr Norrell?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Jonathan Strange", "correct": false },
+      { "text": "John Uskglass", "correct": true },
+      { "text": "The gentleman with the thistle-down hair", "correct": false }
+    ]
+  },
+  {
+    "id": 45,
+    "question": "What literary genre does Jonathan Strange & Mr Norrell primarily belong to?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Science Fiction", "correct": false },
+      { "text": "Historical Fantasy", "correct": true },
+      { "text": "Gothic Horror", "correct": false }
+    ]
+  },
+  {
+    "id": 46,
+    "question": "How many halls does the House in Piranesi contain?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Countless", "correct": false },
+      { "text": "Infinite", "correct": true },
+      { "text": "Twelve", "correct": false }
+    ]
+  },
+  {
+    "id": 47,
+    "question": "What is the name of Mr Norrell's fairy antagonist?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "The Man with the Thistledown Hair", "correct": false },
+      { "text": "The gentleman with the thistle-down hair", "correct": true },
+      { "text": "The King of Faerie", "correct": false }
+    ]
+  },
+  {
+    "id": 48,
+    "question": "What year was Piranesi published?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "2018", "correct": false },
+      { "text": "2020", "correct": true },
+      { "text": "2022", "correct": false }
+    ]
+  },
+  {
+    "id": 49,
+    "question": "What is unique about Clarke's writing style in Jonathan Strange & Mr Norrell?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Stream of consciousness", "correct": false },
+      { "text": "Extensive footnotes", "correct": true },
+      { "text": "No dialogue", "correct": false }
+    ]
+  },
+  {
+    "id": 50,
+    "question": "What prize did Piranesi win in 2021?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Hugo Award", "correct": false },
+      { "text": "Women's Prize for Fiction", "correct": true },
+      { "text": "Booker Prize", "correct": false }
+    ]
+  },
+  {
+    "id": 51,
+    "question": "Which George Saunders story collection won the Story Prize in 2014?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "CivilWarLand in Bad Decline", "correct": false },
+      { "text": "Tenth of December", "correct": true },
+      { "text": "In Persuasion Nation", "correct": false }
+    ]
+  },
+  {
+    "id": 52,
+    "question": "What is Saunders' first novel?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Liberation Day", "correct": false },
+      { "text": "Lincoln in the Bardo", "correct": true },
+      { "text": "The Brief and Frightening Reign of Phil", "correct": false }
+    ]
+  },
+  {
+    "id": 53,
+    "question": "Which historical figure is central to Lincoln in the Bardo?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "George Washington", "correct": false },
+      { "text": "Abraham Lincoln", "correct": true },
+      { "text": "Theodore Roosevelt", "correct": false }
+    ]
+  },
+  {
+    "id": 54,
+    "question": "What prestigious award did Lincoln in the Bardo win?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Pulitzer Prize", "correct": false },
+      { "text": "Man Booker Prize", "correct": true },
+      { "text": "National Book Award", "correct": false }
+    ]
+  },
+  {
+    "id": 55,
+    "question": "What Buddhist concept is 'Bardo' in Lincoln in the Bardo?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Meditation", "correct": false },
+      { "text": "Transitional state between death and rebirth", "correct": true },
+      { "text": "Enlightenment", "correct": false }
+    ]
+  },
+  {
+    "id": 56,
+    "question": "Which Saunders story features a dystopian theme park?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Pastoralia", "correct": false },
+      { "text": "CivilWarLand in Bad Decline", "correct": true },
+      { "text": "The Semplica Girl Diaries", "correct": false }
+    ]
+  },
+  {
+    "id": 57,
+    "question": "What year did George Saunders win the MacArthur Fellowship?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "2004", "correct": false },
+      { "text": "2006", "correct": true },
+      { "text": "2008", "correct": false }
+    ]
+  },
+  {
+    "id": 58,
+    "question": "Which Saunders collection features the story 'Escape from Spiderhead'?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "In Persuasion Nation", "correct": false },
+      { "text": "Tenth of December", "correct": true },
+      { "text": "Liberation Day", "correct": false }
+    ]
+  },
+  {
+    "id": 59,
+    "question": "What son of Abraham Lincoln is featured in Lincoln in the Bardo?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Robert", "correct": false },
+      { "text": "Willie", "correct": true },
+      { "text": "Tad", "correct": false }
+    ]
+  },
+  {
+    "id": 60,
+    "question": "What university does George Saunders teach at?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Iowa Writers' Workshop", "correct": false },
+      { "text": "Syracuse University", "correct": true },
+      { "text": "Columbia University", "correct": false }
+    ]
+  }
+]

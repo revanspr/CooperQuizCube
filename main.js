@@ -6,6 +6,7 @@ let popQuizData = []; // PoP! Quiz data with difficulty levels
 let idcQuizData = []; // IDC Quiz data with difficulty levels
 let radioheadQuizData = []; // Radiohead Quiz data with difficulty levels
 let filmQuizData = []; // Film Quiz data with difficulty levels
+let litQuizData = []; // Lit Quiz data with difficulty levels
 let currentQuizType = 'pop'; // Default to PoP! Quiz
 let currentQuestions = []; // Array of 3 current questions being displayed
 let usedQuestionIds = new Set(); // Track used questions to prevent repeats
@@ -61,6 +62,17 @@ async function loadQuizData() {
 
         console.log('Film Quiz data loaded:', filmQuizData.length, 'questions');
 
+        // Load Lit Quiz data
+        const litResponse = await fetch('./Lit.json');
+
+        if (!litResponse.ok) {
+            throw new Error(`HTTP error! status: ${litResponse.status}`);
+        }
+
+        litQuizData = await litResponse.json();
+
+        console.log('Lit Quiz data loaded:', litQuizData.length, 'questions');
+
         // Initialize the cube with first question
         initializeCube();
     } catch (error) {
@@ -91,6 +103,8 @@ function getCurrentQuizData() {
         return radioheadQuizData;
     } else if (currentQuizType === 'film') {
         return filmQuizData;
+    } else if (currentQuizType === 'lit') {
+        return litQuizData;
     }
     return popQuizData; // Default fallback
 }

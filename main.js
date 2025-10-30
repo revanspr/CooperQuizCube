@@ -1008,11 +1008,6 @@ function handleInteraction(clientX, clientY) {
             const selectedQuestion = currentQuestions[selectedQuestionIndex];
             const answer = selectedQuestion.answers[answerIndex];
 
-            // Trigger click effect (1 second highlight) for the clicked answer
-            clickedFaceIndex = faceIndex;
-            clickEffectStartTime = performance.now();
-            updateCubeMaterials(true, faceIndex);
-
             if (!answer.correct) {
                 // Wrong answer - disable this face and increment attempt counter
                 disabledFaces.add(activeIndex);

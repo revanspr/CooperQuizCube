@@ -282,13 +282,13 @@ function createMeltingTextTexture(text, bgColor) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Draw melting text
-    ctx.fillStyle = '#8B0000'; // Dark red/blood red
+    ctx.fillStyle = '#000000'; // Black text
     ctx.font = 'bold 80px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
     // Add dripping shadow effect
-    ctx.shadowColor = '#FF0000';
+    ctx.shadowColor = '#000000';
     ctx.shadowBlur = 20;
     ctx.shadowOffsetY = 5;
 
@@ -315,9 +315,9 @@ function createMeltingTextTexture(text, bgColor) {
 
             // Draw drip as a gradient
             const gradient = ctx.createLinearGradient(dripX, dripStartY, dripX, dripStartY + dripLength);
-            gradient.addColorStop(0, '#8B0000');
-            gradient.addColorStop(0.7, '#8B0000');
-            gradient.addColorStop(1, 'rgba(139, 0, 0, 0)');
+            gradient.addColorStop(0, '#000000');
+            gradient.addColorStop(0.7, '#000000');
+            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
             ctx.fillStyle = gradient;
             ctx.shadowBlur = 10;

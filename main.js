@@ -1013,7 +1013,8 @@ function handleInteraction(clientX, clientY) {
                 disabledFaces.add(activeIndex);
                 currentAttempts++;
                 console.log('Wrong answer! Face disabled. Attempts:', currentAttempts);
-                // Don't animate or change state, just wait for highlight to fade
+                // Update cube materials to remove text from disabled face
+                updateCubeMaterials(true);
                 return;
             }
 

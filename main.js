@@ -560,7 +560,15 @@ function showTimeUpEffect() {
     }
 
     cube.material = newMaterials;
-    console.log('Time up effect applied to cube');
+
+    // Lock the cube - stop any ongoing animation and prevent further interactions
+    isAnimating = false;
+    showingAnswers = false;
+
+    // Hide question display if showing
+    hideQuestionAtBottom();
+
+    console.log('Time up effect applied to cube - cube is now locked');
 }
 
 // Function to update timer display

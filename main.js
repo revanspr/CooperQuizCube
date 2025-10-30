@@ -1062,9 +1062,13 @@ function handleInteraction(clientX, clientY) {
             // Correct answer! Award points
             awardPoints();
 
-            // Hide the question and answer displays at bottom
+            // Hide the question display immediately
             hideQuestionAtBottom();
-            hideAnswerAtBottom();
+
+            // Hide the answer display after a brief delay to allow user to see it
+            setTimeout(() => {
+                hideAnswerAtBottom();
+            }, 1000); // 1 second delay
 
             // Mark this question as used
             usedQuestionIds.add(selectedQuestion.id);

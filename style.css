@@ -210,7 +210,7 @@ canvas {
     }
 
     #answer-display.visible {
-        bottom: 65px;
+        bottom: 50px;
     }
 
     #question-display {
@@ -223,7 +223,7 @@ canvas {
     }
 
     #question-display.visible {
-        bottom: 15px;
+        bottom: 10px;
     }
 
     #quiz-selector {
@@ -305,7 +305,7 @@ canvas {
     }
 
     #answer-display.visible {
-        bottom: 55px;
+        bottom: 45px;
     }
 
     #question-display {
@@ -317,7 +317,7 @@ canvas {
     }
 
     #question-display.visible {
-        bottom: 10px;
+        bottom: 8px;
     }
 
     #quiz-selector {

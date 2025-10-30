@@ -485,6 +485,42 @@ function hideQuestionAtBottom() {
     }
 }
 
+// Answer display element
+let answerDisplayElement = null;
+
+// Function to show answer at bottom of screen with animation
+function showAnswerAtBottom(answerText) {
+    if (!answerDisplayElement) {
+        answerDisplayElement = document.getElementById('answer-display');
+    }
+
+    if (answerDisplayElement) {
+        answerDisplayElement.textContent = answerText;
+        // Force a reflow to ensure the transition works
+        answerDisplayElement.offsetHeight;
+        answerDisplayElement.classList.remove('removing');
+        answerDisplayElement.classList.add('visible');
+    }
+}
+
+// Function to hide answer at bottom of screen with animation
+function hideAnswerAtBottom() {
+    if (!answerDisplayElement) {
+        answerDisplayElement = document.getElementById('answer-display');
+    }
+
+    if (answerDisplayElement) {
+        answerDisplayElement.classList.remove('visible');
+        answerDisplayElement.classList.add('removing');
+
+        // Clear the text after animation completes
+        setTimeout(() => {
+            answerDisplayElement.textContent = '';
+            answerDisplayElement.classList.remove('removing');
+        }, 500); // Match the transition duration
+    }
+}
+
 // Function to calculate and award points based on attempts
 function awardPoints() {
     let points = 0;
@@ -571,8 +607,9 @@ function resetQuiz() {
     // Reset score display
     updateScoreDisplay();
 
-    // Hide question display
+    // Hide question and answer displays
     hideQuestionAtBottom();
+    hideAnswerAtBottom();
 
     // Hide refresh button
     const refreshButton = document.getElementById('refresh-button');
@@ -643,8 +680,9 @@ function showTimeUpEffect() {
     // Remove any blur effect
     renderer.domElement.style.filter = 'blur(0px)';
 
-    // Hide question display if showing
+    // Hide question and answer displays if showing
     hideQuestionAtBottom();
+    hideAnswerAtBottom();
 
     // Show refresh button
     const refreshButton = document.getElementById('refresh-button');
@@ -1008,6 +1046,9 @@ function handleInteraction(clientX, clientY) {
             const selectedQuestion = currentQuestions[selectedQuestionIndex];
             const answer = selectedQuestion.answers[answerIndex];
 
+            // Show the selected answer in the answer bubble
+            showAnswerAtBottom(answer.text);
+
             if (!answer.correct) {
                 // Wrong answer - disable this face and increment attempt counter
                 disabledFaces.add(activeIndex);
@@ -1021,8 +1062,9 @@ function handleInteraction(clientX, clientY) {
             // Correct answer! Award points
             awardPoints();
 
-            // Hide the question display at bottom
+            // Hide the question and answer displays at bottom
             hideQuestionAtBottom();
+            hideAnswerAtBottom();
 
             // Mark this question as used
             usedQuestionIds.add(selectedQuestion.id);
@@ -1194,8 +1236,9 @@ function handleQuizTypeChange() {
                 timerDisplay.style.color = '#ffffff';
             }
 
-            // Hide question display
+            // Hide question and answer displays
             hideQuestionAtBottom();
+            hideAnswerAtBottom();
 
             // Remove old cube
             if (cube) {

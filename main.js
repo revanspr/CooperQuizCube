@@ -659,7 +659,7 @@ function showTimeUpEffect() {
         } else {
             // Inactive face - solid blood red
             newMaterials.push(new THREE.MeshBasicMaterial({
-                map: createTextTexture('', bloodRed, 50)
+                map: createTextTexture('', bloodRed, 35)
             }));
         }
     }
@@ -808,7 +808,7 @@ function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
                 if (answerIndex === undefined || !answers[answerIndex]) {
                     console.error(`Invalid answerIndex ${answerIndex} for activeIndex ${activeIndex}`);
                     newMaterials.push(new THREE.MeshBasicMaterial({
-                        map: createTextTexture('', colors[i], 50, i === highlightFace)
+                        map: createTextTexture('', colors[i], 35, i === highlightFace)
                     }));
                     continue;
                 }
@@ -816,12 +816,12 @@ function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
                 const text = isDisabled ? '' : answers[answerIndex].text;
                 console.log(`Face ${i} (activeIndex ${activeIndex}): answer ${answerIndex} = ${text}`);
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(text, colors[i], 50, i === highlightFace)
+                    map: createTextTexture(text, colors[i], 35, i === highlightFace)
                 }));
             } else {
                 // Inactive face - show blank colored face
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture('', colors[i], 50, i === highlightFace)
+                    map: createTextTexture('', colors[i], 35, i === highlightFace)
                 }));
             }
         }

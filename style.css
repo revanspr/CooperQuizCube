@@ -201,12 +201,12 @@ canvas {
 /* Mobile responsive styles */
 @media screen and (max-width: 768px) {
     #answer-display {
-        font-size: 12px;
-        padding: 8px 15px;
+        font-size: 11px;
+        padding: 7px 14px;
         max-width: 75%;
         bottom: -100px;
         line-height: 1.2;
-        border-radius: 8px;
+        border-radius: 7px;
     }
 
     #answer-display.visible {
@@ -214,12 +214,12 @@ canvas {
     }
 
     #question-display {
-        font-size: 13px;
-        padding: 10px 18px;
+        font-size: 12px;
+        padding: 9px 16px;
         max-width: 80%;
         bottom: -100px;
         line-height: 1.2;
-        border-radius: 10px;
+        border-radius: 9px;
     }
 
     #question-display.visible {
@@ -297,11 +297,11 @@ canvas {
 
 @media screen and (max-width: 480px) {
     #answer-display {
-        font-size: 11px;
-        padding: 6px 12px;
+        font-size: 10px;
+        padding: 5px 11px;
         max-width: 70%;
         line-height: 1.2;
-        border-radius: 8px;
+        border-radius: 7px;
     }
 
     #answer-display.visible {
@@ -309,11 +309,11 @@ canvas {
     }
 
     #question-display {
-        font-size: 12px;
-        padding: 8px 15px;
+        font-size: 11px;
+        padding: 7px 14px;
         max-width: 75%;
         line-height: 1.2;
-        border-radius: 10px;
+        border-radius: 9px;
     }
 
     #question-display.visible {

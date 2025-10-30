@@ -536,6 +536,68 @@ function startTimer() {
     console.log(`Timer started for ${timeLimitSeconds} second(s)`);
 }
 
+// Function to reset quiz to startup state
+function resetQuiz() {
+    console.log('Resetting quiz to startup state');
+
+    // Reset all state variables
+    usedQuestionIds.clear();
+    currentDifficulty = 'd4';
+    currentAttempts = 0;
+    selectedQuestionIndex = -1;
+    showingAnswers = false;
+    disabledFaces.clear();
+    totalScore = 0;
+    clickedFaceIndex = -1;
+    isAnimating = false;
+
+    // Reset timer state
+    timerStarted = false;
+    timerActive = false;
+    isTimeUp = false;
+    timerEndTime = null;
+    if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+
+    // Reset timer display
+    const timerDisplay = document.getElementById('timer-display');
+    if (timerDisplay) {
+        timerDisplay.textContent = 'Not Started';
+        timerDisplay.style.color = '#ffffff';
+    }
+
+    // Reset score display
+    updateScoreDisplay();
+
+    // Hide question display
+    hideQuestionAtBottom();
+
+    // Hide refresh button
+    const refreshButton = document.getElementById('refresh-button');
+    if (refreshButton) {
+        refreshButton.style.display = 'none';
+    }
+
+    // Remove blur effect
+    renderer.domElement.style.filter = 'blur(0px)';
+
+    // Remove old cube
+    if (cube) {
+        scene.remove(cube);
+    }
+
+    // Reset rotation
+    startRotation = { x: 0, y: 0, z: 0 };
+    targetRotation = { x: 0, y: 0, z: 0 };
+
+    // Reinitialize cube with new questions
+    initializeCube();
+
+    console.log('Quiz reset complete');
+}
+
 // Function to show "Time Up!" blood red effect on cube
 function showTimeUpEffect() {
     if (!cube) return;
@@ -583,6 +645,12 @@ function showTimeUpEffect() {
 
     // Hide question display if showing
     hideQuestionAtBottom();
+
+    // Show refresh button
+    const refreshButton = document.getElementById('refresh-button');
+    if (refreshButton) {
+        refreshButton.style.display = 'flex';
+    }
 
     console.log('Time up effect applied to cube - cube is now frozen and locked');
 }
@@ -1160,6 +1228,12 @@ window.addEventListener('DOMContentLoaded', () => {
     if (quizSelect) {
         // Listen for changes
         quizSelect.addEventListener('change', handleQuizTypeChange);
+    }
+
+    // Initialize refresh button
+    const refreshButton = document.getElementById('refresh-button');
+    if (refreshButton) {
+        refreshButton.addEventListener('click', resetQuiz);
     }
 });
 

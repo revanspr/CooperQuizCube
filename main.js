@@ -1233,7 +1233,14 @@ window.addEventListener('DOMContentLoaded', () => {
     // Initialize refresh button
     const refreshButton = document.getElementById('refresh-button');
     if (refreshButton) {
-        refreshButton.addEventListener('click', resetQuiz);
+        const handleRefresh = (event) => {
+            event.stopPropagation(); // Prevent event from reaching cube
+            event.preventDefault();
+            resetQuiz();
+        };
+
+        refreshButton.addEventListener('click', handleRefresh);
+        refreshButton.addEventListener('touchstart', handleRefresh, { passive: false });
     }
 });
 

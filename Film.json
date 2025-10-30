@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "question": "What documentary did Werner Herzog direct about Timothy Treadwell living with bears?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Cave of Forgotten Dreams", "correct": false },
+      { "text": "Grizzly Man", "correct": true },
+      { "text": "Into the Abyss", "correct": false }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "In which Herzog film does Klaus Kinski play a conquistador dragging a ship over a mountain?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Aguirre, the Wrath of God", "correct": false },
+      { "text": "Fitzcarraldo", "correct": true },
+      { "text": "Nosferatu the Vampyre", "correct": false }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "What is the name of Herzog's film about the oldest known cave paintings?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Encounters at the End of the World", "correct": false },
+      { "text": "Cave of Forgotten Dreams", "correct": true },
+      { "text": "The White Diamond", "correct": false }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "Which Herzog film tells the story of a man obsessed with building an opera house in the jungle?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Woyzeck", "correct": false },
+      { "text": "Fitzcarraldo", "correct": true },
+      { "text": "Cobra Verde", "correct": false }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "What 1972 Herzog film features Klaus Kinski as a mad Spanish conquistador?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Fitzcarraldo", "correct": false },
+      { "text": "Aguirre, the Wrath of God", "correct": true },
+      { "text": "Stroszek", "correct": false }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "What documentary did Herzog make about death row inmates in Texas?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Grizzly Man", "correct": false },
+      { "text": "Into the Abyss", "correct": true },
+      { "text": "Little Dieter Needs to Fly", "correct": false }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Which Herzog film is a remake of F.W. Murnau's vampire classic?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Heart of Glass", "correct": false },
+      { "text": "Nosferatu the Vampyre", "correct": true },
+      { "text": "The Enigma of Kaspar Hauser", "correct": false }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What is the title of Herzog's documentary about Antarctica?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Cave of Forgotten Dreams", "correct": false },
+      { "text": "Encounters at the End of the World", "correct": true },
+      { "text": "The White Diamond", "correct": false }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "In what Herzog film does Bruno S. play a street performer who moves to America?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "The Enigma of Kaspar Hauser", "correct": false },
+      { "text": "Stroszek", "correct": true },
+      { "text": "Signs of Life", "correct": false }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "What recent Herzog documentary explores meteors and comets?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Lo and Behold", "correct": false },
+      { "text": "Fireball: Visitors from Darker Worlds", "correct": true },
+      { "text": "Meeting Gorbachev", "correct": false }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "What Scorsese film tells the story of boxer Jake LaMotta?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "The Color of Money", "correct": false },
+      { "text": "Raging Bull", "correct": true },
+      { "text": "Casino", "correct": false }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "Which Scorsese film features Leonardo DiCaprio as a U.S. Marshal investigating a psychiatric facility?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "The Departed", "correct": false },
+      { "text": "Shutter Island", "correct": true },
+      { "text": "The Aviator", "correct": false }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "What is Scorsese's longest film, running over three hours?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "The Wolf of Wall Street", "correct": false },
+      { "text": "Killers of the Flower Moon", "correct": true },
+      { "text": "The Irishman", "correct": false }
+    ]
+  },
+  {
+    "id": 14,
+    "question": "Which Scorsese film won him his first Best Director Oscar?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Goodfellas", "correct": false },
+      { "text": "The Departed", "correct": true },
+      { "text": "Taxi Driver", "correct": false }
+    ]
+  },
+  {
+    "id": 15,
+    "question": "What 1976 Scorsese film stars Robert De Niro as a disturbed taxi driver?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Mean Streets", "correct": false },
+      { "text": "Taxi Driver", "correct": true },
+      { "text": "The King of Comedy", "correct": false }
+    ]
+  },
+  {
+    "id": 16,
+    "question": "Which Scorsese film features Joe Pesci's iconic 'funny how?' scene?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Casino", "correct": false },
+      { "text": "Goodfellas", "correct": true },
+      { "text": "The Irishman", "correct": false }
+    ]
+  },
+  {
+    "id": 17,
+    "question": "What Scorsese film tells the story of Howard Hughes?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "The Wolf of Wall Street", "correct": false },
+      { "text": "The Aviator", "correct": true },
+      { "text": "Casino", "correct": false }
+    ]
+  },
+  {
+    "id": 18,
+    "question": "Which Scorsese film is a remake of a Hong Kong crime thriller?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Gangs of New York", "correct": false },
+      { "text": "The Departed", "correct": true },
+      { "text": "Shutter Island", "correct": false }
+    ]
+  },
+  {
+    "id": 19,
+    "question": "What Scorsese film features Robert De Niro as a stand-up comedian obsessed with a talk show host?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "After Hours", "correct": false },
+      { "text": "The King of Comedy", "correct": true },
+      { "text": "New York, New York", "correct": false }
+    ]
+  },
+  {
+    "id": 20,
+    "question": "Which Scorsese film reunited De Niro, Pesci, and Pacino with de-aging technology?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Goodfellas", "correct": false },
+      { "text": "The Irishman", "correct": true },
+      { "text": "Casino", "correct": false }
+    ]
+  },
+  {
+    "id": 21,
+    "question": "What is Tarantino's debut feature film?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Pulp Fiction", "correct": false },
+      { "text": "Reservoir Dogs", "correct": true },
+      { "text": "True Romance", "correct": false }
+    ]
+  },
+  {
+    "id": 22,
+    "question": "Which Tarantino film features the character of The Bride seeking revenge?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Jackie Brown", "correct": false },
+      { "text": "Kill Bill", "correct": true },
+      { "text": "Death Proof", "correct": false }
+    ]
+  },
+  {
+    "id": 23,
+    "question": "What fictional brand of cigarettes appears in multiple Tarantino films?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Morley", "correct": false },
+      { "text": "Red Apple", "correct": true },
+      { "text": "Lucky Strike", "correct": false }
+    ]
+  },
+  {
+    "id": 24,
+    "question": "Which Tarantino film is set primarily in a single cabin during a blizzard?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Django Unchained", "correct": false },
+      { "text": "The Hateful Eight", "correct": true },
+      { "text": "Reservoir Dogs", "correct": false }
+    ]
+  },
+  {
+    "id": 25,
+    "question": "What dance does Uma Thurman and John Travolta perform in Pulp Fiction?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "The Tango", "correct": false },
+      { "text": "The Twist", "correct": true },
+      { "text": "The Watusi", "correct": false }
+    ]
+  },
+  {
+    "id": 26,
+    "question": "Which Tarantino film won the Palme d'Or at Cannes?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Reservoir Dogs", "correct": false },
+      { "text": "Pulp Fiction", "correct": true },
+      { "text": "Inglourious Basterds", "correct": false }
+    ]
+  },
+  {
+    "id": 27,
+    "question": "What is the name of the bar in Inglourious Basterds where a tense scene unfolds?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Le Gamaar", "correct": false },
+      { "text": "La Louisiane", "correct": true },
+      { "text": "Chez Maurice", "correct": false }
+    ]
+  },
+  {
+    "id": 28,
+    "question": "Which Tarantino film is based on an Elmore Leonard novel?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Pulp Fiction", "correct": false },
+      { "text": "Jackie Brown", "correct": true },
+      { "text": "Out of Sight", "correct": false }
+    ]
+  },
+  {
+    "id": 29,
+    "question": "What is the title of Tarantino's 2019 film about Hollywood in 1969?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "The Hateful Eight", "correct": false },
+      { "text": "Once Upon a Time in Hollywood", "correct": true },
+      { "text": "Django Unchained", "correct": false }
+    ]
+  },
+  {
+    "id": 30,
+    "question": "What fictional fast food restaurant appears in multiple Tarantino films?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Jack Rabbit Slim's", "correct": false },
+      { "text": "Big Kahuna Burger", "correct": true },
+      { "text": "Tasty Burger", "correct": false }
+    ]
+  },
+  {
+    "id": 31,
+    "question": "What is John Carpenter's breakthrough horror film from 1978?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "The Fog", "correct": false },
+      { "text": "Halloween", "correct": true },
+      { "text": "Assault on Precinct 13", "correct": false }
+    ]
+  },
+  {
+    "id": 32,
+    "question": "Which Carpenter film features Kurt Russell as a tough truck driver in a dystopian future?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Big Trouble in Little China", "correct": false },
+      { "text": "Escape from New York", "correct": true },
+      { "text": "The Thing", "correct": false }
+    ]
+  },
+  {
+    "id": 33,
+    "question": "What 1982 Carpenter film features a shape-shifting alien in Antarctica?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Starman", "correct": false },
+      { "text": "The Thing", "correct": true },
+      { "text": "Prince of Darkness", "correct": false }
+    ]
+  },
+  {
+    "id": 34,
+    "question": "Which Carpenter film satirizes consumerism with alien-controlled subliminal messages?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "In the Mouth of Madness", "correct": false },
+      { "text": "They Live", "correct": true },
+      { "text": "Village of the Damned", "correct": false }
+    ]
+  },
+  {
+    "id": 35,
+    "question": "What is the name of the character Kurt Russell plays in Escape from New York?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "R.J. MacReady", "correct": false },
+      { "text": "Snake Plissken", "correct": true },
+      { "text": "Jack Burton", "correct": false }
+    ]
+  },
+  {
+    "id": 36,
+    "question": "Which Carpenter film is based on a Stephen King novel?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "The Fog", "correct": false },
+      { "text": "Christine", "correct": true },
+      { "text": "In the Mouth of Madness", "correct": false }
+    ]
+  },
+  {
+    "id": 37,
+    "question": "What is unusual about Carpenter's role in most of his films?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "He appears in cameos", "correct": false },
+      { "text": "He composes the music", "correct": true },
+      { "text": "He edits under a pseudonym", "correct": false }
+    ]
+  },
+  {
+    "id": 38,
+    "question": "Which Carpenter film features Roddy Piper as a drifter who discovers alien control?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Prince of Darkness", "correct": false },
+      { "text": "They Live", "correct": true },
+      { "text": "Vampires", "correct": false }
+    ]
+  },
+  {
+    "id": 39,
+    "question": "What is Carpenter's 1986 kung-fu fantasy film starring Kurt Russell?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Escape from New York", "correct": false },
+      { "text": "Big Trouble in Little China", "correct": true },
+      { "text": "The Golden Child", "correct": false }
+    ]
+  },
+  {
+    "id": 40,
+    "question": "Which Carpenter film involves a malevolent force discovered in a church basement?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "In the Mouth of Madness", "correct": false },
+      { "text": "Prince of Darkness", "correct": true },
+      { "text": "The Fog", "correct": false }
+    ]
+  },
+  {
+    "id": 41,
+    "question": "What is Paul Thomas Anderson's debut feature film?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Boogie Nights", "correct": false },
+      { "text": "Hard Eight", "correct": true },
+      { "text": "Magnolia", "correct": false }
+    ]
+  },
+  {
+    "id": 42,
+    "question": "Which PTA film tells the story of an oil prospector in early 20th century California?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "The Master", "correct": false },
+      { "text": "There Will Be Blood", "correct": true },
+      { "text": "Inherent Vice", "correct": false }
+    ]
+  },
+  {
+    "id": 43,
+    "question": "What phrase does Daniel Day-Lewis famously deliver in There Will Be Blood?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "I've abandoned my boy!", "correct": false },
+      { "text": "I drink your milkshake!", "correct": true },
+      { "text": "I am a false prophet!", "correct": false }
+    ]
+  },
+  {
+    "id": 44,
+    "question": "Which PTA film is set in the 1970s porn industry?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Inherent Vice", "correct": false },
+      { "text": "Boogie Nights", "correct": true },
+      { "text": "Punch-Drunk Love", "correct": false }
+    ]
+  },
+  {
+    "id": 45,
+    "question": "What is the name of the fashion designer in PTA's Phantom Thread?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Lancaster Dodd", "correct": false },
+      { "text": "Reynolds Woodcock", "correct": true },
+      { "text": "Freddie Quell", "correct": false }
+    ]
+  },
+  {
+    "id": 46,
+    "question": "Which PTA film features an ensemble cast dealing with interconnected stories in the San Fernando Valley?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Hard Eight", "correct": false },
+      { "text": "Magnolia", "correct": true },
+      { "text": "Boogie Nights", "correct": false }
+    ]
+  },
+  {
+    "id": 47,
+    "question": "What unusual event occurs at the end of Magnolia?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "An earthquake", "correct": false },
+      { "text": "It rains frogs", "correct": true },
+      { "text": "A plane crash", "correct": false }
+    ]
+  },
+  {
+    "id": 48,
+    "question": "Which Adam Sandler film was directed by Paul Thomas Anderson?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "The Wedding Singer", "correct": false },
+      { "text": "Punch-Drunk Love", "correct": true },
+      { "text": "Uncut Gems", "correct": false }
+    ]
+  },
+  {
+    "id": 49,
+    "question": "What is PTA's film about a cult-like movement called The Cause?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "There Will Be Blood", "correct": false },
+      { "text": "The Master", "correct": true },
+      { "text": "Inherent Vice", "correct": false }
+    ]
+  },
+  {
+    "id": 50,
+    "question": "Which PTA film is based on a Thomas Pynchon novel?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "The Master", "correct": false },
+      { "text": "Inherent Vice", "correct": true },
+      { "text": "Phantom Thread", "correct": false }
+    ]
+  },
+  {
+    "id": 51,
+    "question": "What is Ari Aster's debut feature film?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Midsommar", "correct": false },
+      { "text": "Hereditary", "correct": true },
+      { "text": "Beau Is Afraid", "correct": false }
+    ]
+  },
+  {
+    "id": 52,
+    "question": "Which Ari Aster film takes place during a Swedish festival?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Hereditary", "correct": false },
+      { "text": "Midsommar", "correct": true },
+      { "text": "The Strange Thing About the Johnsons", "correct": false }
+    ]
+  },
+  {
+    "id": 53,
+    "question": "Who plays the lead role of Annie Graham in Hereditary?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Florence Pugh", "correct": false },
+      { "text": "Toni Collette", "correct": true },
+      { "text": "Lupita Nyong'o", "correct": false }
+    ]
+  },
+  {
+    "id": 54,
+    "question": "What is the name of the demon/entity in Hereditary?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Pazuzu", "correct": false },
+      { "text": "Paimon", "correct": true },
+      { "text": "Asmodeus", "correct": false }
+    ]
+  },
+  {
+    "id": 55,
+    "question": "How long is Midsommar's director's cut?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "2 hours 20 minutes", "correct": false },
+      { "text": "2 hours 51 minutes", "correct": true },
+      { "text": "3 hours 10 minutes", "correct": false }
+    ]
+  },
+  {
+    "id": 56,
+    "question": "What is unusual about Midsommar's setting compared to typical horror films?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "It's set underwater", "correct": false },
+      { "text": "It takes place in bright daylight", "correct": true },
+      { "text": "It's entirely animated", "correct": false }
+    ]
+  },
+  {
+    "id": 57,
+    "question": "Which actor plays the title character in Beau Is Afraid?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Timothée Chalamet", "correct": false },
+      { "text": "Joaquin Phoenix", "correct": true },
+      { "text": "Adam Driver", "correct": false }
+    ]
+  },
+  {
+    "id": 58,
+    "question": "What production company does Ari Aster frequently collaborate with?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Blumhouse", "correct": false },
+      { "text": "A24", "correct": true },
+      { "text": "Neon", "correct": false }
+    ]
+  },
+  {
+    "id": 59,
+    "question": "What controversial short film did Ari Aster direct before his features?",
+    "difficulty": "d6",
+    "answers": [
+      { "text": "Munchausen", "correct": false },
+      { "text": "The Strange Thing About the Johnsons", "correct": true },
+      { "text": "Basically", "correct": false }
+    ]
+  },
+  {
+    "id": 60,
+    "question": "What year did Hereditary premiere at the Sundance Film Festival?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "2017", "correct": false },
+      { "text": "2018", "correct": true },
+      { "text": "2019", "correct": false }
+    ]
+  }
+]

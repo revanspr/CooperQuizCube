@@ -421,8 +421,26 @@ function createTextTexture(text, bgColor, fontSize = 40, isHighlighted = false, 
 // Create cube with different colored faces
 const geometry = new THREE.BoxGeometry(2, 2, 2);
 
-// Color palette for faces
-const colors = ['#ff6347', '#ffd700', '#ff69b4', '#9370db', '#32cd32', '#87ceeb'];
+// Color palette for faces - d3 is the base
+const d3Colors = ['#ff6347', '#ffd700', '#ff69b4', '#9370db', '#32cd32', '#87ceeb'];
+
+// Color palettes for each difficulty level
+const colorsByDifficulty = {
+    'd1': ['#ffb3a7', '#ffe680', '#ffb3d9', '#c9b3e6', '#99eb99', '#c9e9f6'], // Lightest (2 shades lighter than d3)
+    'd2': ['#ff8a77', '#ffdf40', '#ff91c9', '#b091e1', '#66e066', '#a8ddf3'], // Light (1 shade lighter than d3)
+    'd3': ['#ff6347', '#ffd700', '#ff69b4', '#9370db', '#32cd32', '#87ceeb'], // Base
+    'd4': ['#cc4f39', '#ccab00', '#cc5490', '#765aaf', '#28a428', '#6ca5bc'], // Dark (1 shade darker than d3)
+    'd5': ['#993b2b', '#998000', '#993f6c', '#594383', '#1e7b1e', '#517c8d'], // Darker (2 shades darker than d3)
+    'd6': ['#66281d', '#665500', '#662a48', '#3c2d57', '#145214', '#36535e']  // Darkest (3 shades darker than d3)
+};
+
+// Function to get colors based on current difficulty
+function getColorsForDifficulty(difficulty) {
+    return colorsByDifficulty[difficulty] || d3Colors;
+}
+
+// Default colors (for backward compatibility)
+const colors = d3Colors;
 
 // Face indices for BoxGeometry: 0=right, 1=left, 2=top, 3=bottom, 4=front, 5=back
 // We only use: right (0), top (2), front (4)
@@ -788,6 +806,9 @@ function randomizeAnswers(answers) {
 function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
     const newMaterials = [];
 
+    // Get colors based on current difficulty
+    const difficultyColors = getColorsForDifficulty(currentDifficulty);
+
     if (showAnswers && selectedQuestionIndex >= 0 && currentQuestions[selectedQuestionIndex]) {
         // Show answers for the selected question
         const selectedQuestion = currentQuestions[selectedQuestionIndex];
@@ -808,7 +829,7 @@ function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
                 if (answerIndex === undefined || !answers[answerIndex]) {
                     console.error(`Invalid answerIndex ${answerIndex} for activeIndex ${activeIndex}`);
                     newMaterials.push(new THREE.MeshBasicMaterial({
-                        map: createTextTexture('', colors[i], 35, i === highlightFace)
+                        map: createTextTexture('', difficultyColors[i], 35, i === highlightFace)
                     }));
                     continue;
                 }
@@ -816,12 +837,12 @@ function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
                 const text = isDisabled ? '' : answers[answerIndex].text;
                 console.log(`Face ${i} (activeIndex ${activeIndex}): answer ${answerIndex} = ${text}`);
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(text, colors[i], 35, i === highlightFace)
+                    map: createTextTexture(text, difficultyColors[i], 35, i === highlightFace)
                 }));
             } else {
                 // Inactive face - show blank colored face
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture('', colors[i], 35, i === highlightFace)
+                    map: createTextTexture('', difficultyColors[i], 35, i === highlightFace)
                 }));
             }
         }
@@ -836,20 +857,20 @@ function updateCubeMaterials(showAnswers = false, highlightFace = -1) {
                     const questionText = currentQuestions[questionIndex].question;
                     console.log(`Face ${i} (activeIndex ${activeIndex}, questionIndex ${questionIndex}): ${questionText.substring(0, 50)}...`);
                     newMaterials.push(new THREE.MeshBasicMaterial({
-                        map: createTextTexture(questionText, colors[i], 35, i === highlightFace)
+                        map: createTextTexture(questionText, difficultyColors[i], 35, i === highlightFace)
                     }));
                 } else {
                     // No question for this face
                     console.log(`Face ${i}: blank (no question mapped)`);
                     newMaterials.push(new THREE.MeshBasicMaterial({
-                        map: createTextTexture('', colors[i], 35, i === highlightFace)
+                        map: createTextTexture('', difficultyColors[i], 35, i === highlightFace)
                     }));
                 }
             } else {
                 // Inactive face - show blank colored face
                 console.log(`Face ${i}: blank (activeIndex: ${activeIndex})`);
                 newMaterials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture('', colors[i], 35, i === highlightFace)
+                    map: createTextTexture('', difficultyColors[i], 35, i === highlightFace)
                 }));
             }
         }
@@ -889,6 +910,7 @@ function initializeCube() {
 
     // Initialize materials with questions on active faces
     const materials = [];
+    const difficultyColors = getColorsForDifficulty(currentDifficulty);
     for (let i = 0; i < 6; i++) {
         const activeIndex = activeFaces.indexOf(i);
         if (activeIndex !== -1) {
@@ -897,19 +919,19 @@ function initializeCube() {
             if (questionIndex !== undefined && currentQuestions[questionIndex]) {
                 console.log(`Creating material for face ${i} (activeIndex ${activeIndex}) with question ${questionIndex}:`, currentQuestions[questionIndex].question);
                 materials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture(currentQuestions[questionIndex].question, colors[i], 35)
+                    map: createTextTexture(currentQuestions[questionIndex].question, difficultyColors[i], 35)
                 }));
             } else {
                 console.log(`Creating blank material for face ${i} (no question mapped)`);
                 materials.push(new THREE.MeshBasicMaterial({
-                    map: createTextTexture('', colors[i], 35)
+                    map: createTextTexture('', difficultyColors[i], 35)
                 }));
             }
         } else {
             // Inactive face - show blank colored face
             console.log(`Creating blank material for face ${i}`);
             materials.push(new THREE.MeshBasicMaterial({
-                map: createTextTexture('', colors[i], 35)
+                map: createTextTexture('', difficultyColors[i], 35)
             }));
         }
     }

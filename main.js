@@ -250,8 +250,14 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x1a1a2e);
 
 // Camera setup - using OrthographicCamera for isometric view
+// Function to get frustum size based on screen width (makes cube 10% smaller on mobile)
+function getFrustumSize() {
+    const isMobile = window.innerWidth <= 768;
+    return isMobile ? 5.56 : 5; // 5.56 makes cube appear ~10% smaller (5 / 0.9 ≈ 5.56)
+}
+
 const aspect = window.innerWidth / window.innerHeight;
-const frustumSize = 5;
+let frustumSize = getFrustumSize();
 const camera = new THREE.OrthographicCamera(
     frustumSize * aspect / -2,
     frustumSize * aspect / 2,
@@ -1197,6 +1203,7 @@ renderer.domElement.addEventListener('touchstart', (event) => {
 // Handle window resize
 window.addEventListener('resize', () => {
     const aspect = window.innerWidth / window.innerHeight;
+    frustumSize = getFrustumSize(); // Update frustum size based on new screen width
     camera.left = frustumSize * aspect / -2;
     camera.right = frustumSize * aspect / 2;
     camera.top = frustumSize / 2;

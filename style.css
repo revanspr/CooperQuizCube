@@ -281,7 +281,7 @@ canvas {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 130px 5px 85px 5px;
+        padding: 110px 5px 85px 5px;
     }
 
     #refresh-button {
@@ -371,7 +371,7 @@ canvas {
     }
 
     #canvas-container {
-        padding: 115px 3px 70px 3px;
+        padding: 95px 3px 70px 3px;
     }
 
     #refresh-button {

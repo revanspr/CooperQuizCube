@@ -1,0 +1,542 @@
+[
+  {
+    "id": 1,
+    "question": "What is a colloidal suspension?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "A solution with large particles", "correct": false },
+      { "text": "Particles dispersed in a medium that don't settle", "correct": true },
+      { "text": "A crystalline solid mixture", "correct": false }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Why must the colloid be coagulated before filtration?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "To prevent particles from passing through filter", "correct": true },
+      { "text": "To increase solubility", "correct": false },
+      { "text": "To change the color", "correct": false }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "How was coagulation accomplished in this experiment?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "By cooling the solution", "correct": false },
+      { "text": "By adding excess AgNO3 and heating", "correct": true },
+      { "text": "By stirring vigorously", "correct": false }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "How could carbonate ions be present in the sample solution?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "From dissolving atmospheric CO2", "correct": true },
+      { "text": "From the silver nitrate reagent", "correct": false },
+      { "text": "From the filter paper", "correct": false }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "How would carbonate ion presence affect calculated %Cl?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Increase it (Ag2CO3 forms, adding mass)", "correct": true },
+      { "text": "Decrease it", "correct": false },
+      { "text": "No effect", "correct": false }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "What type of error would carbonate interference cause?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Random error", "correct": false },
+      { "text": "Systematic error", "correct": true },
+      { "text": "Gross error", "correct": false }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "What was done to remove carbonate ions?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Solution was kept slightly acidic", "correct": true },
+      { "text": "Solution was boiled extensively", "correct": false },
+      { "text": "Carbonate was filtered out", "correct": false }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What is peptization?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Precipitate breaking apart in solution", "correct": false },
+      { "text": "Coagulated colloid reverting to colloidal state", "correct": true },
+      { "text": "Formation of larger crystals", "correct": false }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "How would peptization affect the calculated %Cl?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Decrease it (loss of AgCl through filter)", "correct": true },
+      { "text": "Increase it", "correct": false },
+      { "text": "No effect", "correct": false }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "How was peptization avoided?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "By using cold water for washing", "correct": false },
+      { "text": "HNO3 in wash solution maintained electrolyte concentration", "correct": true },
+      { "text": "By filtering very quickly", "correct": false }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "What happens during photodecomposition of AgCl?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "2 AgCl → 2 Ag + Cl2", "correct": true },
+      { "text": "AgCl dissolves in water", "correct": false },
+      { "text": "AgCl turns into AgNO3", "correct": false }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "What color indicates photodecomposition has occurred?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Blue color", "correct": false },
+      { "text": "Violet color", "correct": true },
+      { "text": "Green color", "correct": false }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "What is the size range of AgCl nanoparticles formed?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "2-12 nm, average 4.16 nm", "correct": true },
+      { "text": "20-120 nm, average 40 nm", "correct": false },
+      { "text": "0.2-1.2 μm, average 0.5 μm", "correct": false }
+    ]
+  },
+  {
+    "id": 14,
+    "question": "What property makes nanoparticles prone to photodecomposition?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "High density", "correct": false },
+      { "text": "Large surface area to volume ratio", "correct": true },
+      { "text": "Low melting point", "correct": false }
+    ]
+  },
+  {
+    "id": 15,
+    "question": "What was the major source of silver ion in the secondary reaction?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Excess AgNO3 in solution", "correct": true },
+      { "text": "Decomposed AgCl", "correct": false },
+      { "text": "Silver from the crucible", "correct": false }
+    ]
+  },
+  {
+    "id": 16,
+    "question": "Effect on %Cl if photodecomposition occurs before filtering?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Increases (Cl2 reacts with Ag+ forming more AgCl)", "correct": true },
+      { "text": "Decreases", "correct": false },
+      { "text": "No effect", "correct": false }
+    ]
+  },
+  {
+    "id": 17,
+    "question": "Effect on %Cl if photodecomposition occurs after filtering?",
+    "difficulty": "d5",
+    "answers": [
+      { "text": "Increases", "correct": false },
+      { "text": "Decreases (Cl2 gas escapes, reducing mass)", "correct": true },
+      { "text": "No effect", "correct": false }
+    ]
+  },
+  {
+    "id": 18,
+    "question": "What temperature should crucibles be dried at?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "50°C", "correct": false },
+      { "text": "110°C", "correct": true },
+      { "text": "200°C", "correct": false }
+    ]
+  },
+  {
+    "id": 19,
+    "question": "What does heating to constant weight mean?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Heating until weight doesn't change significantly", "correct": true },
+      { "text": "Heating for exactly 1 hour", "correct": false },
+      { "text": "Heating until sample melts", "correct": false }
+    ]
+  },
+  {
+    "id": 20,
+    "question": "What is the acceptable weight variation for constant weight?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "0.02 g", "correct": false },
+      { "text": "0.0002 g (0.2 mg)", "correct": true },
+      { "text": "0.00002 g", "correct": false }
+    ]
+  },
+  {
+    "id": 21,
+    "question": "Why is the solution kept slightly acidic during precipitation?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "To speed up the reaction", "correct": false },
+      { "text": "To eliminate interference from weak acid anions", "correct": true },
+      { "text": "To dissolve excess AgCl", "correct": false }
+    ]
+  },
+  {
+    "id": 22,
+    "question": "Why is a large excess of silver ion to be avoided?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "It's too expensive", "correct": false },
+      { "text": "To minimize co-precipitation of AgNO3", "correct": true },
+      { "text": "It will dissolve the AgCl", "correct": false }
+    ]
+  },
+  {
+    "id": 23,
+    "question": "What does digest mean in this procedure?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Boil the solution vigorously", "correct": false },
+      { "text": "Heat precipitate and solution, keep hot without stirring", "correct": true },
+      { "text": "Filter the precipitate slowly", "correct": false }
+    ]
+  },
+  {
+    "id": 24,
+    "question": "How long should the precipitate be digested?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "1 minute", "correct": false },
+      { "text": "About 10 minutes", "correct": true },
+      { "text": "1 hour", "correct": false }
+    ]
+  },
+  {
+    "id": 25,
+    "question": "What indicates precipitation is complete?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Solution turns clear", "correct": false },
+      { "text": "No more precipitate forms when AgNO3 added", "correct": true },
+      { "text": "Precipitate turns violet", "correct": false }
+    ]
+  },
+  {
+    "id": 26,
+    "question": "Why should precipitate be stored in a dark place?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "To prevent photodecomposition of AgCl", "correct": true },
+      { "text": "To prevent evaporation", "correct": false },
+      { "text": "To keep it cold", "correct": false }
+    ]
+  },
+  {
+    "id": 27,
+    "question": "What is the purpose of the wash solution?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "To remove excess AgNO3 and maintain electrolyte concentration", "correct": true },
+      { "text": "To dissolve the precipitate", "correct": false },
+      { "text": "To neutralize the acid", "correct": false }
+    ]
+  },
+  {
+    "id": 28,
+    "question": "What is the composition of the wash solution?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Pure deionized water", "correct": false },
+      { "text": "2-5 mL 6M HNO3 per liter deionized water", "correct": true },
+      { "text": "Concentrated HNO3", "correct": false }
+    ]
+  },
+  {
+    "id": 29,
+    "question": "How is washing judged complete?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "After exactly 10 washes", "correct": false },
+      { "text": "When filtrate shows little/no turbidity with HCl", "correct": true },
+      { "text": "When precipitate turns white", "correct": false }
+    ]
+  },
+  {
+    "id": 30,
+    "question": "What is tested in the filtrate to check washing completeness?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Presence of Cl- ions", "correct": false },
+      { "text": "Presence of Ag+ ions", "correct": true },
+      { "text": "pH level", "correct": false }
+    ]
+  },
+  {
+    "id": 31,
+    "question": "Why use a rubber policeman?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "To dislodge particles adhering to beaker walls", "correct": true },
+      { "text": "To stir the solution", "correct": false },
+      { "text": "To seal the beaker", "correct": false }
+    ]
+  },
+  {
+    "id": 32,
+    "question": "What does quantitative transfer mean?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Measuring the exact volume", "correct": false },
+      { "text": "Completely transferring all precipitate", "correct": true },
+      { "text": "Using a graduated cylinder", "correct": false }
+    ]
+  },
+  {
+    "id": 33,
+    "question": "Why must crucibles cool in a desiccator?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "To prevent moisture absorption from air", "correct": true },
+      { "text": "To speed up cooling", "correct": false },
+      { "text": "To prevent oxidation", "correct": false }
+    ]
+  },
+  {
+    "id": 34,
+    "question": "Why should the desiccator lid be left ajar initially?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "To allow air circulation", "correct": false },
+      { "text": "To prevent pressure buildup from hot objects", "correct": true },
+      { "text": "To let moisture escape", "correct": false }
+    ]
+  },
+  {
+    "id": 35,
+    "question": "What is the approximate sample size used?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "0.01 g", "correct": false },
+      { "text": "0.1 g", "correct": true },
+      { "text": "1.0 g", "correct": false }
+    ]
+  },
+  {
+    "id": 36,
+    "question": "How many replicate samples should be analyzed?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "One", "correct": false },
+      { "text": "Three", "correct": true },
+      { "text": "Five", "correct": false }
+    ]
+  },
+  {
+    "id": 37,
+    "question": "What acid is added to dissolve the sample?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Hydrochloric acid", "correct": false },
+      { "text": "Nitric acid", "correct": true },
+      { "text": "Sulfuric acid", "correct": false }
+    ]
+  },
+  {
+    "id": 38,
+    "question": "What is the molarity of the AgNO3 solution used?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "0.1 M", "correct": false },
+      { "text": "0.2 M", "correct": true },
+      { "text": "0.5 M", "correct": false }
+    ]
+  },
+  {
+    "id": 39,
+    "question": "How much additional AgNO3 is added after coagulation?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "1-2 mL", "correct": false },
+      { "text": "3-5 mL", "correct": true },
+      { "text": "10 mL", "correct": false }
+    ]
+  },
+  {
+    "id": 40,
+    "question": "Why should samples be heated almost to boiling?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "To evaporate excess water", "correct": false },
+      { "text": "To promote coagulation and crystal growth", "correct": true },
+      { "text": "To decompose impurities", "correct": false }
+    ]
+  },
+  {
+    "id": 41,
+    "question": "What type of filter is used in this experiment?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Paper filter", "correct": false },
+      { "text": "Gooch crucible with fiberglass mat", "correct": true },
+      { "text": "Membrane filter", "correct": false }
+    ]
+  },
+  {
+    "id": 42,
+    "question": "Why wet the filter before adding sample?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "To ensure filter doesn't float or move", "correct": true },
+      { "text": "To increase filtration speed", "correct": false },
+      { "text": "To prevent clogging", "correct": false }
+    ]
+  },
+  {
+    "id": 43,
+    "question": "What does weighing by difference mean?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "Comparing two weighings", "correct": false },
+      { "text": "Weighing container before and after sample removal", "correct": true },
+      { "text": "Using two different balances", "correct": false }
+    ]
+  },
+  {
+    "id": 44,
+    "question": "Why use clean tongs to handle objects for weighing?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Fingerprints have measurable weight", "correct": true },
+      { "text": "To prevent burns", "correct": false },
+      { "text": "To avoid contamination with oils", "correct": false }
+    ]
+  },
+  {
+    "id": 45,
+    "question": "How long is the minimum drying time in the oven?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "30 minutes", "correct": false },
+      { "text": "1 hour", "correct": true },
+      { "text": "2 hours", "correct": false }
+    ]
+  },
+  {
+    "id": 46,
+    "question": "What happens to HNO3 during heating to dryness?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "It crystallizes", "correct": false },
+      { "text": "It vaporizes", "correct": true },
+      { "text": "It decomposes to NO2", "correct": false }
+    ]
+  },
+  {
+    "id": 47,
+    "question": "What is the purpose of decantation?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "To separate liquid from settled precipitate", "correct": true },
+      { "text": "To mix the solution thoroughly", "correct": false },
+      { "text": "To measure volume accurately", "correct": false }
+    ]
+  },
+  {
+    "id": 48,
+    "question": "What statistical test can justify discarding outlier data?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "T-test", "correct": false },
+      { "text": "Q test", "correct": true },
+      { "text": "F-test", "correct": false }
+    ]
+  },
+  {
+    "id": 49,
+    "question": "What is the formula for silver chloride?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "AgCl2", "correct": false },
+      { "text": "AgCl", "correct": true },
+      { "text": "Ag2Cl", "correct": false }
+    ]
+  },
+  {
+    "id": 50,
+    "question": "What type of analysis is this experiment?",
+    "difficulty": "d2",
+    "answers": [
+      { "text": "Volumetric analysis", "correct": false },
+      { "text": "Gravimetric analysis", "correct": true },
+      { "text": "Spectroscopic analysis", "correct": false }
+    ]
+  },
+  {
+    "id": 51,
+    "question": "What ion is being determined in this experiment?",
+    "difficulty": "d1",
+    "answers": [
+      { "text": "Silver ion", "correct": false },
+      { "text": "Chloride ion", "correct": true },
+      { "text": "Nitrate ion", "correct": false }
+    ]
+  },
+  {
+    "id": 52,
+    "question": "Why is ParaFilm used to cover beakers?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "To prevent evaporation and contamination", "correct": true },
+      { "text": "To increase pressure", "correct": false },
+      { "text": "To keep solution warm", "correct": false }
+    ]
+  },
+  {
+    "id": 53,
+    "question": "How long should precipitate be stored before filtration?",
+    "difficulty": "d3",
+    "answers": [
+      { "text": "30 minutes", "correct": false },
+      { "text": "At least 2 hours, preferably overnight", "correct": true },
+      { "text": "1 week", "correct": false }
+    ]
+  },
+  {
+    "id": 54,
+    "question": "What causes the violet color in decomposed AgCl?",
+    "difficulty": "d4",
+    "answers": [
+      { "text": "Silver nitrate", "correct": false },
+      { "text": "Elemental silver", "correct": true },
+      { "text": "Chlorine gas", "correct": false }
+    ]
+  }
+]

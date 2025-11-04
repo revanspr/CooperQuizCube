@@ -8,6 +8,7 @@ let radioheadQuizData = []; // Radiohead Quiz data with difficulty levels
 let filmQuizData = []; // Film Quiz data with difficulty levels
 let litQuizData = []; // Lit Quiz data with difficulty levels
 let gravimetricQuizData = []; // Gravimetric Determination Quiz data with difficulty levels
+let ionExchangeQuizData = []; // Ion Exchange Quiz data with difficulty levels
 let currentQuizType = 'idc'; // Default to IDC Quiz
 let currentQuestions = []; // Array of 3 current questions being displayed
 let usedQuestionIds = new Set(); // Track used questions to prevent repeats
@@ -85,6 +86,17 @@ async function loadQuizData() {
 
         console.log('Gravimetric Determination Quiz data loaded:', gravimetricQuizData.length, 'questions');
 
+        // Load Ion Exchange Quiz data
+        const ionExchangeResponse = await fetch('./IonExchange.json');
+
+        if (!ionExchangeResponse.ok) {
+            throw new Error(`HTTP error! status: ${ionExchangeResponse.status}`);
+        }
+
+        ionExchangeQuizData = await ionExchangeResponse.json();
+
+        console.log('Ion Exchange Quiz data loaded:', ionExchangeQuizData.length, 'questions');
+
         // Initialize the cube with first question
         initializeCube();
     } catch (error) {
@@ -119,6 +131,8 @@ function getCurrentQuizData() {
         return litQuizData;
     } else if (currentQuizType === 'gravimetric') {
         return gravimetricQuizData;
+    } else if (currentQuizType === 'ionexchange') {
+        return ionExchangeQuizData;
     }
     return popQuizData; // Default fallback
 }

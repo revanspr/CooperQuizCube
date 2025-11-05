@@ -9,6 +9,7 @@ let filmQuizData = []; // Film Quiz data with difficulty levels
 let litQuizData = []; // Lit Quiz data with difficulty levels
 let gravimetricQuizData = []; // Gravimetric Determination Quiz data with difficulty levels
 let ionExchangeQuizData = []; // Ion Exchange Quiz data with difficulty levels
+let seperationsQuizData = []; // Seperations Quiz data with difficulty levels
 let currentQuizType = 'idc'; // Default to IDC Quiz
 let currentQuestions = []; // Array of 3 current questions being displayed
 let usedQuestionIds = new Set(); // Track used questions to prevent repeats
@@ -97,6 +98,17 @@ async function loadQuizData() {
 
         console.log('Ion Exchange Quiz data loaded:', ionExchangeQuizData.length, 'questions');
 
+        // Load Seperations Quiz data
+        const seperationsResponse = await fetch('./Seperations.json');
+
+        if (!seperationsResponse.ok) {
+            throw new Error(`HTTP error! status: ${seperationsResponse.status}`);
+        }
+
+        seperationsQuizData = await seperationsResponse.json();
+
+        console.log('Seperations Quiz data loaded:', seperationsQuizData.length, 'questions');
+
         // Initialize the cube with first question
         initializeCube();
     } catch (error) {
@@ -133,6 +145,8 @@ function getCurrentQuizData() {
         return gravimetricQuizData;
     } else if (currentQuizType === 'ionexchange') {
         return ionExchangeQuizData;
+    } else if (currentQuizType === 'seperations') {
+        return seperationsQuizData;
     }
     return popQuizData; // Default fallback
 }

@@ -1,0 +1,792 @@
+[
+  {
+    "id": 1,
+    "difficulty": "d4",
+    "question": "Chemical separations account for what percentage of total energy in the United States?",
+    "answers": [
+      { "text": "10-15%", "correct": true },
+      { "text": "3-5%", "correct": false },
+      { "text": "38-41%", "correct": false }
+    ]
+  },
+  {
+    "id": 2,
+    "difficulty": "d4",
+    "question": "What percentage of all in-plant energy in the US is due to chemical separation technologies?",
+    "answers": [
+      { "text": "22%", "correct": true },
+      { "text": "7%", "correct": false },
+      { "text": "38%", "correct": false }
+    ]
+  },
+  {
+    "id": 3,
+    "difficulty": "d3",
+    "question": "What is the main difference between analytical and preparative separations?",
+    "answers": [
+      { "text": "Analytical determines composition, preparative recovers chemicals", "correct": true },
+      { "text": "Analytical is faster than preparative", "correct": false },
+      { "text": "Analytical uses more energy", "correct": false }
+    ]
+  },
+  {
+    "id": 4,
+    "difficulty": "d4",
+    "question": "Why do refineries ideally want to produce more middle products than top or bottom products?",
+    "answers": [
+      { "text": "Middle products are cheaper and may require less separation", "correct": true },
+      { "text": "Middle products have higher profit margins", "correct": false },
+      { "text": "Top products are too volatile to handle", "correct": false }
+    ]
+  },
+  {
+    "id": 5,
+    "difficulty": "d3",
+    "question": "What are the key operations unique to a Chemical Engineer's skillset?",
+    "answers": [
+      { "text": "Chemical reactions and separation of chemical reactions", "correct": true },
+      { "text": "Only mechanical design", "correct": false },
+      { "text": "Only electrical systems", "correct": false }
+    ]
+  },
+  {
+    "id": 6,
+    "difficulty": "d3",
+    "question": "What are auxiliary operations in chemical plants?",
+    "answers": [
+      { "text": "Operations with no change in chemical composition", "correct": true },
+      { "text": "Operations that create new chemicals", "correct": false },
+      { "text": "Operations that only mix materials", "correct": false }
+    ]
+  },
+  {
+    "id": 7,
+    "difficulty": "d5",
+    "question": "How do chemical plants differ from biochemical plants in operation?",
+    "answers": [
+      { "text": "Chemical plants operate at high T and P, biochemical near physiological conditions", "correct": true },
+      { "text": "Chemical plants are always smaller", "correct": false },
+      { "text": "Biochemical plants don't need separation", "correct": false }
+    ]
+  },
+  {
+    "id": 8,
+    "difficulty": "d2",
+    "question": "Why is separation not spontaneous?",
+    "answers": [
+      { "text": "It requires energy and costs money", "correct": true },
+      { "text": "It happens naturally over time", "correct": false },
+      { "text": "It only works with gases", "correct": false }
+    ]
+  },
+  {
+    "id": 9,
+    "difficulty": "d3",
+    "question": "What is the main mechanism for dialysis in the human kidney?",
+    "answers": [
+      { "text": "Separation by barrier (cell walls)", "correct": true },
+      { "text": "Centrifugal force", "correct": false },
+      { "text": "Electrical field", "correct": false }
+    ]
+  },
+  {
+    "id": 10,
+    "difficulty": "d4",
+    "question": "What does MSA stand for in separation techniques?",
+    "answers": [
+      { "text": "Mass Separating Agent", "correct": true },
+      { "text": "Molecular Separation Analysis", "correct": false },
+      { "text": "Material Systems Analyzer", "correct": false }
+    ]
+  },
+  {
+    "id": 11,
+    "difficulty": "d4",
+    "question": "What does ESA stand for in separation techniques?",
+    "answers": [
+      { "text": "Energy Separating Agent", "correct": true },
+      { "text": "External System Analysis", "correct": false },
+      { "text": "Equilibrium Separation Approach", "correct": false }
+    ]
+  },
+  {
+    "id": 12,
+    "difficulty": "d3",
+    "question": "In distillation, what is the section above the feed called?",
+    "answers": [
+      { "text": "Rectifying section", "correct": true },
+      { "text": "Stripping section", "correct": false },
+      { "text": "Absorption section", "correct": false }
+    ]
+  },
+  {
+    "id": 13,
+    "difficulty": "d3",
+    "question": "In distillation, what is the section below the feed called?",
+    "answers": [
+      { "text": "Stripping section", "correct": true },
+      { "text": "Rectifying section", "correct": false },
+      { "text": "Condensing section", "correct": false }
+    ]
+  },
+  {
+    "id": 14,
+    "difficulty": "d4",
+    "question": "In liquid-liquid extraction, what property allows separation?",
+    "answers": [
+      { "text": "Different solubility in two immiscible liquids", "correct": true },
+      { "text": "Different boiling points", "correct": false },
+      { "text": "Different densities only", "correct": false }
+    ]
+  },
+  {
+    "id": 15,
+    "difficulty": "d5",
+    "question": "What is extractive distillation?",
+    "answers": [
+      { "text": "Combination of distillation and absorption", "correct": true },
+      { "text": "Only distillation at high pressure", "correct": false },
+      { "text": "Extraction followed by drying", "correct": false }
+    ]
+  },
+  {
+    "id": 16,
+    "difficulty": "d4",
+    "question": "What materials are membranes typically made of?",
+    "answers": [
+      { "text": "Natural fibers, polymers, ceramics, metals", "correct": true },
+      { "text": "Only plastic materials", "correct": false },
+      { "text": "Only metal alloys", "correct": false }
+    ]
+  },
+  {
+    "id": 17,
+    "difficulty": "d3",
+    "question": "What is the principle behind membrane separation?",
+    "answers": [
+      { "text": "Differences in permeability through a barrier", "correct": true },
+      { "text": "Only size exclusion", "correct": false },
+      { "text": "Only electrical charge", "correct": false }
+    ]
+  },
+  {
+    "id": 18,
+    "difficulty": "d4",
+    "question": "What is the main application of reverse osmosis?",
+    "answers": [
+      { "text": "Purify drinking water", "correct": true },
+      { "text": "Separate gases", "correct": false },
+      { "text": "Extract organic compounds", "correct": false }
+    ]
+  },
+  {
+    "id": 19,
+    "difficulty": "d5",
+    "question": "Why are solid agents typically porous with high surface area?",
+    "answers": [
+      { "text": "To exploit differences in species adsorption", "correct": true },
+      { "text": "To reduce weight", "correct": false },
+      { "text": "To increase flow rate", "correct": false }
+    ]
+  },
+  {
+    "id": 20,
+    "difficulty": "d4",
+    "question": "What is the difference between adsorption and absorption?",
+    "answers": [
+      { "text": "Adsorption is on surface, absorption is in bulk", "correct": true },
+      { "text": "Adsorption is faster", "correct": false },
+      { "text": "Absorption uses more energy", "correct": false }
+    ]
+  },
+  {
+    "id": 21,
+    "difficulty": "d5",
+    "question": "Why is separation using solid agents generally batch or semi-batch?",
+    "answers": [
+      { "text": "The solid agent reaches saturation", "correct": true },
+      { "text": "It's cheaper to operate", "correct": false },
+      { "text": "Continuous operation is impossible", "correct": false }
+    ]
+  },
+  {
+    "id": 22,
+    "difficulty": "d4",
+    "question": "What types of external fields can be used for separation?",
+    "answers": [
+      { "text": "Centrifugal, thermal, electrical flow", "correct": true },
+      { "text": "Only magnetic fields", "correct": false },
+      { "text": "Only gravitational fields", "correct": false }
+    ]
+  },
+  {
+    "id": 23,
+    "difficulty": "d5",
+    "question": "When are external field separations typically used?",
+    "answers": [
+      { "text": "Only if no other option is available", "correct": true },
+      { "text": "Always as the first choice", "correct": false },
+      { "text": "For all gas separations", "correct": false }
+    ]
+  },
+  {
+    "id": 24,
+    "difficulty": "d4",
+    "question": "What is electrophoresis used for?",
+    "answers": [
+      { "text": "Separate DNA based on size and charge", "correct": true },
+      { "text": "Purify water", "correct": false },
+      { "text": "Distill alcohol", "correct": false }
+    ]
+  },
+  {
+    "id": 25,
+    "difficulty": "d3",
+    "question": "What do all basic separation techniques exploit?",
+    "answers": [
+      { "text": "Differences in molecular, thermodynamic, and transport properties", "correct": true },
+      { "text": "Only temperature differences", "correct": false },
+      { "text": "Only pressure differences", "correct": false }
+    ]
+  },
+  {
+    "id": 26,
+    "difficulty": "d4",
+    "question": "What is the Split Fraction (SF) in separation?",
+    "answers": [
+      { "text": "Fraction of species recovered in a given product", "correct": true },
+      { "text": "Ratio of feed to product", "correct": false },
+      { "text": "Percentage of energy used", "correct": false }
+    ]
+  },
+  {
+    "id": 27,
+    "difficulty": "d4",
+    "question": "What is the Split Ratio (SR) in separation?",
+    "answers": [
+      { "text": "Ratio of species in 1st product to 2nd product", "correct": true },
+      { "text": "Same as Split Fraction", "correct": false },
+      { "text": "Ratio of temperatures", "correct": false }
+    ]
+  },
+  {
+    "id": 28,
+    "difficulty": "d5",
+    "question": "For a sharp split in distillation, what should SF be for the light key?",
+    "answers": [
+      { "text": "SF > 0.95", "correct": true },
+      { "text": "SF < 0.05", "correct": false },
+      { "text": "SF = 0.5", "correct": false }
+    ]
+  },
+  {
+    "id": 29,
+    "difficulty": "d5",
+    "question": "For a sharp split in distillation, what should SF be for the heavy key?",
+    "answers": [
+      { "text": "SF < 0.05", "correct": true },
+      { "text": "SF > 0.95", "correct": false },
+      { "text": "SF = 0.5", "correct": false }
+    ]
+  },
+  {
+    "id": 30,
+    "difficulty": "d4",
+    "question": "What does Separation Power (SP) tell you?",
+    "answers": [
+      { "text": "How well a separator splits species i from species j", "correct": true },
+      { "text": "The energy consumption", "correct": false },
+      { "text": "The flow rate required", "correct": false }
+    ]
+  },
+  {
+    "id": 31,
+    "difficulty": "d4",
+    "question": "For good separation, what should the Separation Power (SP) be?",
+    "answers": [
+      { "text": "SP >> 1", "correct": true },
+      { "text": "SP << 1", "correct": false },
+      { "text": "SP = 1", "correct": false }
+    ]
+  },
+  {
+    "id": 32,
+    "difficulty": "d3",
+    "question": "What is the most important factor in selecting a separation?",
+    "answers": [
+      { "text": "Feed composition", "correct": true },
+      { "text": "Product price", "correct": false },
+      { "text": "Equipment size", "correct": false }
+    ]
+  },
+  {
+    "id": 33,
+    "difficulty": "d4",
+    "question": "What is the easiest property to exploit for separation?",
+    "answers": [
+      { "text": "Vapor pressure", "correct": true },
+      { "text": "Color", "correct": false },
+      { "text": "Density only", "correct": false }
+    ]
+  },
+  {
+    "id": 34,
+    "difficulty": "d5",
+    "question": "Why might LLE with ethyl acetate be more economical than distillation for acetic acid/water?",
+    "answers": [
+      { "text": "Water has high heat capacity and polarity differences can be exploited", "correct": true },
+      { "text": "LLE is always cheaper", "correct": false },
+      { "text": "Distillation is impossible", "correct": false }
+    ]
+  },
+  {
+    "id": 35,
+    "difficulty": "d3",
+    "question": "What is the first heuristic for multicomponent separation sequences?",
+    "answers": [
+      { "text": "Remove unstable/corrosive/reactive things first", "correct": true },
+      { "text": "Remove the cheapest product first", "correct": false },
+      { "text": "Remove the largest volume first", "correct": false }
+    ]
+  },
+  {
+    "id": 36,
+    "difficulty": "d4",
+    "question": "In separation sequences, when should difficult separations be performed?",
+    "answers": [
+      { "text": "Without other species present", "correct": true },
+      { "text": "First, with all species present", "correct": false },
+      { "text": "Last, after easy separations", "correct": false }
+    ]
+  },
+  {
+    "id": 37,
+    "difficulty": "d2",
+    "question": "Which separation operations scale up easily?",
+    "answers": [
+      { "text": "Distillation and absorption", "correct": true },
+      { "text": "Crystallization and drying", "correct": false },
+      { "text": "Only membrane separations", "correct": false }
+    ]
+  },
+  {
+    "id": 38,
+    "difficulty": "d5",
+    "question": "Why might parallel units be needed for some separations?",
+    "answers": [
+      { "text": "When doubling unit size increases cost by more than 60%", "correct": true },
+      { "text": "Always to reduce risk", "correct": false },
+      { "text": "Only for safety reasons", "correct": false }
+    ]
+  },
+  {
+    "id": 39,
+    "difficulty": "d6",
+    "question": "Which separation operation almost always needs parallel units?",
+    "answers": [
+      { "text": "Membranes", "correct": true },
+      { "text": "Distillation", "correct": false },
+      { "text": "Absorption", "correct": false }
+    ]
+  },
+  {
+    "id": 40,
+    "difficulty": "d5",
+    "question": "When is a pilot plant typically NOT needed?",
+    "answers": [
+      { "text": "For distillation and absorption", "correct": true },
+      { "text": "For crystallization", "correct": false },
+      { "text": "For drying operations", "correct": false }
+    ]
+  },
+  {
+    "id": 41,
+    "difficulty": "d1",
+    "question": "What is the inverse of separation?",
+    "answers": [
+      { "text": "Mixing", "correct": true },
+      { "text": "Reaction", "correct": false },
+      { "text": "Heating", "correct": false }
+    ]
+  },
+  {
+    "id": 42,
+    "difficulty": "d2",
+    "question": "Why is mixing spontaneous?",
+    "answers": [
+      { "text": "Entropy increases", "correct": true },
+      { "text": "Energy is released", "correct": false },
+      { "text": "Temperature increases", "correct": false }
+    ]
+  },
+  {
+    "id": 43,
+    "difficulty": "d3",
+    "question": "Typically, a mixture to be separated is in how many phases?",
+    "answers": [
+      { "text": "A single phase", "correct": true },
+      { "text": "Always two phases", "correct": false },
+      { "text": "Three or more phases", "correct": false }
+    ]
+  },
+  {
+    "id": 44,
+    "difficulty": "d4",
+    "question": "What is flash vaporization?",
+    "answers": [
+      { "text": "Liquid pumped through turbine or valve to create vapor", "correct": true },
+      { "text": "Rapid heating in a furnace", "correct": false },
+      { "text": "Explosive vaporization", "correct": false }
+    ]
+  },
+  {
+    "id": 45,
+    "difficulty": "d3",
+    "question": "In absorption, where does the feed enter?",
+    "answers": [
+      { "text": "Feed at bottom, MSA at top", "correct": true },
+      { "text": "Feed at top, MSA at bottom", "correct": false },
+      { "text": "Feed and MSA at middle", "correct": false }
+    ]
+  },
+  {
+    "id": 46,
+    "difficulty": "d3",
+    "question": "What are the 5 basic separation techniques?",
+    "answers": [
+      { "text": "Phase creation, phase addition, barrier, solid agent, external field", "correct": true },
+      { "text": "Distillation, absorption, extraction, crystallization, drying", "correct": false },
+      { "text": "Heating, cooling, mixing, filtering, centrifuging", "correct": false }
+    ]
+  },
+  {
+    "id": 47,
+    "difficulty": "d3",
+    "question": "What is the rectifying section in distillation?",
+    "answers": [
+      { "text": "Section above the feed", "correct": true },
+      { "text": "Section below the feed", "correct": false },
+      { "text": "The reboiler section", "correct": false }
+    ]
+  },
+  {
+    "id": 48,
+    "difficulty": "d3",
+    "question": "What is the stripping section in distillation?",
+    "answers": [
+      { "text": "Section below the feed", "correct": true },
+      { "text": "Section above the feed", "correct": false },
+      { "text": "The condenser section", "correct": false }
+    ]
+  },
+  {
+    "id": 49,
+    "difficulty": "d4",
+    "question": "What is reboiled absorption?",
+    "answers": [
+      { "text": "Frankenstein combination of distillation and absorption", "correct": true },
+      { "text": "Absorption with heated MSA", "correct": false },
+      { "text": "Absorption at high temperature", "correct": false }
+    ]
+  },
+  {
+    "id": 50,
+    "difficulty": "d3",
+    "question": "In stripping, where does the feed enter?",
+    "answers": [
+      { "text": "Feed at top, MSA at bottom", "correct": true },
+      { "text": "Feed at bottom, MSA at top", "correct": false },
+      { "text": "Feed and MSA at middle", "correct": false }
+    ]
+  },
+  {
+    "id": 51,
+    "difficulty": "d4",
+    "question": "What is liquid-liquid extraction (LLE)?",
+    "answers": [
+      { "text": "Separation using two immiscible liquids", "correct": true },
+      { "text": "Extraction using only one liquid phase", "correct": false },
+      { "text": "Extraction of solids from liquids", "correct": false }
+    ]
+  },
+  {
+    "id": 52,
+    "difficulty": "d5",
+    "question": "What is liquid-liquid extraction with two solvents?",
+    "answers": [
+      { "text": "Using two MSAs to extract different components", "correct": true },
+      { "text": "Using one MSA twice", "correct": false },
+      { "text": "Mixing two solvents together", "correct": false }
+    ]
+  },
+  {
+    "id": 53,
+    "difficulty": "d3",
+    "question": "What is drying in separation processes?",
+    "answers": [
+      { "text": "Removing liquid (often water) from a mixture", "correct": true },
+      { "text": "Heating a substance to high temperature", "correct": false },
+      { "text": "Removing all gases from a mixture", "correct": false }
+    ]
+  },
+  {
+    "id": 54,
+    "difficulty": "d4",
+    "question": "What is dialysis used for?",
+    "answers": [
+      { "text": "Recovery of caustic from hemicellulose", "correct": true },
+      { "text": "Purifying air", "correct": false },
+      { "text": "Separating oil from water", "correct": false }
+    ]
+  },
+  {
+    "id": 55,
+    "difficulty": "d4",
+    "question": "What is microfiltration used for?",
+    "answers": [
+      { "text": "Removal of bacteria from drinking water", "correct": true },
+      { "text": "Separating gases", "correct": false },
+      { "text": "Purifying chemicals", "correct": false }
+    ]
+  },
+  {
+    "id": 56,
+    "difficulty": "d4",
+    "question": "What is ultrafiltration used for?",
+    "answers": [
+      { "text": "Separation of whey from cheese", "correct": true },
+      { "text": "Purifying air", "correct": false },
+      { "text": "Desalination", "correct": false }
+    ]
+  },
+  {
+    "id": 57,
+    "difficulty": "d5",
+    "question": "What is pervaporation?",
+    "answers": [
+      { "text": "Separation of azeotropic mixtures using membranes", "correct": true },
+      { "text": "Evaporation under vacuum", "correct": false },
+      { "text": "Condensation at high pressure", "correct": false }
+    ]
+  },
+  {
+    "id": 58,
+    "difficulty": "d4",
+    "question": "What is gas permeation used for?",
+    "answers": [
+      { "text": "Hydrogen enrichment", "correct": true },
+      { "text": "Water purification", "correct": false },
+      { "text": "Oil separation", "correct": false }
+    ]
+  },
+  {
+    "id": 59,
+    "difficulty": "d4",
+    "question": "How can solid agent separations be made continuous?",
+    "answers": [
+      { "text": "Using a conveyer belt or cleaning the sorbent of sorbate", "correct": true },
+      { "text": "Increasing temperature", "correct": false },
+      { "text": "Adding more pressure", "correct": false }
+    ]
+  },
+  {
+    "id": 60,
+    "difficulty": "d3",
+    "question": "What is adsorption?",
+    "answers": [
+      { "text": "Separation using solid adsorbent on surface", "correct": true },
+      { "text": "Separation using liquid in bulk", "correct": false },
+      { "text": "Separation using gas phase only", "correct": false }
+    ]
+  },
+  {
+    "id": 61,
+    "difficulty": "d4",
+    "question": "What is chromatography?",
+    "answers": [
+      { "text": "Separation using solid adsorbent or liquid adsorbent on solid support", "correct": true },
+      { "text": "Color-based separation only", "correct": false },
+      { "text": "Time-based separation", "correct": false }
+    ]
+  },
+  {
+    "id": 62,
+    "difficulty": "d4",
+    "question": "What is ion exchange?",
+    "answers": [
+      { "text": "Separation using resin with ion-active sites", "correct": true },
+      { "text": "Separation using electrical current", "correct": false },
+      { "text": "Separation based on charge only", "correct": false }
+    ]
+  },
+  {
+    "id": 63,
+    "difficulty": "d4",
+    "question": "What is centrifugation used for?",
+    "answers": [
+      { "text": "Separation of uranium isotopes", "correct": true },
+      { "text": "Water purification only", "correct": false },
+      { "text": "Air separation", "correct": false }
+    ]
+  },
+  {
+    "id": 64,
+    "difficulty": "d4",
+    "question": "What is thermal diffusion used for?",
+    "answers": [
+      { "text": "Separation of chlorine isotopes", "correct": true },
+      { "text": "Water desalination", "correct": false },
+      { "text": "Oil refining", "correct": false }
+    ]
+  },
+  {
+    "id": 65,
+    "difficulty": "d4",
+    "question": "What is electrolysis used for?",
+    "answers": [
+      { "text": "Concentration of heavy water", "correct": true },
+      { "text": "Air purification", "correct": false },
+      { "text": "Oil extraction", "correct": false }
+    ]
+  },
+  {
+    "id": 66,
+    "difficulty": "d4",
+    "question": "What is electrodialysis used for?",
+    "answers": [
+      { "text": "Desalination of sea water", "correct": true },
+      { "text": "Air separation", "correct": false },
+      { "text": "Oil purification", "correct": false }
+    ]
+  },
+  {
+    "id": 67,
+    "difficulty": "d4",
+    "question": "What is electrophoresis used for?",
+    "answers": [
+      { "text": "Recovery of hemicelluloses and separate DNA based on size and charge", "correct": true },
+      { "text": "Water purification only", "correct": false },
+      { "text": "Gas separation", "correct": false }
+    ]
+  },
+  {
+    "id": 68,
+    "difficulty": "d4",
+    "question": "In a membrane separation problem with 100 kmol/h air, 50% O2 recovery to permeate and 91.1% N2 recovery to retentate, what is the retentate flow rate?",
+    "answers": [
+      { "text": "82.5 kmol/h", "correct": true },
+      { "text": "70 kmol/h", "correct": false },
+      { "text": "90 kmol/h", "correct": false }
+    ]
+  },
+  {
+    "id": 69,
+    "difficulty": "d5",
+    "question": "In the same membrane problem, what is the O2 mole fraction in the permeate?",
+    "answers": [
+      { "text": "0.60", "correct": true },
+      { "text": "0.50", "correct": false },
+      { "text": "0.21", "correct": false }
+    ]
+  },
+  {
+    "id": 70,
+    "difficulty": "d5",
+    "question": "For 50 mol% purity O2 in permeate and 91.1 mol% purity N2 in retentate, what is the retentate flow rate?",
+    "answers": [
+      { "text": "70.56 kmol/h", "correct": true },
+      { "text": "82.5 kmol/h", "correct": false },
+      { "text": "60 kmol/h", "correct": false }
+    ]
+  },
+  {
+    "id": 71,
+    "difficulty": "d6",
+    "question": "What is the separation power (SP) for O2 vs N2 with 50% recovery specs?",
+    "answers": [
+      { "text": "10.3", "correct": true },
+      { "text": "5.2", "correct": false },
+      { "text": "1.0", "correct": false }
+    ]
+  },
+  {
+    "id": 72,
+    "difficulty": "d4",
+    "question": "What parameters are needed to fully solve a gas permeation problem?",
+    "answers": [
+      { "text": "Feed composition, amount, membrane type, set point for exit stream, recovery amount", "correct": true },
+      { "text": "Only temperature and pressure", "correct": false },
+      { "text": "Only feed composition", "correct": false }
+    ]
+  },
+  {
+    "id": 73,
+    "difficulty": "d3",
+    "question": "What heuristic applies to removing final products in separation sequences?",
+    "answers": [
+      { "text": "Remove final products one by one as distillates", "correct": true },
+      { "text": "Remove all products at once", "correct": false },
+      { "text": "Remove products randomly", "correct": false }
+    ]
+  },
+  {
+    "id": 74,
+    "difficulty": "d4",
+    "question": "Which products should be removed earlier in a separation sequence?",
+    "answers": [
+      { "text": "Products of higher concentration", "correct": true },
+      { "text": "Products of lower concentration", "correct": false },
+      { "text": "Products with highest boiling point", "correct": false }
+    ]
+  },
+  {
+    "id": 75,
+    "difficulty": "d5",
+    "question": "What should you do with high SF products in a separation sequence?",
+    "answers": [
+      { "text": "Leave them for later in the sequence", "correct": true },
+      { "text": "Remove them first", "correct": false },
+      { "text": "Remove them in the middle", "correct": false }
+    ]
+  },
+  {
+    "id": 76,
+    "difficulty": "d4",
+    "question": "What is preferred for top/bottom product amounts in separation sequences?",
+    "answers": [
+      { "text": "Near-equal amounts", "correct": true },
+      { "text": "Very unequal amounts", "correct": false },
+      { "text": "All product in top stream", "correct": false }
+    ]
+  },
+  {
+    "id": 77,
+    "difficulty": "d4",
+    "question": "Which operations may not need a pilot plant?",
+    "answers": [
+      { "text": "Distillation, absorption, extractive distillation, LLE", "correct": true },
+      { "text": "Crystallization and drying only", "correct": false },
+      { "text": "All operations need pilot plants", "correct": false }
+    ]
+  },
+  {
+    "id": 78,
+    "difficulty": "d4",
+    "question": "Which operations need a pilot plant?",
+    "answers": [
+      { "text": "Adsorption, crystallization, drying", "correct": true },
+      { "text": "Distillation and absorption only", "correct": false },
+      { "text": "No operations need pilot plants", "correct": false }
+    ]
+  },
+  {
+    "id": 79,
+    "difficulty": "d3",
+    "question": "For the hydrocarbon recovery process with butanes, what heuristic is best?",
+    "answers": [
+      { "text": "Remove difficult separations without other species", "correct": true },
+      { "text": "Always remove lightest component first", "correct": false },
+      { "text": "Remove products randomly", "correct": false }
+    ]
+  }
+]

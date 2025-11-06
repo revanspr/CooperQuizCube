@@ -18,7 +18,7 @@ let difficultyLevels = ['d1', 'd2', 'd3', 'd4', 'd5', 'd6'];
 let selectedQuestionIndex = -1; // Which of the 3 questions was selected
 let currentAttempts = 0; // Track attempts for current question
 
-// Load quiz data from JSON file
+// Load quiz data from JSON file uguigiu
 async function loadQuizData() {
     try {
         // Load PoP! Quiz data
